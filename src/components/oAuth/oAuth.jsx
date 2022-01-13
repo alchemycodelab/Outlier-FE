@@ -9,7 +9,10 @@ function Oauth() {
     try {
       setLoading(true);
       console.log('!!!', email);
-      const { error } = await supabase.auth;
+      const { user, session, error } = await supabase.auth.signIn({
+        email,
+        provider: 'google',
+      });
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
