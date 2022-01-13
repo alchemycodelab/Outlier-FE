@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Supabase from '../oAuth/oAuth';
+import oAuth from '../Oauth/Oauth';
 
 export default function HomeComponent() {
   return (
     <>
-      <Supabase />
+      {/* <oAuth /> */}
       <Link to={'/login'}>
         <button>Login</button>
       </Link>

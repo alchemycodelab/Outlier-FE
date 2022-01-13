@@ -1,97 +1,50 @@
+import { supabase } from '../../services/createClient';
 import { useState } from 'react';
-import { useAuth } from '@redwoodjs/auth';
 
-const Supabase = () => {
+function Oauth() {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const { client, logIn, logOut, signUp, isAuthenticated, reauthenticate } =
-    useAuth();
-
-  // Here you can subscribe to events
-  client.auth.onAuthStateChange(async (event) => {
-    if (event === 'SIGNED_IN') {
-      console.debug('>> in onAuthStateChange', event);
-    }
-
-    if (event === 'SIGNED_OUT') {
-      console.debug('>> in onAuthStateChange', event);
-      // reset the auth state to ensure no longer authenticated in all tabs
-      await reauthenticate();
-    }
-
-    if (event === 'TOKEN_REFRESHED') {
-      console.debug('>> in onAuthStateChange', event);
-    }
-  });
-
-  const resetForm = () => {
-    setEmail('');
-    setPassword('');
-  };
-  const handleLog = async () => {
-    if (!isAuthenticated && email.length) {
-      try {
-        await logIn({ email, password });
-        resetForm();
-      } catch (e) {
-        console.log(e);
-        const supabaseError = JSON.parse(e.message);
-        alert(supabaseError.error_description);
-      }
-    } else {
-      await logOut();
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+      console.log('!!!', email);
+      const { error } = await supabase.auth;
+    } catch (error) {
+      alert(error.error_description || error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleSign = async () => {
-    if (!isAuthenticated && email.length && password.length) {
-      try {
-        await signUp({ email, password });
-
-        resetForm();
-      } catch (e) {
-        const supabaseError = JSON.parse(e.message);
-        alert(supabaseError.msg);
-        console.log(e);
-      }
-    }
-
-    return (
-      <>
-        <form>
-          <input
-            type="email"
-            placeholder="email address"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </form>
-        <button
-          disabled={(!email.length || !password.length) && !isAuthenticated}
-          onClick={() => handleLog()}
-        >
-          {isAuthenticated ? 'Log Out' : 'Log In'}
-        </button>
-        {!isAuthenticated && (
+  return (
+    <>
+      <section>
+        <div>
+          <h1>oAuth</h1>
+          <p>Sign in via magic link with your email below</p>
+          <div>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+        </div>
+        <div>
           <button
-            disabled={(!email.length || !password.length) && !isAuthenticated}
-            onClick={() => handleSign()}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLogin(email);
+            }}
+            disabled={loading}
           >
-            Sign Up
+            {loading ? <span>loading...</span> : <span>send</span>}
           </button>
-        )}
-      </>
-    );
-  };
-};
+        </div>
+      </section>
+    </>
+  );
+}
 
-export default Supabase;
+export { Oauth };

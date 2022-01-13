@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "@redwoodjs/auth": "^0.41.0",
+    "@supabase/supabase-js": "^1.29.1",
     "auth": "0.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
