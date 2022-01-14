@@ -6,6 +6,7 @@ import { useProfile } from "../../context/Profile/ProfileCtx";
 
 function ProfileForm() {
   const [create, setCreate] = useState(true);
+  const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const {profile, setProfile} = useProfile();
 
@@ -19,7 +20,7 @@ function ProfileForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await onsubmit(formState);
+      await onSubmit(formState);
       setProfile(formState);
     } catch(err) {
       setFormError(err.message);
@@ -34,6 +35,12 @@ function ProfileForm() {
     <form>
       <h1>{create ? 'Create' : 'Edit'}</h1>
         <h3>{profile.email}</h3>
+        <input value={username}/>
+        <input value={avatar}/>
+        {create ? 
+          <button onClick={() => handleSubmit()}>Create</button> 
+          : 
+          <button onClick={() => handleSubmit()}>Edit</button>}
     </form>
   )
 }
