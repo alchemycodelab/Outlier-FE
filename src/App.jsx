@@ -8,23 +8,26 @@ import Resources from './views/Resources/Resources';
 import Profile from './views/Profile/Profile';
 import Layout from './views/Layout/Layout';
 import styles from './App.css';
+import { ProfileCtx, ProfileProvider } from './context/Profile/ProfileCtx';
 
 export default function App() {
   return (
     <>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/data" element={<Data />} />
-            <Route path="/map" element={<Map />} />
-            <Route path="/instructions" element={<Instructions />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <ProfileProvider>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/data" element={<Data />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/instructions" element={<Instructions />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ProfileProvider>
     </>
   );
 }

@@ -1,18 +1,21 @@
 import { supabase } from '../../services/createClient';
 import { useState } from 'react';
+import { useProfile } from '../../context/Profile/ProfileCtx';
 
 function Oauth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const {profile, setProfile} = useProfile();
 
   const handleLogin = async () => {
     try {
       setLoading(true);
-      console.log('!!!', email);
       const { user, session, error } = await supabase.auth.signIn({
         email,
         provider: 'google',
       });
+      setProfile(profile)
+      console.log('PROFILE AT OAUTH', profile);
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
@@ -24,7 +27,7 @@ function Oauth() {
     <>
       <section>
         <div>
-          <h1>oAuth</h1>
+          <h1>{profile.email}</h1>
           <p>Sign in via magic link with your email below</p>
           <div>
             <input
