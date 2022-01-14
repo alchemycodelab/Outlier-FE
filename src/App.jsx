@@ -9,7 +9,7 @@ import Profile from './views/Profile/Profile';
 import Layout from './views/Layout/Layout';
 import styles from './App.css';
 import { ProfileCtx, ProfileProvider } from './context/Profile/ProfileCtx';
-import Confirm from './views/Confirm/confirm';
+import Confirm from './views/Confirm/Confirm';
 
 export default function App() {
   return (
