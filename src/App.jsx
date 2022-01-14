@@ -9,6 +9,7 @@ import Profile from './views/Profile/Profile';
 import Layout from './views/Layout/Layout';
 import styles from './App.css';
 import { ProfileCtx, ProfileProvider } from './context/Profile/ProfileCtx';
+import Confirm from './views/Confirm/confirm';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/confirm" element={<Confirm />} />
               <Route path="/about" element={<About />} />
               <Route path="/data" element={<Data />} />
               <Route path="/map" element={<Map />} />
