@@ -6,12 +6,10 @@ const ProfileCtx = createContext();
 function ProfileProvider({ children }) {
   // const activeProfile = useState({id: 1, email: 'test@email.com'})
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState(
-  {id: 1, email: 'test@email.com', username: '', avatar: ''}
-  );
+  const [profile, setProfile] = useState({});
 
-  const value = useMemo(() => ({ profile, setProfile}), [profile]);
-  return <ProfileCtx.Provider value={value}>{children}</ProfileCtx.Provider>
+  // const value = useMemo(() => ({ profile, setProfile}), [profile]);
+  return <ProfileCtx.Provider value={{ profile, setProfile }}>{children}</ProfileCtx.Provider>
 };
 
 const useProfile = () => {

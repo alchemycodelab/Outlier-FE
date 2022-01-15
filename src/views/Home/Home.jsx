@@ -1,37 +1,45 @@
 import { useEffect, useState } from 'react';
 import HomeComponent from '../../components/Home/Home';
-import { Oauth } from '../../components/Oauth/Oauth';
-import { supabase } from '../../services/createClient';
-import { createProfile, getProfile, getProfileId } from '../../services/profile';
-import Profile from '../Profile/Profile';
+import LoginHooks from '../../hooks/UseLogin';
+import LogoutHooks from '../../hooks/UseLogout';
+// import { supabase } from '../../services/createClient';
+import { auth, createProfile, deleteProfile, getProfileEmail, getProfileId, getProfiles } from '../../services/profile';
 
 export default function Home() {
-  const [session, setSession] = useState(null);
+  // const [session, setSession] = useState(null);
 
   
-  useEffect(() => {
-    setSession(supabase.auth.session());
-    supabase.auth.onAuthStateChange((e, session) => {
-      setSession(session);
-    });
-  }, []);
+  // useEffect(() => {
+  //   setSession(supabase.auth.session());
+  //   supabase.auth.onAuthStateChange((e, session) => {
+  //     setSession(session);
+  //   });
+  // }, []);
 
   const user = {
-    email: 'test-post-helper@email.com'
+    email: 'test-post-helper-2@email.com'
   }
+
+  const me = {
+    email: '303josephb@gmail.com'
+  }
+
+  const tester = {
+    email: 'test@email.com'
+  }
+
+  // const parseUser = JSON.parse(user)
 
   return (
     <>
       <h1> HOME Page </h1>
-      <HomeComponent />
-      {!session ? (
-        <Oauth />
-      ) : (
-        <Profile key={session.user.id} session={session} />
-      )}
-      <button onClick={() => getProfile()}>Test</button>
-      <button onClick={() => getProfileId(1)}>Test 2</button>
-      <button onClick={() => createProfile(user)}>Test 3</button>
+      {/* <GoogleOauth /> */}
+      <LoginHooks />
+      <LogoutHooks />
+      <button onClick={() => getProfiles()}>Test</button>
+      <button onClick={async () => await getProfileEmail(me.email)}>Test 2</button>
+      {/* <button onClick={() => createProfile(user)}>Test 3</button>
+      <button onClick={() => deleteProfile(2)}>Test 4</button> */}
     </>
   );
 }

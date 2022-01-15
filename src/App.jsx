@@ -8,8 +8,10 @@ import Resources from './views/Resources/Resources';
 import Profile from './views/Profile/Profile';
 import Layout from './views/Layout/Layout';
 import styles from './App.css';
-import { ProfileCtx, ProfileProvider } from './context/Profile/ProfileCtx';
+import { ProfileProvider } from './context/Profile/ProfileCtx';
 import Confirm from './views/Confirm/Confirm';
+// import ProfileForm from './components/ProfileForm/ProfileForm';
+import ProfileSettings from './views/Profile/ProfileSettings';
 
 export default function App() {
   return (
@@ -20,6 +22,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/confirm" element={<Confirm />} />
+              <Route path="/create" element={<ProfileSettings />} />
               <Route path="/about" element={<About />} />
               <Route path="/data" element={<Data />} />
               <Route path="/map" element={<Map />} />
