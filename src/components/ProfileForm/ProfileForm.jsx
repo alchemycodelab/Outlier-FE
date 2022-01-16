@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../../context/Profile/ProfileCtx";
 import useForm from "../../hooks/UseForm";
+import { updateProfile } from "../../services/profile";
 
 
 function ProfileForm() {
@@ -10,7 +11,7 @@ function ProfileForm() {
   const [create, setCreate] = useState(true);
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
-  const {profile, setProfile} = useProfile();
+  const {profile, setProfile, session} = useProfile();
 
 
   useEffect(() => {
@@ -25,6 +26,8 @@ function ProfileForm() {
     try {
       await onSubmit(formState);
       setProfile(formState);
+      updateProfile(profile.id, { username: formState.username, avatar: formState.avatar});
+      navigate('/profile')
     } catch(err) {
       setFormError(err.message);
     }

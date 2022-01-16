@@ -5,33 +5,49 @@ import { useNavigate } from "react-router-dom";
 
 
 //process not defined!!
-// const secret = process.env.REACT_APP_CLIENT_ID
-// const clientId = `${secret}.apps.googleusercontent.com`;
-const clientId = `$445544407756-bc40shinkl4jnfgpkrei8d059vuig95m.apps.googleusercontent.com`;
+const secret = process.env.REACT_APP_CLIENT_ID
+const clientId = `${secret}.apps.googleusercontent.com`;
+
 
 function LoginHooks() {
-  const {profile, setProfile} = useProfile()
+  // const [session, setSession] = useSession()
+  const {profile, setProfile, session, setSession} = useProfile()
   const navigate = useNavigate();
 
 
   const onSuccess = async (res) => {
-    console.log('Login Success: currentUser =', res.profileObj.email)
     const email = res.profileObj.email;
+    console.log('Login Success: currentUser =', res.accessToken)
+    await setSession(res.accessToken)
     const BEres = await getProfileEmail(email);
     console.log('BACK END RESPONSE', BEres);
     if(BEres.email && BEres.username) {
       console.log('REGISTERED!!')
     } else if (BEres.email) {
-      await setProfile({email})
-      navigate('/create')
-      console.log('PLEASE CREATE ACCOUNT', 'PROFILE = ', profile)
+        await setProfile(BEres)
+        // navigate('/create')
+        console.log('PLEASE CREATE ACCOUNT', 'PROFILE = ', profile, session)
     } else {
-      await createProfile({email});
-      console.log('DB SEEDED');
+        await createProfile({email});
+        console.log('DB SEEDED');
     }
-
-    // refreshTokenSetup(res);
+          // refreshTokenSetup(res);
   }
+      
+    // const handleLogin = async (googleData) => {
+    //   const res = await fetch('/api/v1/auth/google', {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       token: googleData.tokenId
+    //     }),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+
+    //   const data = await res.json()
+    //   setProfile(data)
+    // }
 
   const onFailure = (res) => {
     console.log('Login failed:', res)
@@ -42,11 +58,13 @@ function LoginHooks() {
     onFailure,
     clientId,
     isSignedIn: true,
-    // accessType: OfflineAudioCompletionEvent,
   });
 
   return (
+    <>
     <button onClick={signIn}>Auth w/ google</button>
+    <button onClick={() => console.log(session)}>Sesh</button>
+    </>
   )
 }
 

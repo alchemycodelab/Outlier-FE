@@ -4,12 +4,12 @@ import { createContext, useContext, useMemo, useState } from "react";
 const ProfileCtx = createContext();
 
 function ProfileProvider({ children }) {
-  // const activeProfile = useState({id: 1, email: 'test@email.com'})
   const [loading, setLoading] = useState(true);
+  const [session, setSession] = useState('')
   const [profile, setProfile] = useState({});
 
   // const value = useMemo(() => ({ profile, setProfile}), [profile]);
-  return <ProfileCtx.Provider value={{ profile, setProfile }}>{children}</ProfileCtx.Provider>
+  return <ProfileCtx.Provider value={{ profile, setProfile, session, setSession }}>{children}</ProfileCtx.Provider>
 };
 
 const useProfile = () => {
