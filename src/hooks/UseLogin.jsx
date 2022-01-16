@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 //process not defined!!
-const secret = process.env.REACT_APP_CLIENT_ID
+const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID
 const clientId = `${secret}.apps.googleusercontent.com`;
 
 

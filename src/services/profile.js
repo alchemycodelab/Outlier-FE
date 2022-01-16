@@ -1,6 +1,3 @@
-import { useProfile } from '../context/Profile/ProfileCtx';
-import { client } from './createClient';
-
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getProfiles() {
@@ -22,7 +19,7 @@ export async function createProfile(user) {
     body: JSON.stringify(user)
   }
   );
-  const data = res.json();
+  const data = await res.json();
   console.log('RES POST', data);
   return data
 }
@@ -74,5 +71,5 @@ export async function deleteProfile(id) {
       },
     });
     const data = await res.json();
-    return data.token
+    return data
 }
