@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import { useProfile } from "../../context/Profile/ProfileCtx";
+import LoginHooks from "../../hooks/UseLogin";
 import LogoutHooks from "../../hooks/UseLogout";
 
 export default function Header() {
@@ -16,6 +17,7 @@ export default function Header() {
       <NavLink to="/about"> About</NavLink>
       <NavLink to="/resources"> Resources</NavLink>
       <NavLink to="/profile"> Profile</NavLink>
+      <LoginHooks />
       <LogoutHooks />
     </>
   );

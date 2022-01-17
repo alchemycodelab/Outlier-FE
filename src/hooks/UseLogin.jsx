@@ -1,53 +1,36 @@
-import { useGoogleLogin } from "react-google-login";
-import { createProfile, getProfileEmail } from "../services/profile";
+import GoogleLogin, { useGoogleLogin } from "react-google-login";
 import { useProfile } from '../context/Profile/ProfileCtx'
 import { useNavigate } from "react-router-dom";
+import { checkEmails, findAuthEmail, signUp } from "../services/auth";
 
 
-//process not defined!!
 const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID
 const clientId = `${secret}.apps.googleusercontent.com`;
+const superSecret = process.env.REACT_APP_SECRET
 
 
 function LoginHooks() {
-  // const [session, setSession] = useSession()
-  const {profile, setProfile, session, setSession} = useProfile()
+  const {profile, setProfile, setAuthorized} = useProfile()
   const navigate = useNavigate();
 
 
   const onSuccess = async (res) => {
+    //--email from google response--// 
     const email = res.profileObj.email;
-    console.log('Login Success: currentUser =', res.accessToken)
-    await setSession(res.accessToken)
-    const BEres = await getProfileEmail(email);
-    console.log('BACK END RESPONSE', BEres);
-    if(BEres.email && BEres.username) {
-      console.log('REGISTERED!!')
-    } else if (BEres.email) {
-        await setProfile(BEres)
-        // navigate('/create')
-        console.log('PLEASE CREATE ACCOUNT', 'PROFILE = ', profile, session)
-    } else {
-        await createProfile({email});
-        console.log('DB SEEDED');
-    }
-          // refreshTokenSetup(res);
+    const googleId = res.googleId.toString();
+    console.log(googleId)
+    //Recieved access token from google--//
+    //--Set app ctx authorized to true--//
+    setAuthorized(true)
+    //--Check matching email in auth table--//
+    // const beRes = await findAuthEmail('test@email.com');
+    //--if email exists run log in route--//
+    // const authorizeEmail = await signIn(email, googleId);
+    // console.log(authorizeEmail);
+    //--else run create route--//
+    // const registerEmail = await signUp({email, superSecret});
+    // console.log(registerEmail);
   }
-      
-    // const handleLogin = async (googleData) => {
-    //   const res = await fetch('/api/v1/auth/google', {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       token: googleData.tokenId
-    //     }),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-
-    //   const data = await res.json()
-    //   setProfile(data)
-    // }
 
   const onFailure = (res) => {
     console.log('Login failed:', res)
@@ -58,13 +41,11 @@ function LoginHooks() {
     onFailure,
     clientId,
     isSignedIn: true,
+    // accessType: OfflineAudioCompletionEvent,
   });
 
   return (
-    <>
     <button onClick={signIn}>Auth w/ google</button>
-    <button onClick={() => console.log(session)}>Sesh</button>
-    </>
   )
 }
 

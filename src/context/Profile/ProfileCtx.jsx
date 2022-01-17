@@ -5,11 +5,11 @@ const ProfileCtx = createContext();
 
 function ProfileProvider({ children }) {
   const [loading, setLoading] = useState(true);
-  const [session, setSession] = useState('')
+  const [authorized, setAuthorized] = useState(false)
   const [profile, setProfile] = useState({});
 
   // const value = useMemo(() => ({ profile, setProfile}), [profile]);
-  return <ProfileCtx.Provider value={{ profile, setProfile, session, setSession }}>{children}</ProfileCtx.Provider>
+  return <ProfileCtx.Provider value={{ profile, setProfile, authorized, setAuthorized }}>{children}</ProfileCtx.Provider>
 };
 
 const useProfile = () => {

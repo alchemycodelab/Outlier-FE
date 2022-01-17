@@ -15,10 +15,11 @@ export async function createProfile(user) {
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
+      // 'Authorization' : `${token}`
     },
     body: JSON.stringify(user)
-  }
-  );
+  });
+
   const data = await res.json();
   console.log('RES POST', data);
   return data
@@ -26,16 +27,10 @@ export async function createProfile(user) {
 
 export async function getProfileEmail(email) {
   const url = `${URL}/api/v1/users/${email}`
-  const res = await fetch(url, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const data = await res.json();
-  console.log('RES ID', data);
-  return data;
+  const res = await fetch(url);
+  // const data = await res.json();
+  console.log('RES ID', res);
+  // return data;
 }
 
 export async function updateProfile(obj) {

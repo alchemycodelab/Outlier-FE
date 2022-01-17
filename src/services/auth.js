@@ -1,27 +1,41 @@
-// import { client } from './client';
+const URL = process.env.REACT_APP_DATABASE_URL
 
-// function getUser() {
-//   return client.auth.user();
-// }
+export async function findAuthEmail(email) {
+  const url = `${URL}/api/v1/auth/${email}`
+  const res = await fetch(url);
+  // const data = await res.json();
+  console.log('EMAIL RES', res)
+  return res;
+}
 
-// function getSession() {
-//   return client.auth.session();
-// }
+export async function signUp(credentials) {
+  const url = `${URL}/api/v1/auth/signup`;
+  const res = await fetch (url, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  });
 
-// async function signUpUser(email, password) {
-//   const { user, error } = await client.auth.signUp({ email, password });
-//   if (error) throw error;
-//   return user;
-// }
+  const data = await res.json();
+  console.log('AUTH POST', data);
+  return data;
+}
 
-// async function signInUser(email, password) {
-//   const { user, error } = await client.auth.signIn({ email, password });
-//   if (error) throw error;
-//   return user;
-// }
+export async function signIn(credentials) {
+  const url = `${URL}/api/v1/auth/login`;
+  const res = await fetch (url, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  });
 
-// async function signOutUser() {
-//   return client.auth.signOut();
-// }
-
-// export {getUser, getSession, signUpUser, signInUser, signOutUser}
+  const data = await res.json();
+  console.log('AUTH LOGIN', data);
+  return data;
+}
