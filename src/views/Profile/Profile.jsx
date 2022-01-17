@@ -10,29 +10,13 @@ function Profile() {
   const { profile, setProfile, authorized, setAuthorized } = useProfile();
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   try {
-  //     const fetchProfile = async () => {
-  //       const res = await getProfiles();
-  //       setProfile(res);
-  //     }
-  //     fetchProfile();
-  //     if(!profile.username) {
-  //       navigate('/create', {replace: true});
-  //     } else 
-  //       setLoading(false);
-  //   } catch (err) {
-  //       throw new Error('failed to fetch')
-  //   }
-  // }, []);
-
 
   return (
     <>
       {authorized ?
       <section>
-        {/* <h1>{profile ? profile.email : null}</h1> */}
-        {/* <button onClick={() => handleLogOut()}>LogOut</button> */}
+        <h3>Test words here</h3>
+        <button onClick={() => console.log(profile)}>Test ProfileCtx</button>
       </section>
       :      
       <>

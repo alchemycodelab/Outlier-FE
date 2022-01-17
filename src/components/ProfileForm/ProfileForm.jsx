@@ -15,21 +15,21 @@ function ProfileForm() {
   const {profile, setProfile, authorized} = useProfile();
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await onSubmit(formState);
-      await setProfile(formState);
-      if(create) {
-        await createProfile(profile.id, profile.email, { username: formState.username, avatar: formState.avatar});
-      } else {
-        await updateProfile(profile.id, profile.email, { username: formState.username, avatar: formState.avatar})
-      }
-      navigate('/profile')
-    } catch(err) {
-      setFormError(err.message);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await onSubmit(formState);
+  //     await setProfile(formState);
+  //     if(create) {
+  //       await createProfile(profile.id, profile.email, { username: formState.username, avatar: formState.avatar});
+  //     } else {
+  //       await updateProfile(profile.id, profile.email, { username: formState.username, avatar: formState.avatar})
+  //     }
+  //     navigate('/profile')
+  //   } catch(err) {
+  //     setFormError(err.message);
+  //   }
+  // };
 
   const handleToggle = () => {
     setActive(v => !v);
@@ -37,9 +37,7 @@ function ProfileForm() {
 
   return (
     <>
-    <h3>{profile.email}</h3>
     <h1>{create ? 'Create' : 'Edit'}</h1>
-    {authorized ? 
     <form onSubmit={() => handleSubmit()}>
       <button onClick={() => console.log(profile)}>Test</button>
       <label htmlFor='username'>Username:</label>
@@ -60,9 +58,6 @@ function ProfileForm() {
       />
       <button>Submit</button> 
       </form>
-      :
-      <LoginHooks />
-    }
     </>
       
   )

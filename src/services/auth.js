@@ -3,12 +3,12 @@ const URL = process.env.REACT_APP_DATABASE_URL
 export async function findAuthEmail(email) {
   const url = `${URL}/api/v1/auth/${email}`
   const res = await fetch(url);
-  // const data = await res.json();
-  console.log('EMAIL RES', res)
-  return res;
+  const data = await res.json();
+  console.log('EMAIL RES', data);
+  return data;
 }
 
-export async function signUp(credentials) {
+export async function signUp(auth) {
   const url = `${URL}/api/v1/auth/signup`;
   const res = await fetch (url, {
     method: 'POST',
@@ -16,15 +16,15 @@ export async function signUp(credentials) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(credentials)
+    body: JSON.stringify(auth)
   });
 
   const data = await res.json();
-  console.log('AUTH POST', data);
+  console.log('AUTH CREATE', data);
   return data;
 }
 
-export async function signIn(credentials) {
+export async function signIn(auth) {
   const url = `${URL}/api/v1/auth/login`;
   const res = await fetch (url, {
     method: 'POST',
@@ -32,7 +32,7 @@ export async function signIn(credentials) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(credentials)
+    body: JSON.stringify(auth)
   });
 
   const data = await res.json();

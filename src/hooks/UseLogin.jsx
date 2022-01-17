@@ -2,6 +2,7 @@ import GoogleLogin, { useGoogleLogin } from "react-google-login";
 import { useProfile } from '../context/Profile/ProfileCtx'
 import { useNavigate } from "react-router-dom";
 import { checkEmails, findAuthEmail, signUp } from "../services/auth";
+import { createProfile, getProfileEmail, getProfiles } from "../services/profile";
 
 
 const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID
@@ -17,19 +18,25 @@ function LoginHooks() {
   const onSuccess = async (res) => {
     //--email from google response--// 
     const email = res.profileObj.email;
-    const googleId = res.googleId.toString();
-    console.log(googleId)
+    await setProfile({email});
+    console.log(res.profileObj);
     //Recieved access token from google--//
     //--Set app ctx authorized to true--//
     setAuthorized(true)
     //--Check matching email in auth table--//
-    // const beRes = await findAuthEmail('test@email.com');
+    const beRes = await findAuthEmail(res.profileObj.email);
+    console.log(beRes);
     //--if email exists run log in route--//
-    // const authorizeEmail = await signIn(email, googleId);
-    // console.log(authorizeEmail);
-    //--else run create route--//
-    // const registerEmail = await signUp({email, superSecret});
-    // console.log(registerEmail);
+    if(beRes.email) {
+      const authorizeEmail = signIn({email: profile.email, password: `${superSecret}`});
+      // const authorizeEmail = signIn({email: beRes.email, password: `${superSecret}`});
+      console.log('SUCCESS SIGNING IN', authorizeEmail);
+    } else {
+      //--else run create route--//
+      const registerEmail = await signUp({email: res.profileObj.email, password: `${superSecret}`});
+      console.log('GOOGLE SUCEEDED ADDING ACT', registerEmail);
+      navigate('/create');
+    }
   }
 
   const onFailure = (res) => {
@@ -41,7 +48,6 @@ function LoginHooks() {
     onFailure,
     clientId,
     isSignedIn: true,
-    // accessType: OfflineAudioCompletionEvent,
   });
 
   return (
