@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <>
       <h1>Outlier</h1>
-      <h3>{profile.email}</h3>
+      {/* <h3>{profile.email}</h3> */}
       <NavLink to="/">Home</NavLink>
       <NavLink to="/instructions"> Instructions</NavLink>
       <NavLink to="/map"> Map</NavLink>
