@@ -6,7 +6,7 @@ import LogoutHooks from "../../hooks/UseLogout";
 export default function Header() {
   const { profile } = useProfile();
   return (
-    <>
+    <header className='header'>
       <h1>Outlier</h1>
       {/* <h3>{profile.email}</h3> */}
       <NavLink to="/">Home</NavLink>
@@ -18,6 +18,6 @@ export default function Header() {
       <NavLink to="/profile"> Profile</NavLink>
       <LoginHooks />
       <LogoutHooks />
-    </>
+    </header>
   );
 }

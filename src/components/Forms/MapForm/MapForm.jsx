@@ -5,7 +5,7 @@ import { getPopulations } from "../../../services/populations";
 import { getStates } from "../../../services/states";
 
 export default function MapForm() {
-  const { stateNames, setStateNames, activeStates, setActiveStates } = useActiveStates();
+  const { stateNames, setStateNames, activeData, setActiveData, activeStates, setActiveStates } = useActiveStates();
   const [loading, setLoading] = useState(true)
   const [stateSelection, setStateSelection] = useState([]);
   const [dataRes, setDataRes] = useState([]);
@@ -18,7 +18,7 @@ export default function MapForm() {
     const fetchData = async () => {
       const res = await getPopulations();
       console.log(res)
-      setDataRes(res);
+      setActiveData(res);
     }
     fetchData();
     fetchStates();
@@ -28,7 +28,8 @@ export default function MapForm() {
   
   const handleStateSubmit = (e) => {
     e.preventDefault();
-    setActiveStates(stateSelection)
+    setActiveStates(stateSelection);
+
   }
 
   return (
@@ -45,14 +46,14 @@ export default function MapForm() {
           <option key={stateName.abrv}>{stateName.stateName}</option>
         ))}
       </select>
-      {/* <select
+      <select
         value={dataRes.State}
         onChange={(e) => stateSelection.push(e.target.value)}
       >
         {dataRes.map((value) => (
           <option key={value.State}>{value.State}</option>
         ))}
-      </select> */}
+      </select>
       <button type='submit'>Submit</button>
       <button onClick={console.log(activeStates)}>Test 2</button>
       <button onClick={console.log(dataRes)}>Test 3</button>
