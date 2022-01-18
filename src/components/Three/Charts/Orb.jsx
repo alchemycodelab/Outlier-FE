@@ -11,6 +11,16 @@ export default function Orb() {
           metalness={0.5}
         />
       </mesh>
+      <mesh position={[2, 3, 3]} visible castShadow>
+        <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+        <meshStandardMaterial
+          attach="material"
+          color="red"
+          wireframe={true}
+          roughness={0.5}
+          metalness={0.5}
+        />
+      </mesh>
     </group>
   );
 }
