@@ -1,3 +1,9 @@
+import ThreeScene from "../../components/Three/ThreeScene";
+
 export default function Data() {
-  return <h1> Data Page </h1>;
+  return (
+    <>
+      <ThreeScene />
+    </>
+  );
 }

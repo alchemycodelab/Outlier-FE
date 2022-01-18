@@ -18,18 +18,16 @@ export default function App() {
       <ProfileProvider>
         <Router>
           <Layout>
-            <main className={styles.main}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/create" element={<ProfileSettings />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/data" element={<Data />} />
-                <Route path="/map" element={<Map />} />
-                <Route path="/instructions" element={<Instructions />} />
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
-            </main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/create" element={<ProfileSettings />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/data" element={<Data />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/instructions" element={<Instructions />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
           </Layout>
         </Router>
       </ProfileProvider>
