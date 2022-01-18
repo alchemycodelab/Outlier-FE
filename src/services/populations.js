@@ -10,7 +10,13 @@ export async function getPopulations() {
 
 export async function getPopsByState(abrv) {
   const url = `${URL}/api/v1/populations/${abrv}`;
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   const data = await res.json();
   console.log('FETCH POPULATION BY STATE', data);
   return data;

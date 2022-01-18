@@ -1,4 +1,4 @@
-import { useActiveStates } from "../../context/Profile/StateCtx";
+import { useActiveStates } from "../../context/State/StateCtx";
 
 export default function Resources() {
   const { activeStates } = useActiveStates();

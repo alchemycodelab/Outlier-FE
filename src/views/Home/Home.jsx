@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import HomeComponent from '../../components/Home/Home';
 import { useProfile } from '../../context/Profile/ProfileCtx';
-import { useActiveStates } from '../../context/Profile/StateCtx';
+import { useActiveStates } from '../../context/State/StateCtx';
 import LoginHooks from '../../hooks/UseLogin';
 import LogoutHooks from '../../hooks/UseLogout';
 // import { supabase } from '../../services/createClient';

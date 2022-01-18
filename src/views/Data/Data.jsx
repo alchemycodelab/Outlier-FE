@@ -1,8 +1,11 @@
-import { useActiveStates } from "../../context/Profile/StateCtx";
+import { useActiveStates } from "../../context/State/StateCtx";
 import ThreeScene from "../../components/Three/ThreeScene";
+import { DataProvider, useActiveData } from "../../context/Data/DataCtx";
 
 export default function Data() {
-  const {activeStates } = useActiveStates();
+  const {stateNames, setStateNames, activeStates, setActiveStates } = useActiveStates();
+  const {activeData, setActiveData, activePopulation, setActivePopulation} = useActiveData();
+
   return (
     <>
       <h1> Data Page </h1>
