@@ -14,4 +14,4 @@ export async function getPopsByState(abrv) {
   const data = await res.json();
   console.log('FETCH POPULATION BY STATE', data);
   return data;
-}
+};
