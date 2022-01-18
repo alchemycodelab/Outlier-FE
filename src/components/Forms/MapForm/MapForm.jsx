@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useActiveStates } from "../../../context/Profile/StateCtx";
 import { getDrinkingData } from "../../../services/data";
-import { getMissingData } from "../../../services/missingData";
+import { getPopulations } from "../../../services/populations";
 import { getStates } from "../../../services/states";
 
 export default function MapForm() {
@@ -16,7 +16,7 @@ export default function MapForm() {
       setStateNames(res);
     };
     const fetchData = async () => {
-      const res = await getMissingData();
+      const res = await getPopulations();
       console.log(res)
       setDataRes(res);
     }
@@ -60,3 +60,9 @@ export default function MapForm() {
     </>
   );
 };
+/**
+ * 
+map form to fetch 2 data metrics and set to context (as well as states) and pass to data (to plug)
+not a huge fan of props
+
+ */
