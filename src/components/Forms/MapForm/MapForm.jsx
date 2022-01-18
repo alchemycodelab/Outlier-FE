@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useActiveStates } from "../../../context/Profile/StateCtx";
 import { getDrinkingData } from "../../../services/data";
-import { getPopulations } from "../../../services/populations";
+import { getMissingData } from "../../../services/missingData";
+import { getPopsByState, getPopulations } from "../../../services/populations";
 import { getStates } from "../../../services/states";
 
 export default function MapForm() {
@@ -16,7 +17,7 @@ export default function MapForm() {
       setStateNames(res);
     };
     const fetchData = async () => {
-      const res = await getPopulations();
+      const res = await getPopsByState('AL');
       console.log(res)
       setActiveData(res);
     }
@@ -26,17 +27,18 @@ export default function MapForm() {
   }, []);
   // console.log(stateNames)
   
-  const handleStateSubmit = (e) => {
+  const handleStateSubmit = async (e) => {
     e.preventDefault();
     setActiveStates(stateSelection);
-
+    await getPopsByState('AL')
   }
 
   return (
     loading ? <h1>Loading..</h1> :
     <>
-    <h2>{activeStates[0]}</h2>
-    <h2>{activeStates[1]}</h2>
+    {activeStates.map((stateName) => {
+      <h3>{stateName.stateName}</h3>
+    })}
     <form onSubmit={handleStateSubmit}>
       <select
         value={stateNames.stateName}
@@ -47,11 +49,35 @@ export default function MapForm() {
         ))}
       </select>
       <select
-        value={dataRes.State}
+        value={stateNames.stateName}
         onChange={(e) => stateSelection.push(e.target.value)}
       >
-        {dataRes.map((value) => (
-          <option key={value.State}>{value.State}</option>
+        {stateNames.map((stateName) => (
+          <option key={stateName.abrv}>{stateName.stateName}</option>
+        ))}
+      </select>
+      <select
+        value={stateNames.stateName}
+        onChange={(e) => stateSelection.push(e.target.value)}
+      >
+        {stateNames.map((stateName) => (
+          <option key={stateName.abrv}>{stateName.stateName}</option>
+        ))}
+      </select>
+      <select
+        value={stateNames.stateName}
+        onChange={(e) => stateSelection.push(e.target.value)}
+      >
+        {stateNames.map((stateName) => (
+          <option key={stateName.abrv}>{stateName.stateName}</option>
+        ))}
+      </select>
+      <select
+        value={stateNames.stateName}
+        onChange={(e) => stateSelection.push(e.target.value)}
+      >
+        {stateNames.map((stateName) => (
+          <option key={stateName.abrv}>{stateName.stateName}</option>
         ))}
       </select>
       <button type='submit'>Submit</button>
