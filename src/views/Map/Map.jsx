@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ThreeScatter from '../../components/Three/ThreeOrb';
 import MapForm from "../../components/Forms/MapForm/MapForm";
 
 
@@ -19,6 +20,7 @@ export default function Map() {
     // loading ? <h1>Loading..</h1> :
     <>
     <MapForm />
+    <ThreeScatter />;
     </>
   )
 }
