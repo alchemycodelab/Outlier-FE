@@ -1,5 +1,3 @@
-import { client } from './createClient';
-
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getTopics() {

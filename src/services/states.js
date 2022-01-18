@@ -6,7 +6,7 @@ export async function getStates() {
   const data = await res.json();
   console.log('STATES FETCH', data);
   return data;
-}
+};
 
 export async function getStateByName(name) {
   const url = (`${URL}/api/v1/state/${name}`)

@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-// import { supabase } from '../../services/createClient';
 import { useNavigate } from "react-router-dom";
-import { useProfile } from "../../context/Profile/ProfileCtx";
-import useForm from "../../hooks/UseForm";
-import LoginHooks from "../../hooks/UseLogin";
-import { updateProfile } from "../../services/profile";
+import { useProfile } from "../../../context/Profile/ProfileCtx";
+import useForm from "../../../hooks/UseForm";
+
 
 
 function ProfileForm() {
   const {formState, handleFormChange} = useForm({ username: '', avatar:''})
   const [create, setCreate] = useState(true);
   const [active, setActive] = useState(false);
-  const navigate = useNavigate();
   const {profile, setProfile, authorized} = useProfile();
 
 
