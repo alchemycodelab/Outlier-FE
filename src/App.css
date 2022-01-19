@@ -13,19 +13,16 @@ html {
   --peach-crayola: #fec89a;
   --mauve: #86626e;
 }
-
 header {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid var(--peach);
 }
-
 body {
   background-color: var(--isabelline);
   color: var(--mauve);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: var(--melon);
@@ -34,9 +31,8 @@ button {
   padding: 5px 10px;
   cursor: pointer;
   margin: 5px;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
-
 button:hover {
   background: var(--isabelline);
   border: 1px solid var(--mauve);

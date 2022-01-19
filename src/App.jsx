@@ -11,8 +11,9 @@ import styles from './App.css';
 import { ProfileProvider } from './context/Profile/ProfileCtx';
 // import ProfileForm from './components/ProfileForm/ProfileForm';
 import ProfileSettings from './views/Profile/ProfileSettings';
-import { StateProvider } from './context/Profile/StateCtx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { StateProvider } from './context/State/StateCtx';
+import { DataProvider } from './context/Data/DataCtx';
 
 export default function App() {
   return (
