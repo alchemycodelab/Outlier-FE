@@ -4,9 +4,8 @@ export async function getPopulations() {
   const url = `${URL}/api/v1/populations`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log('POPULATION FETCH', data);
   return data;
-};
+}
 
 export async function getPopsByState(abrv) {
   const url = `${URL}/api/v1/populations/${abrv}`;
@@ -18,6 +17,5 @@ export async function getPopsByState(abrv) {
     },
   });
   const data = await res.json();
-  console.log('FETCH POPULATION BY STATE', data);
   return data;
-};
+}
