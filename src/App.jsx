@@ -12,27 +12,35 @@ import { ProfileProvider } from './context/Profile/ProfileCtx';
 // import ProfileForm from './components/ProfileForm/ProfileForm';
 import ProfileSettings from './views/Profile/ProfileSettings';
 import { StateProvider } from './context/Profile/StateCtx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
     <>
       <ProfileProvider>
-      <StateProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/create" element={<ProfileSettings />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/instructions" element={<Instructions />} />
+        <StateProvider>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/create" element={<ProfileSettings />} />
+                <Route path="/about" element={<About />} />
+                <Route
+                  path="/profile"
+                  element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  }
+                />
+                <Route path="/instructions" element={<Instructions />} />
                 <Route path="/data" element={<Data />} />
                 <Route path="/map" element={<Map />} />
                 <Route path="/resources" element={<Resources />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </StateProvider>
+              </Routes>
+            </Layout>
+          </Router>
+        </StateProvider>
       </ProfileProvider>
     </>
   );

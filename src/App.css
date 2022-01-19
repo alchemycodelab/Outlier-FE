@@ -1,6 +1,8 @@
 html {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 :root {
   --pad: 1.2rem;
@@ -25,11 +27,17 @@ body {
 }
 
 button {
-  font-family: ProximaNova;
-  background: var(--off-white);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: var(--melon);
   border: 1px solid var(--mauve);
   font-size: 1.1rem;
   padding: 5px 10px;
   cursor: pointer;
   margin: 5px;
+}
+
+button:hover {
+  background: var(--);
+  border: 1px solid var(--mauve);
+  
 }
