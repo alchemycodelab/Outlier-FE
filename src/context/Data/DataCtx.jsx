@@ -4,7 +4,7 @@ const DataCtx = createContext();
 
 function DataProvider({ children }) {
   const [activeData, setActiveData] = useState([]);
-  const [activePopulation, setActivePopulation] = useState('');
+  const [activePopulation, setActivePopulation] = useState(null);
 
   return (
   <DataCtx.Provider 
