@@ -9,34 +9,36 @@ export default function Data() {
     useActiveStates();
   const { activeData, setActiveData, activePopulation, setActivePopulation } =
     useActiveData();
-  useEffect(() => {
-    const res = async () => {
-      // await activeStates((abrv) => {
-      //   getPopsByState.map(activeStates);
-      //   console.log(res);
-      // });
-      console.log('%%%', activeStates);
-      const result = await Promise.all(
-        activeStates.map((state) => getPopsByState(state))
-      );
-      console.log('$$$', result);
-      // await getPopsByState(activeStates[0]).then((value) => console.log(value));
-      // return res;
-    };
-    setActiveData(res);
 
-    console.log('@@@', activeData);
-  }, []);
+  // useEffect(() => {
+  //   const res = async () => {
+  //     console.log('%%%', activeStates);
+  //     const result = await Promise.all(
+  //       activeStates.map((state) => getPopsByState(state))
+  //     )
+  //     setActiveData(result)
+  //   };
+  //   res()
+  //   const setSize = async () => {
+  //     const sizes = await Promise.all(
+  // activeData[0][activePopulation] / activeData[0][activePopulation] * 10
+  //     )
+  //     setScaleZ(sizes)
+  //   }
+  //   setSize()
+  // }, []);
 
+  // console.log('@@@', activeData);
   return (
     <>
       <h1> Data Page </h1>
-      {/* <h2>{activeStates[0]}</h2> */}
-      {/* <h2>{activeStates[1]}</h2> */}
-      {/* <h2>{activePopulation}</h2> */}
-      {/* <h2>{activeData}</h2> */}
-      <button onClick={() => console.log(getPopsByState(activeStates))}>
-        tst1
+      <button
+        onClick={() =>
+          (activeData[0][activePopulation] / activeData[0][activePopulation]) *
+          10
+        }
+      >
+        tst
       </button>
       <button onClick={() => console.log(activePopulation)}>tst2</button>
       <button onClick={() => console.log(activeStates)}>tst3</button>

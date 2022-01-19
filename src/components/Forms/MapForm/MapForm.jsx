@@ -14,9 +14,7 @@ export default function MapForm() {
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
   const [dataRes, setDataRes] = useState([]);
-  const [popSelection, setPopSelection] = useState('');
-
-  const pops = ['lgbt'];
+  const [popSelection, setPopSelection] = useState('lgbt');
 
   useEffect(() => {
     const fetchStates = async () => {
@@ -37,8 +35,15 @@ export default function MapForm() {
   const handleStateSubmit = async (e) => {
     e.preventDefault();
     setActiveStates(stateSelection);
-    // await setActivePopulation(popSelection);
-    // await setActiveData(res);
+    setActivePopulation(popSelection);
+    const res = async () => {
+      console.log('%%%', activeStates);
+      const result = await Promise.all(
+        activeStates.map((state) => getPopsByState(state))
+      );
+      await setActiveData(result);
+    };
+    res();
   };
 
   return loading ? (
@@ -102,7 +107,7 @@ export default function MapForm() {
         <button onClick={() => console.log(activePopulation)}>
           selected population
         </button>
-        <button onClick={console.log(activeStates)}>Test 2</button>
+        <button onClick={() => console.log(activeStates)}>Test 2</button>
         <button onClick={() => console.log(activeData)}>Test 3</button>
         <button onClick={() => setActiveStates([])}>Test 4</button>
         <button onClick={() => console.log(activeData.lgbt)}>tst 5</button>
