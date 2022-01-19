@@ -4,7 +4,7 @@ function Resource({
   resource: {
     resourceName,
     resourceURL,
-    state,
+    resourceState,
   },
 }) {
   return (
@@ -12,7 +12,7 @@ function Resource({
       <h3>{resourceName}</h3>
       {/* <Link to={{pathname: resourceURL}}>{resourceURL}</Link> */}
       <a href={'http://' + resourceURL}>{resourceURL}</a>
-      <p>{state.resourceState}</p>
+      <p>{resourceState}</p>
     </div>
   );
 }

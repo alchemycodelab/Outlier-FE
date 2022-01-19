@@ -6,26 +6,41 @@ import Resource from './Resource';
 
 function ResourceList() {
   const [resources, setResources] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);   
+  
+  function sortArr(prop) {
+    var sortOrder = 1;
+    if(prop[0] === '-') {
+      sortOrder = -1;
+      prop = prop.substr(1);
+    }
+    return function (a, b) {
+      if (sortOrder == -1) {
+        return b[prop].localeCompare(a[prop]);
+      } else {
+        return a[prop].localeCompare(b[prop]);
+      }
+    };
+  };
 
   useEffect(() => {
-    async function getIt() {
+    async function getList() {
       const resourceList = await getResources();
-      setResources(resourceList);
+      console.log('R-LIST', resourceList);
+      const sortedList = resourceList.sort(sortArr('resourceState'));
+      setResources(sortedList);
+      console.log('SORTED', sortedList);
       setLoading(false);
-      // console.log(resources);
     }
-    getIt();
+    getList();
   }, []);
 
   if (loading) return <h1>Loading resources...</h1>;
 
-  // const sortByState = 
-
   return (
     <ul className="resources" aria-label="resource list">
       {resources.map((resource) => (
-        <li key={resources.id}>
+        <li key={resource.id}>
           <Resource resource={resource} />
         </li>
       ))}
