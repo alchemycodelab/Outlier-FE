@@ -10,7 +10,7 @@ import Select from 'react-select';
 export default function MapForm() {
   const { stateNames, setStateNames, activeStates, setActiveStates } =
     useActiveStates();
-  const { activeData, setActiveData, activePopulation, setActivePopulation } =
+  const { activeData, setActiveData, activePopulation, setActivePopulation, total, setTotal } =
     useActiveData();
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
@@ -31,12 +31,12 @@ export default function MapForm() {
     fetchStates();
     setLoading(false);
   }, []);
-  // console.log(stateNames)
 
   const handleStateSubmit = async (e) => {
     e.preventDefault();
     setActiveStates(stateSelection);
     setActivePopulation(popSelection);
+    // setTotal(popSelection.total)
     const res = async () => {
       console.log('%%%', activeStates);
       const result = await Promise.all(
@@ -57,12 +57,17 @@ export default function MapForm() {
       <h3>{activeStates[3]}</h3>
       <h3>{activeStates[4]}</h3>
       <form onSubmit={handleStateSubmit}>
+        {/* <select type='radio' value='Bar' onChange={onChartInput}/> */}
+        {/* <select type='radio' value='Plot' onChange={onChartInput}/> */}
         <select
           value={dataRes.lgbt}
           onChange={(e) => setPopSelection(e.target.value)}
         >
-          <option>placeholder</option>
+          <option>populations</option>
           <option>lgbt</option>
+          <option>black</option>
+          <option>latinx</option>
+          <option>houseless</option>
         </select>
         <select
           value={stateNames.abrv}
@@ -109,9 +114,9 @@ export default function MapForm() {
           selected population
         </button>
         <button onClick={() => console.log(activeStates)}>Test 2</button>
-        <button onClick={() => console.log(activeData)}>Test 3</button>
+        <button onClick={() => console.log(getPopulations())}>Test 3</button>
         <button onClick={() => setActiveStates([])}>Test 4</button>
-        <button onClick={() => console.log(activeData.lgbt)}>tst 5</button>
+        <button onClick={() => console.log(activeData[0].total)}>tst 5</button>
       </form>
     </>
   );
