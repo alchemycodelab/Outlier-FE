@@ -47,7 +47,7 @@ export default function MapForm() {
       const fetchStats = async () => {
         //get activeStates from hook and feed to gethatecrimes 
         const res = await getHateCrimes(activeStates);
-        console.log('hate crimes',res);
+        // console.log('activeStates',activeStates);
         setStats(res);
       }
       fetchStats();
@@ -56,7 +56,7 @@ export default function MapForm() {
         const result = await Promise.all(
           activeStates.map((state) => getPopsByState(state))
           )
-      console.log('activeData', activeStates)
+      // console.log('activeStates', activeStates)
       await setActiveData(result)
     };
     res()
