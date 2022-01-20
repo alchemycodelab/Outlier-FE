@@ -33,16 +33,16 @@ export default function MapForm() {
     setActivePopulation(popSelection);
     // setTotal(popSelection.total)
     const res = async () => {
-      console.log('%%%', activeStates);
       const result = await Promise.all(
         activeStates.map((state) => getPopsByState(state))
-      )
-      await setActiveData(result)
+      );
+      await setActiveData(result);
     };
     res()
   };
 
-  console.log(formState)
+  console.log(formState);
+  
   return loading ? (
     <h1>Loading..</h1>
   ) : (

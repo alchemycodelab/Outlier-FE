@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MapForm from "../../components/Forms/MapForm/MapForm";
-import ThreeMap from "../../components/Three/ThreeMap";
+import ThreeMap from "../../components/Three/Scenes/ThreeMap";
 
 
 export default function Map() {
