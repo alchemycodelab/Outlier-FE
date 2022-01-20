@@ -1,16 +1,17 @@
 import { useState } from "react";
+import { useActiveStates } from "../context/State/StateCtx";
 
 
-function useForm(inputs = '') {
-  const [formState, setFormState] = useState([inputs]);
+function useForm() {
+  const { activeStates, setActiveStates } = useActiveStates();
 
-  const handleFormChange = (e) => {
-    const {name, value} = e.target;
-    setFormState((prev) => {
-      return { ...prev, [name]:value};
-    });
-  };
+  const handleActiveStatesChange = (e) => {
+    const { value } = e.target;
+    setActiveStates((prevState) => {
+      return [ ...prevState, value ];
+      });
+    };
 
-  return { formState, handleFormChange };
+  return { activeStates, handleActiveStatesChange};
 }
 export default useForm;
