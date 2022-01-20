@@ -14,6 +14,7 @@ export default function MapForm() {
     useActiveStates();
   const { activeData, setActiveData, activePopulation, setActivePopulation } =
     useActiveData();
+
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
   // const [dataRes, setDataRes] = useState([]);
@@ -26,19 +27,10 @@ export default function MapForm() {
       const res = await getStates();
       setStateNames(res);
     };
+    
     fetchStates();
     setLoading(false);
   }, []);
-    // const fetchData = async () => {
-    //   const res = await getPopulations();
-    //   // console.log(res);
-    //   setDataRes(res);
-    // };
-    // useEffect(() => {
-    //   setLoading(false);
-    // }, [activeStates]);
-    // console.log(stateNames)
-    
     
     const handleStateSubmit = async (e) => {
       e.preventDefault();
@@ -61,6 +53,7 @@ export default function MapForm() {
     };
     res()
   };
+
   return loading ? (
     <h1>Loading..</h1>
   ) : (
