@@ -10,56 +10,57 @@ import useForm from '../../../hooks/UseForm';
 
 
 export default function MapForm() {
-  const { stateNames, setStateNames, activeStates, setActiveStates } =
+  const { stateNames, setStateNames } =
     useActiveStates();
   const { activeData, setActiveData, activePopulation, setActivePopulation } =
     useActiveData();
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
-  const [dataRes, setDataRes] = useState([]);
+  // const [dataRes, setDataRes] = useState([]);
   const [popSelection, setPopSelection] = useState('lgbt');
   const [stats, setStats] = useState([]);
+  const { activeStates, handleActiveStatesChange } = useForm([]);
 
   useEffect(() => {
     const fetchStates = async () => {
       const res = await getStates();
       setStateNames(res);
     };
-    const fetchData = async () => {
-      const res = await getPopulations();
-      // console.log(res);
-      setDataRes(res);
-    };
-    const fetchStats = async () => {
-      //get activeStates from hook and feed to gethatecrimes 
-      const res = await getHateCrimes(formState);
-      console.log('hate crimes',res);
-      setStats(res);
-    }
-    fetchData();
     fetchStates();
-    fetchStats();
     setLoading(false);
   }, []);
-  // console.log(stateNames)
+    // const fetchData = async () => {
+    //   const res = await getPopulations();
+    //   // console.log(res);
+    //   setDataRes(res);
+    // };
+    // useEffect(() => {
+    //   setLoading(false);
+    // }, [activeStates]);
+    // console.log(stateNames)
+    
+    
+    const handleStateSubmit = async (e) => {
+      e.preventDefault();
+      setActivePopulation(popSelection);
+    
+      const fetchStats = async () => {
+        //get activeStates from hook and feed to gethatecrimes 
+        const res = await getHateCrimes(activeStates);
+        console.log('hate crimes',res);
+        setStats(res);
+      }
+      fetchStats();
 
-  const { formState, handleActiveStatesChange } = useForm([]);
-
-  const handleStateSubmit = async (e) => {
-    e.preventDefault();
-    setActiveStates(formState);
-    setActivePopulation(popSelection);
-
-    const res = async () => {
-      console.log('%%%', activeStates);
-      const result = await Promise.all(
-        activeStates.map((state) => getPopsByState(state))
-      )
+      const res = async () => {
+        const result = await Promise.all(
+          activeStates.map((state) => getPopsByState(state))
+          )
+      console.log('activeData', activeStates)
       await setActiveData(result)
     };
     res()
   };
-  console.log('formstate', formState);
   return loading ? (
     <h1>Loading..</h1>
   ) : (
@@ -78,7 +79,7 @@ export default function MapForm() {
           <option>lgbt</option>
         </select> */}
         <select
-          value={formState}
+          value={stateNames.abrv}
           name={stateNames.abrv}
           onChange={handleActiveStatesChange}
         >
