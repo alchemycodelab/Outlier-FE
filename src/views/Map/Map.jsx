@@ -11,7 +11,7 @@ export default function Map() {
     // loading ? <h1>Loading..</h1> :
     <>
     <MapForm />
-    {/* <ThreeMap />; */}
+    <ThreeMap />;
     </>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useActiveData } from '../../../context/Data/DataCtx';
 import { useActiveStates } from '../../../context/State/StateCtx';
+import useForm from '../../../hooks/UseForm';
 import { getDrinkingData } from '../../../services/data';
 import { getMissingData } from '../../../services/missingData';
 import { getPopsByState, getPopulations } from '../../../services/populations';
@@ -11,22 +12,17 @@ export default function MapForm() {
     useActiveStates();
   const { activeData, setActiveData, activePopulation, setActivePopulation, total, setTotal } =
     useActiveData();
+    const { formState, handleFormChange } = useForm([]);
   const [loading, setLoading] = useState(true);
-  const [stateSelection, setStateSelection] = useState([]);
   const [dataRes, setDataRes] = useState([]);
   const [popSelection, setPopSelection] = useState('lgbt');
+  
 
   useEffect(() => {
     const fetchStates = async () => {
       const res = await getStates();
       setStateNames(res);
     };
-    const fetchData = async () => {
-      const res = await getPopulations();
-      console.log(res);
-      setDataRes(res);
-    };
-    fetchData();
     fetchStates();
     setLoading(false);
   }, []);
@@ -46,6 +42,7 @@ export default function MapForm() {
     res()
   };
 
+  console.log(formState)
   return loading ? (
     <h1>Loading..</h1>
   ) : (
@@ -68,14 +65,15 @@ export default function MapForm() {
           <option>latinx</option>
           <option>houseless</option>
         </select>
-        <select
-          value={stateNames.abrv}
-          onChange={(e) => stateSelection.push(e.target.value)}
+        {/* <select
+          value={formState}
+          name={nameStates.abrv}
+          onChange={handleFormChange}
         >
           {stateNames.map((stateName) => (
             <option key={stateName.abrv}>{stateName.abrv}</option>
           ))}
-        </select>
+        </select> */}
         <select
           value={stateNames.abrv}
           onChange={(e) => stateSelection.push(e.target.value)}
