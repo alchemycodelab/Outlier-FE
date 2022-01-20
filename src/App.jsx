@@ -18,24 +18,24 @@ export default function App() {
   return (
     <>
       <ProfileProvider>
-      <StateProvider>
-      <DataProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/create" element={<ProfileSettings />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/instructions" element={<Instructions />} />
-              <Route path="/data" element={<Data />} />
-              <Route path="/map" element={<Map />} />
-              <Route path="/resources" element={<Resources />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </DataProvider>
-      </StateProvider>
+        <StateProvider>
+          <DataProvider>
+            <Router>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/create" element={<ProfileSettings />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/instructions" element={<Instructions />} />
+                  <Route path="/data" element={<Data />} />
+                  <Route path="/map" element={<Map />} />
+                  <Route path="/resources" element={<Resources />} />
+                </Routes>
+              </Layout>
+            </Router>
+          </DataProvider>
+        </StateProvider>
       </ProfileProvider>
     </>
   );
