@@ -5,13 +5,18 @@ import { getDrinkingData } from '../../../services/data';
 import { getMissingData } from '../../../services/missingData';
 import { getPopsByState, getPopulations } from '../../../services/populations';
 import { getStates } from '../../../services/states';
-import Select from 'react-select';
 
 export default function MapForm() {
   const { stateNames, setStateNames, activeStates, setActiveStates } =
     useActiveStates();
-  const { activeData, setActiveData, activePopulation, setActivePopulation, total, setTotal } =
-    useActiveData();
+  const {
+    activeData,
+    setActiveData,
+    activePopulation,
+    setActivePopulation,
+    total,
+    setTotal,
+  } = useActiveData();
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
   const [dataRes, setDataRes] = useState([]);
