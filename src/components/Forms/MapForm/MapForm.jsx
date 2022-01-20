@@ -2,12 +2,9 @@ import { useEffect, useState } from 'react';
 import { useActiveData } from '../../../context/Data/DataCtx';
 import { useActiveStates } from '../../../context/State/StateCtx';
 import useForm from '../../../hooks/UseForm';
-import { getDrinkingData } from '../../../services/data';
-import { getMissingData } from '../../../services/missingData';
 import { getPopsByState, getPopulations } from '../../../services/populations';
 import { getStates } from '../../../services/states';
 import { getHateCrimes } from '../../../services/hateCrimes';
-import useForm from '../../../hooks/UseForm';
 
 
 export default function MapForm() {
@@ -15,7 +12,6 @@ export default function MapForm() {
     useActiveStates();
   const { activeData, setActiveData, activePopulation, setActivePopulation, total, setTotal } =
     useActiveData();
-
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
   // const [dataRes, setDataRes] = useState([]);
@@ -55,7 +51,6 @@ export default function MapForm() {
     res()
   };
 
-  console.log(formState);
   
   return loading ? (
     <h1>Loading..</h1>
@@ -78,11 +73,6 @@ export default function MapForm() {
           <option>black</option>
           <option>latinx</option>
           <option>houseless</option>
-        </select>
-        {/* <select
-          value={formState}
-          name={nameStates.abrv}
-          onChange={handleFormChange}
         </select> */}
         <select
           value={stateNames.abrv}
@@ -93,7 +83,7 @@ export default function MapForm() {
             <option key={stateName.abrv}>{stateName.abrv}</option>
           ))}
         </select>
-        <select
+        {/* <select
           value={stateNames.abrv}
           name={stateNames.abrv}
           onChange={handleActiveStatesChange}
@@ -129,7 +119,7 @@ export default function MapForm() {
             <option key={stateName.abrv}>{stateName.abrv}</option>
           ))}
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> */}
         {/* <button onClick={() => console.log(activePopulation)}>
           selected population
         </button>
@@ -137,7 +127,7 @@ export default function MapForm() {
         <button onClick={() => console.log(getPopulations())}>Test 3</button>
         <button onClick={() => setActiveStates([])}>Test 4</button>
         <button onClick={() => console.log(activeData[0].total)}>tst 5</button>
-        <button onClick={() => console.log(activeData.lgbt)}>tst 5</button> */}
+          <button onClick={() => console.log(activeData.lgbt)}>tst 5</button>*/}
       </form>
     </>
   );

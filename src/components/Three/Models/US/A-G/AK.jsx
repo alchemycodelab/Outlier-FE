@@ -1,5 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import useForm from '../../../../../hooks/UseForm';
+import { useActiveStates } from '../../../../../context/State/StateCtx';
 
 export default function AK({ ...props }) {  
   const mesh = useRef();
@@ -7,6 +9,8 @@ export default function AK({ ...props }) {
   const [positionY, setPositionY] = useState(0);
   const [active, setActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { activeStates, setActiveStates } = useActiveStates();
+  // const { activeStates, handleActiveStateChanges } = useForm([]);
 
   const { nodes, materials } = useGLTF('/models/states/usa.glb')
 
@@ -16,10 +20,15 @@ export default function AK({ ...props }) {
     setIsHovered(v);
   }, [setIsHovered]);
 
-  function handleClick() {
+  function handleClick(e) {
     setActive(v => !v);
     active ? setPositionY(0) :
-    setPositionY(0.35);
+    setPositionY(2)
+    const { value } = e.target;
+    setActiveStates((prevState) => {
+      console.log(value);
+      return [ ...prevState, value ];
+    });
   }
 
 return(
@@ -28,13 +37,16 @@ return(
     <mesh
       ref={mesh}
       name='AK'
+      value='AK'
       geometry={nodes.Plane023.geometry}
       material={nodes.Plane023.material}
       position={[-9.38, positionY, 6.93]}
       scale={[1, 1.29, 1]}
       onPointerOver={e => onHover(e, true)}
       onPointerOut={e => onHover(e, false)}
-      onClick={() => handleClick()}
+      // onClick={handleActiveStateChanges}
+      onClick={handleClick}
+      // onClick={() => greeting.setName(theme.colors.green)}
     >
       <meshStandardMaterial
           color = {isHovered? '#fff' : '#399E5A'}
