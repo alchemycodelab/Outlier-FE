@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useActiveStates } from '../../../../../context/State/StateCtx';
 
 export default function UT({ ...props }) {  
   const mesh = useRef();
@@ -7,6 +8,7 @@ export default function UT({ ...props }) {
   const [positionY, setPositionY] = useState(0);
   const [active, setActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { setActiveStates } = useActiveStates([]);
 
   const { nodes, materials } = useGLTF('/models/states/usa.glb')
 
@@ -19,8 +21,11 @@ export default function UT({ ...props }) {
   function handleClick() {
     setActive(v => !v);
     active ? setPositionY(0) :
-    setPositionY(0.35);
-  }
+    setPositionY(2);
+    setActiveStates((prevState) => {
+      return [ ...prevState, 'UT' ];
+    });
+  };
 
   return (
   <group ref={group} {...props} dispose={null}>
