@@ -1,17 +1,18 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import Bar from './Charts/Bar'
 import FillLight from './Lights/FillLight'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, useContextBridge } from '@react-three/drei'
 import { Canvas } from 'react-three-fiber'
-import { DataProvider, useActiveData } from '../../context/Data/DataCtx'
-import { StateProvider, useActiveStates } from '../../context/State/StateCtx'
+import { DataCtx, DataProvider, useActiveData } from '../../context/Data/DataCtx'
+import { StateCtx, StateProvider, useActiveStates } from '../../context/State/StateCtx'
 import { getPopsByState } from '../../services/populations'
 
-export default function ThreeScene() {
+export default function ThreeBar() {
   const {activeStates, setActiveStates } = useActiveStates();
-  const { activeData, activePopulation, } = useActiveData();
+  const { activeData, activePopulation, total, setTotal} = useActiveData();
   const [positionY, setPositionY] = useState([]);
   const [scaleZ, setScaleZ] = useState([]);
+  const ContextBridge = useContextBridge(StateCtx, DataCtx)
   const [loading, setLoading] = useState(true)
 
   const data = [
@@ -31,7 +32,7 @@ useEffect(() => {
   setScaleZ(zScaleMap);
   setPositionY(yPositionMap);
   setLoading(false);
-  console.log(sortedMap, activeData);
+  console.log(sortedMap, activeData[0]);
 }, []);
 
 
@@ -44,11 +45,13 @@ useEffect(() => {
           >
           <FillLight brightness={20} />
           <Suspense>
-          <StateProvider>
-          <DataProvider>
-            <Bar scaleZ={scaleZ} positionY={positionY}/>
-          </DataProvider>
-          </StateProvider>
+            <StateProvider>
+            <DataProvider>
+            {/* <ContextBridge> */}
+              <Bar scaleZ={scaleZ} positionY={positionY}/>
+            {/* </ContextBridge> */}
+            </DataProvider>
+            </StateProvider>
           </Suspense>
           <OrbitControls />
           <axesHelper args={[10]} />
