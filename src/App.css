@@ -31,17 +31,12 @@ button {
   padding: 5px 10px;
   cursor: pointer;
   margin: 5px;
-<<<<<<< HEAD
   border-radius: 0.5rem;
-=======
-  border-radius: .5rem;
->>>>>>> eb36ad67072fe44b3d0d9bfb84890dd6d43f2484
 }
 button:hover {
   background: var(--isabelline);
   border: 1px solid var(--mauve);
 }
-<<<<<<< HEAD
 
 main {
   min-height: 30rem;
@@ -49,8 +44,4 @@ main {
 
 footer {
   min-height: 5rem;
-=======
-main {
-  min-height: 30rem;
->>>>>>> eb36ad67072fe44b3d0d9bfb84890dd6d43f2484
 }

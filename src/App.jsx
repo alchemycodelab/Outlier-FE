@@ -20,27 +20,29 @@ export default function App() {
     <>
       <ProfileProvider>
         <StateProvider>
-          <Router>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/create" element={<ProfileSettings />} />
-                <Route path="/about" element={<About />} />
-                <Route
-                  path="/profile"
-                  element={
-                    <PrivateRoute>
-                      <Profile />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="/instructions" element={<Instructions />} />
-                <Route path="/data" element={<Data />} />
-                <Route path="/map" element={<Map />} />
-                <Route path="/resources" element={<Resources />} />
-              </Routes>
-            </Layout>
-          </Router>
+          <DataProvider>
+            <Router>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/create" element={<ProfileSettings />} />
+                  <Route path="/about" element={<About />} />
+                  <Route
+                    path="/profile"
+                    element={
+                      <PrivateRoute>
+                        <Profile />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route path="/instructions" element={<Instructions />} />
+                  <Route path="/data" element={<Data />} />
+                  <Route path="/map" element={<Map />} />
+                  <Route path="/resources" element={<Resources />} />
+                </Routes>
+              </Layout>
+            </Router>
+          </DataProvider>
         </StateProvider>
       </ProfileProvider>
     </>
