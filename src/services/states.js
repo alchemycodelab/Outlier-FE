@@ -4,7 +4,6 @@ export async function getStates() {
   const url = `${URL}/api/v1/state`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log('STATES FETCH', data);
   return data;
 };
 
@@ -18,6 +17,5 @@ export async function getStateByName(name) {
     },
   });
   const data = await res.json();
-  console.log('STATE BY ABRV FETCH', data);
   return data;
 }

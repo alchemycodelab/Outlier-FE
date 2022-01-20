@@ -4,7 +4,7 @@ export async function getProfiles() {
   const url = `${URL}/api/v1/users`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log('RES', data);
+  // console.log('RES', data);
   return data;
 }
 

@@ -4,10 +4,21 @@ const StateCtx = createContext();
 
 function StateProvider({ children }) {
   const [activeStates, setActiveStates] = useState([]);
-  const [stateNames, setStateNames] = useState([])
-
-  return <StateCtx.Provider value={{stateNames, setStateNames, activeStates, setActiveStates}}>{children}</StateCtx.Provider>
-}
+  const [stateNames, setStateNames] = useState([]);
+  const [activeData, setActiveData] = useState([]);
+  
+  return (
+  <StateCtx.Provider 
+    value={{
+      stateNames, 
+      setStateNames, 
+      activeStates, 
+      setActiveStates
+    }}>
+      {children}
+  </StateCtx.Provider>
+  );
+};
 
 const useActiveStates = () => {
   const ctx = useContext(StateCtx);
@@ -19,4 +30,4 @@ const useActiveStates = () => {
   return ctx;
 };
 
-export { StateCtx, StateProvider, useActiveStates};
+export { StateCtx, StateProvider, useActiveStates };
