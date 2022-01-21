@@ -4,7 +4,7 @@ import { useActiveStates } from '../../../context/State/StateCtx';
 import useForm from '../../../hooks/UseForm';
 import { getPopsByState, getPopulations } from '../../../services/populations';
 import { getStates } from '../../../services/states';
-import { getHateCrimes } from '../../../services/hateCrimes';
+import { getHateCrimes, getKey } from '../../../services/hateCrimes';
 
 
 export default function MapForm() {
@@ -56,6 +56,12 @@ export default function MapForm() {
     fetchStats();
   };
 console.log(activeStates, activePopulation, popSelection, activeChart);
+
+  const handleViewStats = async (e) => {
+    const more = await getKey(popSelection);
+    setStats(more);
+  };
+console.log(activeStates);
   
   return loading ? (
     <h1>Loading..</h1>
