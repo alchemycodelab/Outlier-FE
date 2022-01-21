@@ -14,7 +14,7 @@ export async function getHateCrimes(statesArr) {
   return data;
 }
 
-export async function getKey(activePopulation, state) {
+export async function getWithKey(activePopulation, state) {
   let res ;
   if (activePopulation === 'black') {
       console.log('black is chosen')
