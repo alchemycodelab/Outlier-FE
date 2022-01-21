@@ -32,7 +32,9 @@ export default function MapForm() {
     };    
     fetchStates();
     setLoading(false);
-    }, []);
+  }, []);
+
+
 
   const handleStateSubmit = async (e) => {
     e.preventDefault();  
