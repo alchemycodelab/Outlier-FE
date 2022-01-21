@@ -11,7 +11,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[0], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="pink"
+          color="blue"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -21,7 +21,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[1], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="yellow"
+          color="gold"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -31,7 +31,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[2], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="orange"
+          color="limegreen"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -41,7 +41,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[3], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="pink"
+          color="limegreen"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -51,7 +51,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[4], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="yellow"
+          color="gold"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -61,7 +61,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[5], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="orange"
+          color="blue"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}

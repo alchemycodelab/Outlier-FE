@@ -66,7 +66,7 @@ export default function ThreeSphere() {
           <FillLight brightness={20} color='#ffbdf4'/>
           <KeyLight brightness={3.6} color='#ffbdf4'/>
           <RimLight brightness={5} color='#fff'/>
-          {/* <DirectionLight /> */}
+          <DirectionLight brightness={0.01}/>
           <SpotLights position={[3, 100, 0]}/>
           <Suspense fallback={null}>
             <StateProvider>

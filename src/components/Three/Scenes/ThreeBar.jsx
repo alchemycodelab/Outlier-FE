@@ -2,7 +2,8 @@ import React, { Suspense, useEffect, useState } from 'react'
 import Bar from '../Charts/Bar'
 import FillLight from '../Lights/FillLight'
 import KeyLight from '../Lights/KeyLight'
-import RimLight from '../Lights/RimLight'
+import RimLight from '../Lights/RimLight';
+import PointLight from '../Lights/PointLight'
 import { OrbitControls, Sky, useContextBridge } from '@react-three/drei'
 import { Canvas } from 'react-three-fiber';
 import { DataCtx, DataProvider, useActiveData } from '../../../context/Data/DataCtx';
@@ -10,9 +11,8 @@ import { StateCtx, StateProvider, useActiveStates } from '../../../context/State
 import GroundPlane from '../Setting/GroundPlane';
 import BackDrop  from '../Setting/BackDrop'
 import SpotLights from '../Lights/SpotLight';
-import PointLight from '../Lights/PointLight';
 
-export default function ThreeBar({position}) {
+export default function ThreeBar({position, brightness}) {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
   const { activeData, activePopulation, activeStats } = useActiveData(); 
   const [positionY, setPositionY] = useState([]);
@@ -22,6 +22,13 @@ export default function ThreeBar({position}) {
   //outer bars express total population percentage outside of given community
   //second from the center shows the active population percentage
   //inner columns show the number of incidents proportional to the active populations %
+
+  //the active population is divided by the total population
+  //that value is subtracted from one to find the corresponding percenteage for the rest of the population
+  //the number of hate crimes is then multiplied by rest of the populations percentage 
+  //these numbers are not entirely precise and can be taken out of context however they're also 
+  //on the low side when compared to multiple studies and also only track reported cases
+  //recorded by the fbi
   
   
   useEffect(() => {
@@ -50,7 +57,7 @@ export default function ThreeBar({position}) {
   return (
     <section>
       <Canvas
-        style={{ display: 'flex', height: '40rem', width: '40rem' }}
+        style={{ display: 'flex', height: '40rem', width: '40rem'}}
         camera={{ fov: 35, position: [-10, 45, 40] }}
       >
         <ContextBridge>
@@ -71,7 +78,7 @@ export default function ThreeBar({position}) {
           <FillLight brightness={10} color='#ffbdf4'/>
           <SpotLights position={[15, 100, 0]}/>
           <KeyLight brightness={3.6} color='#ffbdf4'/>
-          <RimLight brightness={5} color='#fff'/>
+          <RimLight brightness={25} color='#fad6a5'/>
           <Suspense>
             <StateProvider>
             <DataProvider>

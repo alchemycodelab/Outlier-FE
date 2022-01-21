@@ -6,6 +6,7 @@ import { getStates } from '../../../services/states';
 import { getHateCrimes, getKey } from '../../../services/hateCrimes';
 import css from './MapForm.css';
 import { useTheme } from '../../../context/Theme/Theme';
+import { Link } from 'react-router-dom';
 
 export default function MapForm() {
   const { setStateNames, activeStates } = useActiveStates();
@@ -13,6 +14,7 @@ export default function MapForm() {
   const [popSelection, setPopSelection] = useState('');
   const { isActive, setActive } = useTheme(false);
   const [confirm, setConfirm] = useState(false);
+  const [renderReady, setRenderReady] = useState(false);
 
   const { 
     activeChart, 
@@ -67,6 +69,7 @@ export default function MapForm() {
         setActiveStats(resolution.flat());
       };
       res();
+      setRenderReady(true);
     };
 
     function handlePopSelection(e) {
@@ -120,6 +123,7 @@ export default function MapForm() {
             className={css.hidden}  
             onChange={(e) => setActiveChart(e.target.value)}/>
         </span>
+        <Link to='/data' className={renderReady ? css.renderLink : css.hiddenLink}>Render</Link>
       </div>
     </section>
     </>

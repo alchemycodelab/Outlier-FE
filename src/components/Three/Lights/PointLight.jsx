@@ -1,7 +1,7 @@
 
 
-export default function PointLight() {
+export default function PointLight({brightness}) {
   return (
-    <pointLight position={[10, 10, 10]} />
+    <pointLight position={[10, 50, 30]} brightness={brightness}/>
   )
 }

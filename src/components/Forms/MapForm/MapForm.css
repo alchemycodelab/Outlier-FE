@@ -1,5 +1,6 @@
 .MapForm {
   display: flex;
+  justify-content: space-between;
 }
 
 .confirmControls {
@@ -38,6 +39,18 @@ input[type='radio'] {
   transition: 0.35s;
 }
 
+.hiddenLink {
+  opacity: 0;
+  transition-timing-function: ease-in;
+  transition: 5s;
+}
+
+.renderLink {
+  opacity: 1;
+  transition-timing-function: ease-out;
+  transition: 0.35s;
+}
+
 .displayForm {
   opacity: 1;
   transition-timing-function: ease-out;
@@ -47,7 +60,7 @@ input[type='radio'] {
 .popSelect {
   display: flex;
   flex-direction: row;
-  animation: growDown 300ms ease-in-out forwards;
+  animation: 300ms ease-in-out forwards;
   transition-timing-function: ease-in;
   transition: 0.35s;
 }
