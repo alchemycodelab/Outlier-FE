@@ -6,12 +6,12 @@ html {
 }
 :root {
   --pad: 1.2rem;
-  --melon: #ffb5a7;
-  --pale-pink: #fcd5ce;
-  --isabelline: #f8edeb;
-  --peach: #f9dcc4;
-  --peach-crayola: #fec89a;
-  --mauve: #86626e;
+  --melon: #FFB5A7;
+  --pale-pink: #FCD5CE;
+  --isabelline: #F8EDEB;
+  --peach: #F9DCC4;
+  --peach-crayola: #FEC89A;
+  --mauve: #86626E;
 }
 header {
   justify-content: center;
@@ -37,6 +37,11 @@ button:hover {
   background: var(--isabelline);
   border: 1px solid var(--mauve);
 }
+
 main {
   min-height: 30rem;
+}
+
+footer {
+  min-height: 5rem;
 }
