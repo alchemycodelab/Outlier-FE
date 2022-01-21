@@ -4,7 +4,7 @@ import { useActiveStates } from '../../../context/State/StateCtx';
 import useForm from '../../../hooks/UseForm';
 import { getPopsByState, getPopulations } from '../../../services/populations';
 import { getStates } from '../../../services/states';
-import { getHateCrimes } from '../../../services/hateCrimes';
+import { getHateCrimes, getKey } from '../../../services/hateCrimes';
 
 
 export default function MapForm() {
@@ -15,7 +15,7 @@ export default function MapForm() {
   const [loading, setLoading] = useState(true);
   const [stateSelection, setStateSelection] = useState([]);
   // const [dataRes, setDataRes] = useState([]);
-  const [popSelection, setPopSelection] = useState('lgbt');
+  const [popSelection, setPopSelection] = useState();
   const [stats, setStats] = useState([]);
   const { activeStates, handleActiveStatesChange } = useForm([]);
 
@@ -28,18 +28,17 @@ export default function MapForm() {
     fetchStates();
     setLoading(false);
   }, []);
+
+    const handleViewStats = async (e) => {
+      const more = await getKey(popSelection);
+      setStats(more);
+    };
     
     const handleStateSubmit = async (e) => {
       e.preventDefault();
       setActivePopulation(popSelection);
-    
-      const fetchStats = async () => {
-        //get activeStates from hook and feed to gethatecrimes 
-        const res = await getHateCrimes(activeStates);
-        // console.log('activeStates',activeStates);
-        setStats(res);
-      }
-      fetchStats();
+
+      await getHateCrimes(activeStates);
 
       const res = async () => {
         const result = await Promise.all(
@@ -64,8 +63,8 @@ console.log(activeStates);
       <form onSubmit={handleStateSubmit}>
         {/* <select type='radio' value='Bar' onChange={onChartInput}/> */}
         {/* <select type='radio' value='Plot' onChange={onChartInput}/> */}
-        {/* <select
-          value={dataRes.lgbt}
+        <select
+          value={popSelection}
           onChange={(e) => setPopSelection(e.target.value)}
         >
           <option>populations</option>
@@ -73,8 +72,8 @@ console.log(activeStates);
           <option>black</option>
           <option>latinx</option>
           <option>houseless</option>
-        </select> */}
-        <select
+        </select>
+        {/* <select
           value={stateNames.abrv}
           name={stateNames.abrv}
           onChange={handleActiveStatesChange}
@@ -82,7 +81,7 @@ console.log(activeStates);
           {stateNames.map((stateName) => (
             <option key={stateName.abrv}>{stateName.abrv}</option>
           ))}
-        </select>
+        </select> */}
         {/* <select
           value={stateNames.abrv}
           name={stateNames.abrv}
@@ -118,8 +117,11 @@ console.log(activeStates);
           {stateNames.map((stateName) => (
             <option key={stateName.abrv}>{stateName.abrv}</option>
           ))}
-        </select>
-        <button type="submit">Submit</button> */}
+        </select>*/}
+        <button type="submit">Submit</button>
+        <button
+          onClick={handleViewStats}>Confirm</button>
+
         {/* <button onClick={() => console.log(activePopulation)}>
           selected population
         </button>
