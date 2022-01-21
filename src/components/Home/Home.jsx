@@ -19,38 +19,14 @@ const test = {
 
   return (
     <>
-      {/* //Test Auth services
-      //returns id and email from auth table
-      <button onClick={() => findAuthEmail(me.email)}>Test 1</button>
-      //inserts email into auth table
-      <button onClick={() => signUp({ email: me.email, password: 'passwordhere' })}>Test 2</button>
-      //logs existing user into data base
-      <button onClick={() => signIn( email, 'passwordhere' )}>Test 3</button> */}
+      <h3>Instructions:</h3>
+      <div>
+        Here, you can interact with data and hopefully you gain knowledge and enhance your safety, ability to advocate for funding, and your access to services. 
+        
+        On the MAP you can select two states by clicking directly on them. You can also swirl it around and zoom in and out! Then you can pick the population that you want to know more about and two states that matter to you. Finally, pick whether you want to see the data displayed in a bar chart or a scatter plot. 
 
-      {/* //test profile services
-      <button onClick={() => getProfiles()}>Test</button>
-      <button onClick={() => createProfile('pdxjosephb@gmail.com')}>Test</button>
-      <button onClick={async () => await getProfileEmail('test@email.com')}>Test 2</button>
-      <button onClick={() => updateProfile({email: 'pdxjosephb@gmail.com', username: 'test', avatar: 'test.png'})}>Test 3</button>
-      <button onClick={() => deleteProfile(3)}>Test 4</button> */}
-
-
-      {/* //test state services
-      <button onClick={() => getStates()}>Test 1</button>
-      <button onClick={() => getStateByName('texas')}>Test 2</button> */}
-
-      {/* //test favorites services
-      <button onClick={() => getFavorites()}>Test 1</button>
-      <button onClick={() => getFavoriteId(1)}>Test 2</button>
-      <button onClick={() => addFavorite()}>Test 3</button>
-      <button onClick={() => deleteFavoriteById()}>Test 4</button> */}
-
-      {/* <Link to={'/login'}>
-        <button>Login</button>
-      </Link>
-      <Link to={'/signup'}>
-        <button>SignUp</button>
-      </Link> */}
+        Then you will be redirected to the data page, where you will see the statistics for the hate crimes in each state based on population. Hover over each data point to see the associated data value. You can interact with your chart similarly to the map, zoom in an out and turn it to get different views. 
+      </div>
     </>
   );
 }

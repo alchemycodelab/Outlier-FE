@@ -1,0 +1,39 @@
+:root {
+  --pad: 1.2rem;
+  --melon: #FFB5A7;
+  --pale-pink: #FCD5CE;
+  --isabelline: #F8EDEB;
+  --peach: #F9DCC4;
+  --peach-crayola: #FEC89A;
+  --mauve: #86626E;
+}
+
+.header{
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  text-transform: uppercase;
+}
+
+.navigation a {
+  color: var(--mauve);
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.navLink {
+  background-color: var(--peach);
+}
+
+.homeLink{ 
+  background-color: var(--peach-crayola);
+}

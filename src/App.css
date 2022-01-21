@@ -16,7 +16,7 @@ html {
 header {
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--peach);
+  border-bottom: 1px solid var(--peach-crayola);
 }
 body {
   background-color: var(--isabelline);
@@ -45,3 +45,4 @@ main {
 footer {
   min-height: 5rem;
 }
+

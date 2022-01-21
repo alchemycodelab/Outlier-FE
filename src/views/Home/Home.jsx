@@ -22,11 +22,11 @@ export default function Home() {
   // console.log(stateNames)
 
   return (
-    <>
-      <h1> HOME Page </h1>
-      <button onClick={() => console.log(stateNames[0].abrv)}>Test</button>
+    <section>
+      <h1> Welcome to Outlier</h1>
+      <button onClick></button>
       <HomeComponent />
 
-    </>
+    </section>
   );
 }
