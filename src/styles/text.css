@@ -10,9 +10,9 @@ h1 strong {
     filter: drop-shadow(0px 0px 10px var(--lighterblue));
 }
 
-.section h2 {
-    font-size: 60px;
-}
+/* .section h2 {
+    
+} */
 
 .text {
     font-size: 20px;
@@ -22,3 +22,15 @@ h1 strong {
     font-size: 40px;
     color: var(--darkblue);
 };
+
+h2 {
+  font-size: 60px;
+  color: var(--darkblue);
+}
+
+.team {
+  padding-top: 50px;
+  letter-spacing: .5px;
+  width: 90%;
+  margin:auto;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from '../../styles/layout.css';
+import text_style from '../../styles/text.css'
 import greg from '../../../public/photos/greg.jpeg';
 import joseph from '../../../public/photos/joseph.jpeg';
 import madden from '../../../public/photos/madden.jpeg';
@@ -10,15 +11,14 @@ export default function About() {
     <div className={css.about}>
       <div className={css.left}>
         <img src={joseph} />
-        <div className={css.info}>
+        <div className={css.left_info}>
           <h2 className={css.name}>Joseph he/him</h2>
           <p className={css.text}>
-            Software Engineer, Creative Designer, and Musician.
+            Software Engineer, Creative Designer, and Musician
           </p>
           <div>
-            Connect
             <a className={css.connect} href={'https://github.com/Joseph-K-B'}>
-              -Github-|
+              -Github- |
             </a>
             <a
               className={css.connect}
@@ -31,14 +31,14 @@ export default function About() {
         </div>
       </div>
       <div className={css.right}>
-        <div className={css.info}>
+        <div className={css.right_info}>
           <h2 className={css.name}>Madden they/them</h2>
           <p className={css.text}>
-            Software Dev, Trans Advocate and Youth Mentor, Organization Nerd.
+            Software Dev, Trans Advocate and Youth Mentor, Organization Nerd
           </p>
           <div>
             <a className={css.connect} href={'https://github.com/maddenlockin'}>
-              -Github-|
+              -Github- |
             </a>
             <a
               className={css.connect}
@@ -53,14 +53,14 @@ export default function About() {
 
       <div className={css.left}>
         <img src={greg} />
-        <div className={css.info}>
+        <div className={css.left_info}>
           <h2 className={css.name}>Greg he/him</h2>
           <p className={css.text}>
             Full Stack Software Developer,  Sci-Fi & Horror Buff, Accuracy Wizard
           </p>
           <div>
             <a className={css.connect} href={'https://github.com/greg-gilliam'}>
-              -Github-|
+              -Github- |
             </a>
             <a
               className={css.connect}
@@ -72,7 +72,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className={css.team}>
+      <div className={text_style.team}>
         <p>
           Joseph, Madden & Greg all come from strong backgrounds of social
           justice and equality for all people. They have laid down, marched and
