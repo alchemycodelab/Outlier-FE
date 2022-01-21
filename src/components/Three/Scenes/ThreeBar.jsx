@@ -1,14 +1,16 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import Bar from '../Charts/Bar'
 import FillLight from '../Lights/FillLight'
-import { OrbitControls, useContextBridge } from '@react-three/drei'
+import KeyLight from '../Lights/KeyLight'
+import RimLight from '../Lights/RimLight'
+import { OrbitControls, Sky, useContextBridge } from '@react-three/drei'
 import { Canvas } from 'react-three-fiber';
 import { DataCtx, DataProvider, useActiveData } from '../../../context/Data/DataCtx';
 import { StateCtx, StateProvider, useActiveStates } from '../../../context/State/StateCtx';
-import { getPopsByState } from '../../../services/populations'
 import GroundPlane from '../Setting/GroundPlane';
 import BackDrop  from '../Setting/BackDrop'
 import SpotLights from '../Lights/SpotLight';
+import PointLight from '../Lights/PointLight';
 
 export default function ThreeBar({position}) {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
@@ -52,6 +54,20 @@ export default function ThreeBar({position}) {
         camera={{ fov: 35, position: [-10, 45, 40] }}
       >
         <ContextBridge>
+          <Sky 
+            distance={450000} 
+            sunPosition={[0, 1, 0]} 
+            inclination={0} 
+            azimuth={180}
+            turbidity={10}
+            rayleigh={3}
+            mieCoefficient={0.005}
+            mieDirectionalG={0.7}
+            elevation={2}
+            exposure={0.5}
+          />
+
+          {/* <PointLight brightness={0.2}/> */}
           <FillLight brightness={10} color='#ffbdf4'/>
           <SpotLights position={[15, 100, 0]}/>
           <KeyLight brightness={3.6} color='#ffbdf4'/>
