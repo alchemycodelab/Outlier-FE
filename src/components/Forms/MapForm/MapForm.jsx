@@ -2,19 +2,27 @@ import { useEffect, useState } from 'react';
 import { useActiveData } from '../../../context/Data/DataCtx';
 import { useActiveStates } from '../../../context/State/StateCtx';
 import useForm from '../../../hooks/UseForm';
-import { getPopsByState, getPopulations } from '../../../services/populations';
+import { getPopsByState } from '../../../services/populations';
 import { getStates } from '../../../services/states';
 import { getHateCrimes, getKey } from '../../../services/hateCrimes';
 
 
 export default function MapForm() {
-  const { setStateNames } = useActiveStates();
-  const { setActiveData, activePopulation, setActivePopulation, total, setTotal } = useActiveData();
+  const { setStateNames, activeStates } = useActiveStates();
   const [loading, setLoading] = useState(true);
   const [popSelection, setPopSelection] = useState('lgbt');
   const [stats, setStats] = useState([]);
-  const { activeStates, handleActiveStatesChange } = useForm([]);
-  const [activeChart, setActiveChart] = useState(false)
+  // const { activeStates, handleActiveStatesChange } = useForm([]);
+  const { 
+    activeChart, 
+    setActiveChart, 
+    activeData,
+    setActiveData, 
+    activePopulation, 
+    setActivePopulation, 
+    activeStats, 
+    setActiveStats,
+  } = useActiveData();
 
   useEffect(() => {
     const fetchStates = async () => {
@@ -37,31 +45,27 @@ export default function MapForm() {
     }
     res()
   }
-
-  const handleChart = async (e) => {
-    e.preventDefault();
-    setActiveChart();
-  }
     
   const handleStateSubmit = async (e) => {
-    e.preventDefault();
-    setActivePopulation(popSelection);
-  
+    e.preventDefault();  
     const fetchStats = async () => {
-      //get activeStates from hook and feed to gethatecrimes 
       const res = await getHateCrimes(activeStates);
       console.log('hate crimes', res);
-      setStats(res);
     }
     fetchStats();
   };
-console.log(activeStates, activePopulation, popSelection, activeChart);
+console.log(activeStates, activePopulation, popSelection, activeChart, activeStats);
 
-  const handleViewStats = async (e) => {
-    const more = await getKey(popSelection);
-    setStats(more);
+  const handleViewStats = async () => {
+    const res = async () => {
+      const resolution = await Promise.all(
+         activeStates.map((state) => getKey(popSelection, state))
+      )
+      console.log(resolution);
+      setActiveStats(resolution.flat());
+    };
+    res()
   };
-console.log(activeStates);
   
   return loading ? (
     <h1>Loading..</h1>
@@ -87,6 +91,8 @@ console.log(activeStates);
         <button type="submit">Submit</button> 
       </form>
         <button onClick={handleSelections}>Set</button>         
+        <button onClick={handleViewStats}>Stats</button>
+        <button onClick={() => console.log(activeData)}>Stats</button>
     </>
   );
 }

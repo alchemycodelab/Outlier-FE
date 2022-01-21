@@ -5,6 +5,8 @@ const DataCtx = createContext();
 function DataProvider({ children }) {
   const [activeData, setActiveData] = useState([]);
   const [activePopulation, setActivePopulation] = useState(null);
+  const [activeChart, setActiveChart] = useState('bar')
+  const [activeStats, setActiveStats] = useState([])
 
   return (
   <DataCtx.Provider 
@@ -12,8 +14,12 @@ function DataProvider({ children }) {
     activeData, 
     setActiveData, 
     activePopulation, 
-    setActivePopulation
-    }}>
+    setActivePopulation,
+    activeStats,
+    setActiveStats,
+    activeChart, 
+    setActiveChart
+  }}>
     {children}
   </DataCtx.Provider>
   );
