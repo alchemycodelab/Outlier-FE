@@ -1,0 +1,36 @@
+h1 {
+    text-transform: lowercase;
+    font-size: 50px;
+    color: var(--darkblue);
+    filter: drop-shadow(0px 0px 1px white);
+}
+
+h1 strong {
+    font-size: 200px !important;
+    filter: drop-shadow(0px 0px 10px var(--lighterblue));
+}
+
+/* .section h2 {
+    
+} */
+
+.text {
+    font-size: 20px;
+}
+
+.spotlight {
+    font-size: 40px;
+    color: var(--darkblue);
+};
+
+h2 {
+  font-size: 60px;
+  color: var(--darkblue);
+}
+
+.team {
+  padding-top: 50px;
+  letter-spacing: .5px;
+  width: 90%;
+  margin:auto;
+}
