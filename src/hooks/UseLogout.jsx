@@ -1,6 +1,7 @@
 import { useGoogleLogout } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../context/Profile/ProfileCtx";
+import css from '../App.css';
 
 
 
@@ -29,7 +30,7 @@ function LogoutHooks() {
   });
 
   return (
-    <button onClick={signOut}>Log Out</button>
+    <button className={css.button} onClick={signOut}>Log Out</button>
   );
 }
 
