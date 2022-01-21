@@ -28,22 +28,21 @@ function LoginHooks() {
     const beRes = await findAuthEmail(res.profileObj.email);
     console.log(beRes);
     //--if email exists run log in route--//
-    if (beRes.email) {
-      const authorizeEmail = signIn({
-        email: profile.email,
-        password: `${superSecret}`,
-      });
-      // const authorizeEmail = signIn({email: beRes.email, password: `${superSecret}`});
-      console.log('SUCCESS SIGNING IN', authorizeEmail);
-    } else {
-      //--else run create route--//
-      const registerEmail = await signUp({
-        email: res.profileObj.email,
-        password: `${superSecret}`,
-      });
-      console.log('GOOGLE SUCEEDED ADDING ACT', registerEmail);
-      navigate('/create');
-    }
+    // if (beRes.email) {
+    //   const authorizeEmail = signIn({
+    //     email: profile.email,
+    //     password: `${superSecret}`,
+    //   });
+    //   // const authorizeEmail = signIn({email: beRes.email, password: `${superSecret}`});
+    //   console.log('SUCCESS SIGNING IN', authorizeEmail);
+    // } else {
+    //   //--else run create route--//
+    //   const registerEmail = await signUp({
+    //     email: res.profileObj.email,
+    //     password: `${superSecret}`,
+    //   });
+    console.log('GOOGLE SUCEEDED ADDING ACT', registerEmail);
+    navigate('/create');
   };
 
   const onFailure = (res) => {
