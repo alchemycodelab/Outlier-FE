@@ -17,6 +17,25 @@ export default function Data() {
   //   navigate('/map', { replace: true })
   // }, []);
 
+  // useEffect(() => {
+  //   const res = async () => {
+  //     console.log('%%%', activeStates);
+  //     const result = await Promise.all(
+  //       activeStates.map((state) => getPopsByState(state))
+  //     )
+  //     setActiveData(result)
+  //   };
+  //   res()
+  //   const setSize = async () => {
+  //     const sizes = await Promise.all(
+        // activeData[0][activePopulation] / activeData[0][activePopulation] * 10
+  //     )
+  //     setScaleZ(sizes)
+  //   }
+  //   setSize()
+  // }, []);
+  
+  // console.log('@@@', activeData);
   return (
     <>
       <h1> Data Page </h1>

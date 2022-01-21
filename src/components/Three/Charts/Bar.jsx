@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
+import { useActiveData } from '../../../context/Data/DataCtx';
+import { useActiveStates } from '../../../context/State/StateCtx';
+import { getPopsByState } from '../../../services/populations';
 
 export default function Bar({scaleZ, positionY}) {
 
