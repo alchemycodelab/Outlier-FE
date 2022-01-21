@@ -13,14 +13,14 @@ import OR from '../US/N-O/OR';
 export default function NtoO() {
   return (
     <>
-      {/* <NC /> */}
+      <NC />
       <ND />
       <NE />
       <NH />
       <NJ />
       <NM />
       <NV />
-      {/* <NY /> */}
+      <NY />
       <OH />
       <OK />
       <OR />
