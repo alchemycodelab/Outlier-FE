@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --pad: 1.2rem;
   --melon: #FFB5A7;
   --pale-pink: #FCD5CE;
@@ -9,21 +9,20 @@
   --darkblue: #1d3258;
   --lightblue: #C1EEFF;
   --lighterblue: #EAF9FF;
+} */
+
+
+
+
+
+a:hover {
+  opacity: .5;
 }
 
-.joseph {
-  background-color: var(--lightblue);
-}
+a {
+  color: var(--mauve);
+  text-decoration: none;
+  letter-spacing: .5px;
+  padding: 5px;
 
-.madden {
-  background-color: var(--lightblue);
-}
-
-.greg {
-  background-color: var(--lightblue);
-}
-
-img {
-  max-width: 25%;
-  margin: 4px
 }

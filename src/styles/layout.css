@@ -92,3 +92,44 @@ nav {
 a:hover {
   opacity: .5;
 }
+
+
+a {
+  color: var(--mauve);
+  text-decoration: none;
+  letter-spacing: .5px;
+  padding: 5px;
+
+}
+
+/* ABOUT PAGE */
+
+.left {
+  display: flex;
+  justify-content: left;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+}
+
+.joseph {
+  background-color: var(--lightblue);
+}
+
+.madden {
+  background-color: var(--lightblue);
+}
+
+.greg {
+  background-color: var(--lightblue);
+}
+
+img {
+  max-width: 25%;
+  max-height: 25%;
+  margin: 4px;
+  padding: 10px;
+}

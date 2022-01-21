@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getResources } from '../../services/resources';
 import Resource from './Resource';
+import css from '../../styles/resources.css';
 
 
 function ResourceList() {
@@ -26,7 +27,7 @@ function ResourceList() {
   useEffect(() => {
     async function getList() {
       const resourceList = await getResources();
-      console.log('R-LIST', resourceList);
+      // console.log('R-LIST', resourceList);
       const sortedList = resourceList.sort(sortArr('resourceState'));
       setResources(sortedList);
       console.log('SORTED', sortedList);
@@ -38,9 +39,9 @@ function ResourceList() {
   if (loading) return <h1>Loading resources...</h1>;
 
   return (
-    <ul className="resources" aria-label="resource list">
+    <ul className={css.resource_list} aria-label="resource list">
       {resources.map((resource) => (
-        <li key={resource.id}>
+        <li className={css.list_item} key={resource.id}>
           <Resource resource={resource} />
         </li>
       ))}
