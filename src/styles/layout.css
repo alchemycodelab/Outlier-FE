@@ -1,12 +1,25 @@
 :root {
-  --pad: 1.2rem;
+  --light-blue: rgb(225, 240, 241);
+  --blue: rgb(179, 215, 211);
+  --dark-blue: rgb(50, 68, 66);
+  --darker-blue: rgb(50, 68, 66);
+  --tan: rgb(238, 231, 227);
+  --bright-pink: rgb(244, 219, 233);
+  --light-pink: rgb(253, 245, 249);
+  --orange: rgb(247, 201, 172);
+  --purple: rgb(217, 210, 232);
+  /* --pad: 1.2rem;
   --melon: #FFB5A7;
   --pale-pink: #FCD5CE;
   --isabelline: #F8EDEB;
   --peach: #F9DCC4;
   --peach-crayola: #FEC89A;
   --mauve: #86626E;
+  --darkblue: #1d3258;
+  --lightblue: #C1EEFF;
+  --lighterblue: #EAF9FF; */
 }
+
 
 main {
   width: 85%;
@@ -67,7 +80,7 @@ nav {
 }
 
 .section {
-  background-color: white;
+  background-color: var(--mauve);
   border-radius: 100px;
   padding-top: 30px;
   padding-bottom: 100px;
@@ -75,6 +88,8 @@ nav {
   padding-left: 100px;
   margin-top: 200px;
   width: 100%;
+  filter: drop-shadow(0px 0px 20px var(--darkblue));
+  color: white;
 }
 
 .section h2 {
@@ -116,20 +131,52 @@ a {
 }
 
 .joseph {
-  background-color: var(--lightblue);
+  background-color: var(--light-blue);
 }
 
 .madden {
-  background-color: var(--lightblue);
+  background-color: var(--light-blue);
 }
 
 .greg {
-  background-color: var(--lightblue);
+  background-color: var(--light-blue);
 }
 
 img {
   max-width: 25%;
-  max-height: 25%;
+  max-height: default;
   margin: 4px;
   padding: 10px;
+}
+
+/* RESOURCES PAGE */
+
+.resources {
+  margin-bottom: 200px;
+}
+.state h2 {
+  margin-top: 70px;
+  font-size: 50px;
+}
+/* .state hr {
+  width: 100px;
+  float: left;
+  margin-bottom: 200px;
+} */
+
+.resource {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+
+.resource a {
+  color: var(--darker-blue);
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
 }

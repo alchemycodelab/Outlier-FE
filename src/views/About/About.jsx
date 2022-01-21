@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import css from '../../styles/About.css';
-import layout from '../../styles/layout.css';
+import css from '../../styles/layout.css';
 import greg from '../../../public/photos/greg.jpeg';
 import joseph from '../../../public/photos/joseph.jpeg';
 import madden from '../../../public/photos/madden.jpeg';
@@ -9,9 +8,9 @@ import madden from '../../../public/photos/madden.jpeg';
 export default function About() {
   return (
     <div className={css.about}>
-      <div className={layout.left}>
+      <div className={css.left}>
         <img src={joseph} />
-        <div className={layout.info}>
+        <div className={css.info}>
           <h2 className={css.name}>Joseph he/him</h2>
           <p className={css.text}>
             Software Engineer, Creative Designer, and Musician.
@@ -31,8 +30,8 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className={layout.right}>
-        <div className={layout.info}>
+      <div className={css.right}>
+        <div className={css.info}>
           <h2 className={css.name}>Madden they/them</h2>
           <p className={css.text}>
             Software Dev, Trans Advocate and Youth Mentor, Organization Nerd.
@@ -52,9 +51,9 @@ export default function About() {
         <img src={madden} />
       </div>
 
-      <div className={layout.left}>
+      <div className={css.left}>
         <img src={greg} />
-        <div className={layout.info}>
+        <div className={css.info}>
           <h2 className={css.name}>Greg he/him</h2>
           <p className={css.text}>
             Full Stack Software Developer,  Sci-Fi & Horror Buff, Accuracy Wizard
