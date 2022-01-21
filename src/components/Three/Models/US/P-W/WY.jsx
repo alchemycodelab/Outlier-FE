@@ -42,7 +42,7 @@ export default function WY({ ...props }) {
         onClick={() => handleClick()}
         >
           <meshStandardMaterial
-            color = {isHovered? '#fff' : 'limegreen'}
+            color = {isHovered? '#fff' : 'lightgray'}
         />
       </mesh>
   </group>

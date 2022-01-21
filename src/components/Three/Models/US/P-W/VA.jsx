@@ -42,7 +42,7 @@ export default function VA({ ...props }) {
         onClick={() => handleClick()}
       >
         <meshStandardMaterial
-          color = {isHovered? '#fff' : '#399E5A'}
+          color = {isHovered? '#fff' : '#63E2C6'}
         />
       </mesh>
   </group>

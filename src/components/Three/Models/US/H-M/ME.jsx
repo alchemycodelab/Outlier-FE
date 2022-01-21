@@ -42,7 +42,7 @@ return (
       onClick={() => handleClick()}
     >
       <meshStandardMaterial
-        color = {isHovered? '#fff' : '#399E5A'}
+        color = {isHovered? '#fff' : 'slategray'}
         />
     </mesh>
   </group>

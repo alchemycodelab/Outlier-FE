@@ -42,7 +42,7 @@ export default function CO({ ...props }) {
       onClick={() => handleClick()}
       >
         <meshStandardMaterial
-          color = {isHovered? '#fff' : '#399E5A'}
+          color = {isHovered? '#fff' : '#86626E'}
       />
     </mesh>
   </group>)

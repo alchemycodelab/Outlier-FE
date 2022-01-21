@@ -11,6 +11,7 @@ import { StateCtx, StateProvider, useActiveStates } from '../../../context/State
 import GroundPlane from '../Setting/GroundPlane';
 import BackDrop  from '../Setting/BackDrop'
 import SpotLights from '../Lights/SpotLight';
+import css from './three.css'
 
 export default function ThreeBar({position, brightness}) {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
@@ -55,31 +56,29 @@ export default function ThreeBar({position, brightness}) {
   console.log('Z', scaleZ, 'Y', positionY)
         
   return (
-    <section>
+    <section className={css.canvas}>
       <Canvas
         style={{ display: 'flex', height: '40rem', width: '40rem'}}
         camera={{ fov: 35, position: [-10, 45, 40] }}
       >
         <ContextBridge>
-          <Sky 
-            distance={450000} 
-            sunPosition={[0, 1, 0]} 
-            inclination={0} 
-            azimuth={180}
-            turbidity={10}
-            rayleigh={3}
-            mieCoefficient={0.005}
-            mieDirectionalG={0.7}
-            elevation={2}
-            exposure={0.5}
-          />
-
-          {/* <PointLight brightness={0.2}/> */}
-          <FillLight brightness={10} color='#ffbdf4'/>
-          <SpotLights position={[15, 100, 0]}/>
-          <KeyLight brightness={3.6} color='#ffbdf4'/>
-          <RimLight brightness={25} color='#fad6a5'/>
-          <Suspense>
+          <Suspense fallback='Loading...'>
+            <Sky 
+              distance={450000} 
+              sunPosition={[0, 1, 0]} 
+              inclination={0} 
+              azimuth={180}
+              turbidity={10}
+              rayleigh={3}
+              mieCoefficient={0.005}
+              mieDirectionalG={0.7}
+              elevation={2}
+              exposure={0.5}
+            />
+            <FillLight brightness={10} color='#ffbdf4'/>
+            <SpotLights position={[15, 100, 0]}/>
+            <KeyLight brightness={3.6} color='#ffbdf4'/>
+            <RimLight brightness={25} color='#fad6a5'/>
             <StateProvider>
             <DataProvider>
               <Bar scaleZ={scaleZ} positionY={positionY}/>
@@ -87,11 +86,9 @@ export default function ThreeBar({position, brightness}) {
             </StateProvider>
             <BackDrop />
             <GroundPlane color='#86626E' position={[0, -1, 0]}/>
-          </Suspense>
           <OrbitControls />
-        <axesHelper args={[10]} />
+          </Suspense>
         </ContextBridge>
-        <gridHelper args={[10, 20, 'blue', 'purple']} />
       </Canvas>
     </section>
   );

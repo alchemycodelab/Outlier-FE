@@ -43,7 +43,7 @@ export default function ID({ ...props }) {
       onClick={() => handleClick()}
     >
       <meshStandardMaterial
-          color = {isHovered? '#fff' : 'yellow'}
+          color = {isHovered? '#fff' : 'slategray'}
       />
     </mesh>
   </group>

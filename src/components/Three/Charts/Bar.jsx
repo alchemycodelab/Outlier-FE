@@ -21,7 +21,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[1], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="gold"
+          color="limegreen"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -31,7 +31,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[2], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="limegreen"
+          color="#00FFFF"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -41,7 +41,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[3], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="limegreen"
+          color="#00FFFF"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}
@@ -51,7 +51,7 @@ export default function Bar({scaleZ, positionY}) {
         <cylinderGeometry attach="geometry" args={[0.5, 0.5, scaleZ[4], 16]} />
         <meshStandardMaterial
           attach="material"
-          color="gold"
+          color="limegreen"
           wireframe={true}
           roughness={0.5}
           metalness={0.5}

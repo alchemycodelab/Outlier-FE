@@ -42,7 +42,7 @@ export default function AZ({ ...props }) {
       onClick={handleClick}
     >
       <meshStandardMaterial
-          color = {isHovered? '#fff' : 'orange'}
+          color = {isHovered? '#fff' : 'slategray'}
       />
     </mesh>
   </group>)

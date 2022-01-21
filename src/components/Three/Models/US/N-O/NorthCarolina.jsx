@@ -16,7 +16,7 @@ export default function NC({ ...props }) {
         position={[7.83, 0, 0]} 
       >
       <meshStandardMaterial
-            color = {isHovered? '#fff' : '#399E5A'}
+            color = {isHovered? '#fff' : 'slategray'}
         />
       </mesh>
     </group>

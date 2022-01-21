@@ -42,7 +42,7 @@ export default function RI({ ...props }) {
         onClick={() => handleClick()}
       >
           <meshStandardMaterial
-            color = {isHovered? '#fff' : '#399E5A'}
+            color = {isHovered? '#fff' : 'limegreen'}
           />
       </mesh>
   </group>

@@ -41,7 +41,7 @@ export default function AR({ ...props }) {
       onClick={() => handleClick()}
       >
       <meshStandardMaterial
-        color = {isHovered? '#fff' : '#399E5A'}
+        color = {isHovered? '#fff' : 'steelblue'}
         />
     </mesh>
   </group>)
