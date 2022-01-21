@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import css from '../../styles/layout.css'
 
 function Resource({
   resource: {
@@ -8,11 +8,8 @@ function Resource({
   },
 }) {
   return (
-    <div className="resource">
-      <h3>{resourceName}</h3>
-      {/* <Link to={{pathname: resourceURL}}>{resourceURL}</Link> */}
-      <a href={'http://' + resourceURL}>{resourceURL}</a>
-      <p>{resourceState}</p>
+    <div>
+      <a href={'http://' + resourceURL}>{resourceName}</a>
     </div>
   );
 }

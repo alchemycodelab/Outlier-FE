@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getResources } from '../../services/resources';
 import Resource from './Resource';
+import css from '../../styles/layout.css';
 
 
 function ResourceList() {
@@ -23,11 +24,25 @@ function ResourceList() {
     };
   };
 
+  function sortStateHeader(resourceList) {
+    let currentState = '';
+    let newSort = resourceList.map((resource) => {
+      if (resource.resourceState === currentState) return resource;
+      else {
+        currentState = resource.resourceState;
+        resource.stateHeader = resource.resourceState;
+        return resource;
+      }
+    });
+    return newSort;
+  }
+
   useEffect(() => {
     async function getList() {
       const resourceList = await getResources();
-      console.log('R-LIST', resourceList);
-      const sortedList = resourceList.sort(sortArr('resourceState'));
+      // console.log('R-LIST', resourceList);
+      let sortedList = resourceList.sort(sortArr('resourceState'));
+      sortedList = sortStateHeader(sortedList);
       setResources(sortedList);
       console.log('SORTED', sortedList);
       setLoading(false);
@@ -38,14 +53,26 @@ function ResourceList() {
   if (loading) return <h1>Loading resources...</h1>;
 
   return (
-    <ul className="resources" aria-label="resource list">
-      {resources.map((resource) => (
-        <li key={resource.id}>
-          <Resource resource={resource} />
-        </li>
-      ))}
+    <ul className={css.resources} aria-label="resource list">
+      {resources.map((resource) => {
+        if (resource.stateHeader) {
+          return (
+            <div classname={css.state} key={resource.id}>
+              <h2 key={resource.stateHeader}> {resource.stateHeader} </h2>
+              <li className={css.resource} key={resource.resourceName}>
+                <Resource resource={resource} />
+              </li>
+            </div>
+          );
+        } else {
+          return (
+            <li key={resource.id} className={css.resource}>
+              <Resource resource={resource} />
+            </li>
+          );
+        }
+      })}
     </ul>
   );
 }
-
 export default ResourceList;
