@@ -1,15 +1,21 @@
 import { useActiveStates } from '../../context/State/StateCtx';
 import ThreeBar from '../../components/Three/Scenes/ThreeBar';
 import ThreeSphere from '../../components/Three/Scenes/ThreeSphere';
-import { DataProvider, useActiveData } from '../../context/Data/DataCtx';
-import { useEffect } from 'react';
-import { getPopsByState } from '../../services/populations';
+import { useActiveData } from '../../context/Data/DataCtx';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Data() {
-  const { stateNames, setStateNames, activeStates, setActiveStates } =
-    useActiveStates();
-  const { activeData, setActiveData, activePopulation, setActivePopulation } =
-    useActiveData();
+  const { activeData, activePopulation, activeChart, activeStats } = useActiveData();
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if(activeData[0].stateAbrv) {
+  //     setLoading(false)
+  //   } else
+  //   navigate('/map', { replace: true })
+  // }, []);
 
   // useEffect(() => {
   //   const res = async () => {
@@ -33,11 +39,19 @@ export default function Data() {
   return (
     <>
       <h1> Data Page </h1>
-      <button onClick={() => activeData[0][activePopulation] / activeData[0][activePopulation] * 10}>tst</button>
-      <button onClick={() => console.log(activePopulation)}>tst2</button>
-      <button onClick={() => console.log(activeStates)}>tst3</button>
-      {/* <ThreeScene /> */}
-      <ThreeSphere />
+      <section>
+        <h4>{activeData[0].stateAbrv}</h4>
+        <p>Total Population: {activeData[0].total}</p>
+        <p>{activePopulation}: {activeData[0][activePopulation]}</p>
+        <p>Hate Incidents: {activeStats[0].value}</p>
+      </section>
+      <section>
+        <h4>{activeData[1].stateAbrv}</h4>
+        <p>Total Population: {activeData[1].total}</p>
+        <p>{activePopulation}: {activeData[1][activePopulation]}</p>
+        <p>Hate Incidents: {activeStats[1].value}</p>
+      </section>
+      {activeChart === 'bar' ? <ThreeBar /> : <ThreeSphere />}      
     </>
   );
 }

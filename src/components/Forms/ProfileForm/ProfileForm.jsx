@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useProfile } from "../../../context/Profile/ProfileCtx";
-import useForm from "../../../hooks/UseForm";
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useProfile } from "../../../context/Profile/ProfileCtx";
+// import useForm from "../../../hooks/UseForm";
 
 
 
-function ProfileForm() {
-  const {formState, handleFormChange} = useForm({ username: '', avatar:''})
-  const [create, setCreate] = useState(true);
-  const [active, setActive] = useState(false);
-  const {profile, setProfile, authorized} = useProfile();
+// function ProfileForm() {
+//   const {formState, handleFormChange} = useForm({ username: '', avatar:''})
+//   const [create, setCreate] = useState(true);
+//   const [active, setActive] = useState(false);
+//   const {profile, setProfile, authorized} = useProfile();
 
 
   // const handleSubmit = async (e) => {
@@ -28,36 +28,36 @@ function ProfileForm() {
   //   }
   // };
 
-  const handleToggle = () => {
-    setActive(v => !v);
-  };
+//   const handleToggle = () => {
+//     setActive(v => !v);
+//   };
 
-  return (
-    <>
-    <h1>{create ? 'Create' : 'Edit'}</h1>
-    <form onSubmit={() => handleSubmit()}>
-      <button onClick={() => console.log(profile)}>Test</button>
-      <label htmlFor='username'>Username:</label>
-      <input 
-        id='username'
-        name='username'
-        type='username'
-        onChange={(value) => handleFormChange(value)}
-        value={formState.username}
-      />
-      <label htmlFor='avatar'>Avatar:</label>
-      <input
-        id='avatar'
-        name='avatar' 
-        type='avatar'
-        value={formState.avatar}
-        onChange={(value) => handleFormChange(value)} 
-      />
-      <button>Submit</button> 
-      </form>
-    </>
+//   return (
+//     <>
+//     <h1>{create ? 'Create' : 'Edit'}</h1>
+//     <form onSubmit={() => handleSubmit()}>
+//       <button onClick={() => console.log(profile)}>Test</button>
+//       <label htmlFor='username'>Username:</label>
+//       <input 
+//         id='username'
+//         name='username'
+//         type='username'
+//         onChange={(value) => handleFormChange(value)}
+//         value={formState.username}
+//       />
+//       <label htmlFor='avatar'>Avatar:</label>
+//       <input
+//         id='avatar'
+//         name='avatar' 
+//         type='avatar'
+//         value={formState.avatar}
+//         onChange={(value) => handleFormChange(value)} 
+//       />
+//       <button>Submit</button> 
+//       </form>
+//     </>
       
-  )
-}
+//   )
+// }
 
-export default ProfileForm;
+// export default ProfileForm;

@@ -14,10 +14,12 @@ import ProfileSettings from './views/Profile/ProfileSettings';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { StateProvider } from './context/State/StateCtx';
 import { DataProvider } from './context/Data/DataCtx';
+import { ThemeProvider } from './context/Theme/Theme';
 
 export default function App() {
   return (
     <>
+    <ThemeProvider>
       <ProfileProvider>
         <StateProvider>
           <DataProvider>
@@ -25,7 +27,7 @@ export default function App() {
               <Layout>
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/create" element={<ProfileSettings />} />
+                  {/* <Route path="/create" element={<ProfileSettings />} /> */}
                   <Route path="/about" element={<About />} />
                   <Route
                     path="/profile"
@@ -36,8 +38,8 @@ export default function App() {
                     }
                   />
                   <Route path="/instructions" element={<Instructions />} />
-                  <Route path="/data" element={<Data />} />
                   <Route path="/map" element={<Map />} />
+                  <Route path="/data" element={<Data />} />
                   <Route path="/resources" element={<Resources />} />
                 </Routes>
               </Layout>
@@ -45,6 +47,7 @@ export default function App() {
           </DataProvider>
         </StateProvider>
       </ProfileProvider>
+      </ThemeProvider>
     </>
   );
 }
