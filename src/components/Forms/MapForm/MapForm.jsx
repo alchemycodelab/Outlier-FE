@@ -3,7 +3,7 @@ import { useActiveData } from '../../../context/Data/DataCtx';
 import { useActiveStates } from '../../../context/State/StateCtx';
 import { getPopsByState } from '../../../services/populations';
 import { getStates } from '../../../services/states';
-import { getHateCrimes, getKey } from '../../../services/hateCrimes';
+import { getHateCrimes, getWithKey } from '../../../services/hateCrimes';
 import css from './MapForm.css';
 import { useTheme } from '../../../context/Theme/Theme';
 
@@ -50,7 +50,7 @@ export default function MapForm() {
     setActivePopulation(popSelection);
     const res = async () => {
       const resolution = await Promise.all(
-         activeStates.map((state) => getPopsByState(state))
+        activeStates.map((state) => getPopsByState(state))
       );
       console.log(resolution);
       setActiveData(resolution);
@@ -61,7 +61,7 @@ export default function MapForm() {
   const handleViewStats = async () => {
     const res = async () => {
       const resolution = await Promise.all(
-        activeStates.map((state) => getKey(popSelection, state))
+        activeStates.map((state) => getWithKey(popSelection, state))
         );
         console.log(resolution);
         setActiveStats(resolution.flat());

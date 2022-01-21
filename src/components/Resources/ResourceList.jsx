@@ -57,7 +57,7 @@ function ResourceList() {
       {resources.map((resource) => {
         if (resource.stateHeader) {
           return (
-            <div classname={css.state} key={resource.id}>
+            <div className={css.state} key={resource.id}>
               <h2 key={resource.stateHeader}> {resource.stateHeader} </h2>
               <hr/>
               <li className={css.resource} key={resource.resourceName}>
