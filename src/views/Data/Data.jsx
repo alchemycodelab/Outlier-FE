@@ -4,7 +4,6 @@ import ThreeSphere from '../../components/Three/Scenes/ThreeSphere';
 import { useActiveData } from '../../context/Data/DataCtx';
 
 export default function Data() {
-  const { activeStates } = useActiveStates();
   const { activeData, activePopulation, activeChart, activeStats } = useActiveData();
 
   return (
@@ -22,8 +21,6 @@ export default function Data() {
         <p>{activePopulation}: {activeData[1][activePopulation]}</p>
         <p>Hate Incidents: {activeStats[1].value}</p>
       </section>
-      <button onClick={() => activeData[0][activePopulation] / activeData[0][activePopulation] * 10}>tst</button>
-      <button onClick={() => console.log(activeStates)}>tst3</button>
       {activeChart === 'bar' ? <ThreeBar /> : <ThreeSphere />}      
     </>
   );

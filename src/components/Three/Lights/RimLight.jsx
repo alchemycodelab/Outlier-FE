@@ -6,7 +6,7 @@ function RimLight({ brightness, color }) {
       height={2}
       intensity={brightness}
       color={color}
-      position={[1, 4, -2]}
+      position={[1, -10, 10]}
       rotation={[0, 180, 0]}
       castShadow
     />

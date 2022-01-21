@@ -14,10 +14,12 @@ import ProfileSettings from './views/Profile/ProfileSettings';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { StateProvider } from './context/State/StateCtx';
 import { DataProvider } from './context/Data/DataCtx';
+import { ThemeProvider } from './context/Theme/Theme';
 
 export default function App() {
   return (
     <>
+    <ThemeProvider>
       <ProfileProvider>
         <StateProvider>
           <DataProvider>
@@ -45,6 +47,7 @@ export default function App() {
           </DataProvider>
         </StateProvider>
       </ProfileProvider>
+      </ThemeProvider>
     </>
   );
 }

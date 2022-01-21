@@ -7,69 +7,68 @@ import { DataProvider, useActiveData } from '../../../context/Data/DataCtx';
 import { StateProvider } from '../../../context/State/StateCtx';
 import { DataCtx } from '../../../context/Data/DataCtx';
 import { StateCtx } from '../../../context/State/StateCtx';
+import KeyLight from '../Lights/KeyLight';
+import RimLight from '../Lights/RimLight';
+import GroundPlane from '../Setting/GroundPlane';
+import PointLight from '../Lights/PointLight';
+import SpotLights from '../Lights/SpotLight';
 
 export default function ThreeSphere() {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
-  const { activeData, activePopulation, } = useActiveData();
+  const { activeData, activePopulation, activeStats} = useActiveData();
   const [positionX, setPositionX] = useState([]);
   const [positionY, setPositionY] = useState([]);
   const [positionZ, setPositionZ] = useState([]);
   const [scale, setScale] = useState([]);
-  const [loading, setLoading] = useState(true)
-
-  // console.log(activeData)
-
-  const data = [
-    activeData[0][activePopulation],
-    activeData[1][activePopulation],
-    activeData[2][activePopulation],
-    activeData[3][activePopulation],
-    activeData[4][activePopulation]
-  ]
-
-  const totalPopData = [
-    activeData[0].total,
-    activeData[1].total,
-    activeData[2].total,
-    activeData[3].total,
-    activeData[4].total
-  ]
-
-  console.log(totalPopData)
-
-  // const difference = [
-  //   totalPopData[0] - selectedPopData[0],
-  //   totalPopData[1] - selectedPopData[1],
-  //   totalPopData[2] - selectedPopData[2],
-  //   totalPopData[3] - selectedPopData[3],
-  //   totalPopData[4] - selectedPopData[4]
-  // ]
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const sortedMap = data.map((v) => parseInt(v)).sort((a, b) => {
-      return a - b
-    });
-    const scaleMap =  sortedMap.map((v) => v/sortedMap[4] * 2);
-    const yPositionMap = scaleMap.map((v) => v);
-    const zPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 3);
-    const xPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 6);
-    setScale(scaleMap);
-    setPositionY(yPositionMap);
-    setPositionZ(zPositionMap);
-    setPositionX(xPositionMap);
-    setLoading(false);
-    console.log(data, sortedMap, scaleMap);
-  }, []);
+    const calcPercentages = async () => {
+      const activeOne = (parseInt(activeData[0][activePopulation]) / parseInt(activeData[0].total));
+      const totalOne = 1 - activeOne;
+      const hateOne = parseInt(activeStats[0].value) * totalOne;
+      const activeTwo = (parseInt(activeData[1][activePopulation]) / parseInt(activeData[1].total));
+      const totalTwo = 1 - activeTwo;
+      const hateTwo = parseInt(activeStats[1].value) * totalTwo;
+      const zArr = [totalOne, activeOne, hateOne, hateTwo, activeTwo, totalTwo]
+      const scaleMap = zArr.map((v) => v * 5 )
+      setScale(scaleMap);
+      // const yPositionMap = scaleMap.map((v) => v / 2)
+      // setPositionY(yPositionMap);
+      console.log(zArr)
+    }
+    calcPercentages();
+  }, [])
+
+  // useEffect(() => {
+  //   const sortedMap = data.map((v) => parseInt(v)).sort((a, b) => {
+  //     return a - b
+  //   });
+  //   const scaleMap =  sortedMap.map((v) => v/sortedMap[4] * 2);
+  //   const yPositionMap = scaleMap.map((v) => v);
+  //   const zPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 3);
+  //   const xPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 6);
+  //   setScale(scaleMap);
+  //   setPositionY(yPositionMap);
+  //   setPositionZ(zPositionMap);
+  //   setPositionX(xPositionMap);
+  //   setLoading(false);
+  //   console.log(data, sortedMap, scaleMap);
+  // }, []);
 
   return (
     <section>
       <Canvas
         style={{ display: 'flex', height: '40rem', width: '40rem' }}
-        camera={{ fov: 35, position: [-5, 0, 40] }}
+        camera={{ fov: 35, position: [-10, 45, 40] }}
       >
         <ContextBridge>
-          <FillLight brightness={20} />
-          <Suspense>
+          <FillLight brightness={20} color='#ffbdf4'/>
+          <KeyLight brightness={3.6} color='#ffbdf4'/>
+          <RimLight brightness={5} color='#fff'/>
+          {/* <DirectionLight /> */}
+          <SpotLights position={[3, 100, 0]}/>
+          <Suspense fallback={null}>
             <StateProvider>
             <DataProvider>
               <Orb
@@ -77,9 +76,10 @@ export default function ThreeSphere() {
                 positionY={positionY} 
                 positionZ={positionZ} 
                 scale={scale}
-                />
+              />
             </DataProvider>
             </StateProvider>
+            <GroundPlane color='#86626E'/>
           </Suspense>
           <OrbitControls />
           <axesHelper args={[10]} />
