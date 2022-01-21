@@ -65,11 +65,16 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@react-three/drei": "^8.4.0",
     "@react-three/fiber": "^7.0.24",
 =======
     "@react-three/drei": "^8.6.0",
 >>>>>>> 8a62fc94c52f6f7611a72893a15bc079fff97b82
+=======
+    "@react-three/drei": "^8.4.0",
+    "@react-three/fiber": "^7.0.24",
+>>>>>>> 203e5cfa265801b0cd9e388cf90120e80899e3d2
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",

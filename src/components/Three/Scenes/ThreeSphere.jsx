@@ -1,10 +1,12 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import Orb from './Charts/Orb';
-import FillLight from './Lights/FillLight';
+import Orb from '../Charts/Orb';
+import FillLight from '../Lights/FillLight';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from 'react-three-fiber';
-import { DataProvider, useActiveData } from '../../context/Data/DataCtx';
-import { StateProvider } from '../../context/State/StateCtx';
+import { DataProvider, useActiveData } from '../../../context/Data/DataCtx';
+import { StateProvider } from '../../../context/State/StateCtx';
+import { DataCtx } from '../../../context/Data/DataCtx';
+import { StateCtx } from '../../../context/State/StateCtx';
 
 export default function ThreeSphere() {
   const { activeData, activePopulation, } = useActiveData();
@@ -22,13 +24,15 @@ export default function ThreeSphere() {
     activeData[4][activePopulation]
   ]
 
-  // const totalPopData = [
-  //   activeData[0].total,
-  //   activeData[1].total,
-  //   activeData[2].total,
-  //   activeData[3].total,
-  //   activeData[4].total
-  // ]
+  const totalPopData = [
+    activeData[0].total,
+    activeData[1].total,
+    activeData[2].total,
+    activeData[3].total,
+    activeData[4].total
+  ]
+
+  console.log(totalPopData)
 
   // const difference = [
   //   totalPopData[0] - selectedPopData[0],

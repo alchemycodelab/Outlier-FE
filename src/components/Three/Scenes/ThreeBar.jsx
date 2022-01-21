@@ -1,18 +1,18 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import Bar from './Charts/Bar'
-import FillLight from './Lights/FillLight'
+import Bar from '../Charts/Bar'
+import FillLight from '../Lights/FillLight'
 import { OrbitControls, useContextBridge } from '@react-three/drei'
 import { Canvas } from 'react-three-fiber'
-import { DataCtx, DataProvider, useActiveData } from '../../context/Data/DataCtx'
-import { StateCtx, StateProvider, useActiveStates } from '../../context/State/StateCtx'
-import { getPopsByState } from '../../services/populations'
+// import { DataCtx, DataProvider, useActiveData } from '../../../context/Data/DataCtx'
+// import { StateCtx, StateProvider, useActiveStates } from '../../../context/State/StateCtx'
+import { DataCtx } from '../../../context/Data/DataCtx';
+import { StateCtx } from '../../../context/State/StateCtx';
+import { getPopsByState } from '../../../services/populations'
 
 export default function ThreeBar() {
-  const {activeStates, setActiveStates } = useActiveStates();
-  const { activeData, activePopulation, total, setTotal} = useActiveData();
+  const ContextBridge = useContextBridge(DataCtx, StateCtx);
   const [positionY, setPositionY] = useState([]);
   const [scaleZ, setScaleZ] = useState([]);
-  const ContextBridge = useContextBridge(StateCtx, DataCtx)
   const [loading, setLoading] = useState(true)
 
   const data = [
@@ -39,24 +39,24 @@ useEffect(() => {
 
   return (
     <section>
-        <Canvas
-          style={{ display: 'flex', height: '40rem', width: '40rem' }}
-          camera={{ fov: 35, position: [-5, 0, 40] }}
-          >
+      <Canvas
+        style={{ display: 'flex', height: '40rem', width: '40rem' }}
+        camera={{ fov: 35, position: [-5, 0, 40] }}
+      >
+        <ContextBridge>
           <FillLight brightness={20} />
           <Suspense>
             <StateProvider>
             <DataProvider>
-            {/* <ContextBridge> */}
               <Bar scaleZ={scaleZ} positionY={positionY}/>
-            {/* </ContextBridge> */}
             </DataProvider>
             </StateProvider>
           </Suspense>
           <OrbitControls />
-          <axesHelper args={[10]} />
-          <gridHelper args={[10, 20, 'blue', 'purple']} />
-        </Canvas>
+        <axesHelper args={[10]} />
+        <gridHelper args={[10, 20, 'blue', 'purple']} />
+        </ContextBridge>
+      </Canvas>
     </section>
   );
 }
