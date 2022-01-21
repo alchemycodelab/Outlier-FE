@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useProfile } from "../../context/Profile/ProfileCtx";
 import LoginHooks from "../../hooks/UseLogin";
 import LogoutHooks from "../../hooks/UseLogout";
-import css from './Header.css';
+import css from '../../styles/layout.css';
 
 export default function Header() {
   const { profile } = useProfile();

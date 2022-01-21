@@ -12,17 +12,29 @@ html {
   --peach: #F9DCC4;
   --peach-crayola: #FEC89A;
   --mauve: #86626E;
+  --darkblue: #1d3258;
+  --lightblue: #C1EEFF;
+  --lighterblue: #EAF9FF;
 }
-header {
+/* header {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid var(--peach-crayola);
+} */
+
+
+h1 {
+  text-transform: lowercase;
+  font-size: 70px;
+  color: var(--mauve);
 }
+
 body {
-  background-color: var(--isabelline);
+  background-color: var(--lighterblue);
   color: var(--mauve);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: var(--melon);
@@ -46,3 +58,16 @@ footer {
   min-height: 5rem;
 }
 
+
+
+/* TEXT STYLES */
+
+.spotlight {
+  font-size: 20px;
+  color: var(--darkblue);
+};
+
+.instruction {
+  padding-top: 10px;
+  margin-top: 20px;
+}

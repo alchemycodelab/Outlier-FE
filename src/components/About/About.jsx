@@ -1,29 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './About.css';
-// import greg from '../../../public/photos/greg.jpeg';
-// import joseph from '../../../public/photos/joseph.png';
-// import madden from '../../../public/photos/madden.jpg';
+import greg from '../../../public/photos/greg.jpeg';
+import joseph from '../../../public/photos/joseph.jpeg';
+import madden from '../../../public/photos/madden.jpeg';
 
 export default function AboutComponent() {
   return (
-    <div>
+    <div className={css.about}>
       <div className={css.joseph}>
-        {/* <img src="../../../public/photos/joseph.png" /> */}
-        {/* <img src="https://lh3.googleusercontent.com/pw/AM-JKLVJ9foZGxxjhG-wOyLkCRbOvV2tLKvlvSoW_hZwAFCZntYZ5ejKldjabwBcBtOU_jgT3jcLtHkHj6ltAu_yzYjPRYeuRwtioSo4dQj2O055Rr8UyqVC9lZ3lftyk1EXDWkfqBm1tMTOvHh6tWS-ogM=w2399-h1799-no?authuser=2" /> */}
-        <p>Here is some text about Joseph.</p>
+        {/* <img src={joseph} /> */}
+        <p className={css.name}>Joseph he/him</p>
+        <p className={css.text}>Here is some text about Joseph.</p>
+        <div> Connect 
+          <a className={css.connect} href={"https://github.com/Joseph-K-B"}>-Github-|</a>
+          <a className={css.connect} href={"https://www.linkedin.com/in/joseph-k-brown/"}>-LinkedIn-</a>
+        </div>
       </div>
-      {/* </section> */}
-      {/* <section> */}
-      <div className="Madden">
-        <img src="../../../public/photos/madden.jpg" />
-        Here is some text about Madden.
+
+      <div className={css.madden}>
+        {/* <img src={madden} /> */}
+        <p className={css.name}>Madden they/them</p>
+        <p className={css.text}>Here is some text about Madden.</p>
+        <div>
+          <a className={css.connect} href={"https://github.com/maddenlockin"}>-Github-|</a>
+          <a className={css.connect} href={"https://www.linkedin.com/in/madden-lockin/"}>-LinkedIn-</a>
+        </div>
       </div>
-      {/* </section> */}
-      {/* <section> */}
-      <div className="Greg">
-        <img src="../../../public/photos/greg.jpeg" />
-        <p>Here is some text about Greg</p>
+
+      <div className={css.greg}>
+        {/* <img src={greg} /> */}
+        <p className={css.name}>Greg he/him</p>
+        <p className={css.text}>Here is some text about Greg</p>
+        <div>
+          <a className={css.connect} href={"https://github.com/greg-gilliam"}>-Github-|</a>
+          <a className={css.connect} href={"https://www.linkedin.com/in/gregory-gilliam/"}>-LinkedIn-</a>
+        </div>
       </div>
     </div>
   );

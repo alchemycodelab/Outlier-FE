@@ -8,18 +8,34 @@
   --mauve: #86626E;
 }
 
+main {
+  width: 85%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.split {
+  display: flex;
+  flex: 2 1;
+}
+
+.split-small {
+  flex-basis: 30%;
+}
+
 .header{
+  width: 100%;
   padding: 20px;
-  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
 }
+
 nav {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .navigation a {
@@ -30,10 +46,14 @@ nav {
   padding: 10px;
 }
 
+a :hover {
+  opacity: .5;
+};
+
 .navLink {
-  background-color: var(--peach);
+  /* background-color: var(--peach); */
 }
 
 .homeLink{ 
-  background-color: var(--peach-crayola);
+  /* background-color: var(--peach-crayola); */
 }
