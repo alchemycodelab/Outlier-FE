@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useActiveStates } from '../../../../../context/State/StateCtx';
+import { useFrame } from 'react-three-fiber';
 
 export default function HI({ ...props }) {  
   const mesh = useRef();
@@ -17,6 +18,10 @@ export default function HI({ ...props }) {
     e.target;
     setIsHovered(v);
   }, [setIsHovered]);
+
+  useFrame(({clock}) => {
+    mesh.current.rotation.y = clock.getElapsedTime() / 3
+  });
 
   function handleClick() {
     setActive(v => !v);
@@ -42,7 +47,7 @@ export default function HI({ ...props }) {
         onClick={() => handleClick()}
       >
         <meshStandardMaterial
-            color = {isHovered? '#fff' : '#399E5A'}
+            color = {isHovered? '#fff' : 'limegreen'}
         />
       </mesh>
   </group>

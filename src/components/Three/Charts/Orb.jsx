@@ -7,7 +7,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
   return (
     <group>
       <mesh 
-        position={[-6, 2, 1]} 
+        position={[-8, 5, 1]} 
         onClick={handleClick}
         visible 
         castShadow
@@ -22,7 +22,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
         />
       </mesh>
       <mesh 
-        position={[-4, 6, 3]}
+        position={[-4, 5, 3]}
         onClick={handleClick} 
         visible 
         castShadow
@@ -37,7 +37,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
       />
       </mesh>
       <mesh 
-        position={[-15, 1, 10]}
+        position={[-45, 5, 10]}
         onClick={handleClick} 
         visible 
         castShadow
@@ -52,7 +52,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
         />
       </mesh>
       <mesh 
-        position={[15, 4, 2]}
+        position={[45, 5, 2]}
         onClick={handleClick}
         visible 
         castShadow
@@ -67,7 +67,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
         />
       </mesh>
       <mesh 
-        position={[4, 3, 5]}
+        position={[4, 5, 5]}
         onClick={handleClick} 
         visible 
         castShadow
@@ -82,7 +82,7 @@ export default function Orb({ positionX, positionY, positionZ, scale }) {
         />
       </mesh>
       <mesh 
-        position={[6, 6, 4]}
+        position={[8, 6, 4]}
         onClick={handleClick} 
         visible 
         castShadow

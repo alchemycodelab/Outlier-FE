@@ -42,7 +42,7 @@ export default function UT({ ...props }) {
         onClick={() => handleClick()}
       >
           <meshStandardMaterial
-            color = {isHovered? '#fff' : 'purple'}
+            color = {isHovered? '#fff' : 'steelblue'}
         />
       </mesh>
   </group>

@@ -42,7 +42,7 @@ export default function NJ({ ...props }) {
         onClick={() => handleClick()}
       >
         <meshStandardMaterial
-          color = {isHovered? '#fff' : '#399E5A'}
+          color = {isHovered ? '#fff' : 'lightgray'}
         />
       </mesh>
   </group>

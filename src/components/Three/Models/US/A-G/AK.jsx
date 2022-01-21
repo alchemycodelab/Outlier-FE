@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import useForm from '../../../../../hooks/UseForm';
 import { useActiveStates } from '../../../../../context/State/StateCtx';
+import { useFrame } from 'react-three-fiber';
 
 export default function AK({ ...props }) {  
   const mesh = useRef();
@@ -13,6 +14,10 @@ export default function AK({ ...props }) {
   // const { activeStates, handleActiveStateChanges } = useForm([]);
 
   const { nodes, materials } = useGLTF('/models/states/usa.glb')
+
+  useFrame(({clock}) => {
+    mesh.current.rotation.x = clock.getElapsedTime() / 3
+  });
 
   const onHover = useCallback((e, v) => {
     e.stopPropagation(); //stop ref at first intersection
@@ -51,7 +56,7 @@ return(
       // onClick={() => greeting.setName(theme.colors.green)}
     >
       <meshStandardMaterial
-          color = {isHovered? '#fff' : '#399E5A'}
+          color = {isHovered? '#fff' : 'steelblue'}
       />
     </mesh>
   </group>

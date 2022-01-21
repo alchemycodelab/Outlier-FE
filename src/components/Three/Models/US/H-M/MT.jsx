@@ -42,7 +42,7 @@ export default function MT({ ...props }) {
         onClick={() => handleClick()}
       >
         <meshStandardMaterial
-            color = {isHovered? '#fff' : 'hotpink'}
+            color = {isHovered? '#fff' : '#63E2C6'}
         />
       </mesh>
   </group>

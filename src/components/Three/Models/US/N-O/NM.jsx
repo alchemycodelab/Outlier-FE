@@ -42,7 +42,7 @@ export default function NM({ ...props }) {
         onClick={() => handleClick()}
         >
           <meshStandardMaterial
-            color = {isHovered? '#fff' : 'blue'}
+            color = {isHovered? '#fff' : 'steelblue'}
         />
       </mesh>
   </group>

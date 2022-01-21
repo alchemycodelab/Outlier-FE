@@ -42,7 +42,7 @@ export default function NV({ ...props }) {
         onClick={() => handleClick()}
       >
         <meshStandardMaterial
-            color = {isHovered? '#fff' : 'slategray'}
+            color = {isHovered? '#fff' : 'lightgray'}
         />
       </mesh>
   </group>

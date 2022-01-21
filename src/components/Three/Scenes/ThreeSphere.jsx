@@ -12,6 +12,7 @@ import RimLight from '../Lights/RimLight';
 import GroundPlane from '../Setting/GroundPlane';
 import PointLight from '../Lights/PointLight';
 import SpotLights from '../Lights/SpotLight';
+import css from './three.css';
 
 export default function ThreeSphere() {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
@@ -21,6 +22,7 @@ export default function ThreeSphere() {
   const [positionZ, setPositionZ] = useState([]);
   const [scale, setScale] = useState([]);
   const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     const calcPercentages = async () => {
@@ -57,16 +59,15 @@ export default function ThreeSphere() {
   // }, []);
 
   return (
-    <section>
+    <section className={css.canvas}>
       <Canvas
         style={{ display: 'flex', height: '40rem', width: '40rem' }}
-        camera={{ fov: 35, position: [-10, 45, 40] }}
+        camera={{ fov: 100, position: [-10, 75, 60] }}
       >
         <ContextBridge>
           <FillLight brightness={20} color='#ffbdf4'/>
           <KeyLight brightness={3.6} color='#ffbdf4'/>
-          <RimLight brightness={5} color='#fff'/>
-          {/* <DirectionLight /> */}
+          <RimLight brightness={50} color='#fff'/>
           <SpotLights position={[3, 100, 0]}/>
           <Suspense fallback={null}>
             <StateProvider>
@@ -79,10 +80,8 @@ export default function ThreeSphere() {
               />
             </DataProvider>
             </StateProvider>
-            <GroundPlane color='#86626E'/>
           </Suspense>
           <OrbitControls />
-          <axesHelper args={[10]} />
         </ContextBridge>
       </Canvas>
     </section>

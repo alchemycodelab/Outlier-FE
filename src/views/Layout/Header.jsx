@@ -1,16 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { useProfile } from "../../context/Profile/ProfileCtx";
 import LoginHooks from "../../hooks/UseLogin";
 import LogoutHooks from "../../hooks/UseLogout";
 import css from '../../styles/layout.css';
 import logo from '../../styles/utlier.png';
 
 export default function Header() {
-  const { profile } = useProfile();
   return (
     <header className={css.header}>
-      {/* <h3>{profile.email}</h3> */}
       <nav className={css.navigation}>
+
         {/* <NavLink className={css.homeLink}to="/"><img alt="Outlier logo, Homepage" src={logo}/></NavLink> */}
         <NavLink className={css.homeLink} to="/">
           Outlier
@@ -30,6 +28,7 @@ export default function Header() {
           Resources
         </NavLink>
         {/* <NavLink className={css.navLink}to="/profile"> Profile</NavLink> */}
+
       </nav>
       <div className={css.navigation}>
         <LoginHooks />
