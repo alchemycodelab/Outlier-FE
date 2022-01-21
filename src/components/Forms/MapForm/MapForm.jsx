@@ -50,7 +50,7 @@ export default function MapForm() {
     };
     res()
   };
-
+console.log(activeStates);
   
   return loading ? (
     <h1>Loading..</h1>

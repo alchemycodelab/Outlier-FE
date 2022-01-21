@@ -9,7 +9,7 @@ export default function AK({ ...props }) {
   const [positionY, setPositionY] = useState(0);
   const [active, setActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const { activeStates, setActiveStates } = useActiveStates();
+  const { activeStates, setActiveStates } = useActiveStates([]);
   // const { activeStates, handleActiveStateChanges } = useForm([]);
 
   const { nodes, materials } = useGLTF('/models/states/usa.glb')
@@ -24,10 +24,11 @@ export default function AK({ ...props }) {
     setActive(v => !v);
     active ? setPositionY(0) :
     setPositionY(2)
-    const { value } = e.target;
+    // setActiveStates(['AK'])
+    // const { value } = e.target;
     setActiveStates((prevState) => {
-      console.log(value);
-      return [ ...prevState, value ];
+    //   console.log(value);
+      return [ ...prevState, 'AK' ];
     });
   }
 
@@ -45,6 +46,7 @@ return(
       onPointerOver={e => onHover(e, true)}
       onPointerOut={e => onHover(e, false)}
       // onClick={handleActiveStateChanges}
+      // onClick={handleClick}
       onClick={handleClick}
       // onClick={() => greeting.setName(theme.colors.green)}
     >
