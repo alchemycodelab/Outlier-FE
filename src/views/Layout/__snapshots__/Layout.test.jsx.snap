@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the layout 1`] = `
+<div>
+  <div>
+    <header
+      class="header"
+    >
+      <h1>
+        Outlier
+      </h1>
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class=""
+        href="/instructions"
+      >
+         Instructions
+      </a>
+      <a
+        class=""
+        href="/map"
+      >
+         Map
+      </a>
+      <a
+        class=""
+        href="/data"
+      >
+         Data
+      </a>
+      <a
+        class=""
+        href="/about"
+      >
+         About
+      </a>
+      <a
+        class=""
+        href="/resources"
+      >
+         Resources
+      </a>
+      <a
+        class=""
+        href="/profile"
+      >
+         Profile
+      </a>
+      <button
+        class="authButton"
+      >
+        Auth w/ google
+      </button>
+      <button>
+        Log Out
+      </button>
+    </header>
+    <main />
+    <footer>
+      footer
+    </footer>
+  </div>
+</div>
+`;

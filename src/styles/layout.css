@@ -57,7 +57,7 @@ nav {
 }
 
 .navigation a {
-  color: var(--mauve);
+  color: var(--dark-blue);
   text-decoration: none;
   letter-spacing: 1px;
   font-size: 20px;
@@ -80,7 +80,7 @@ nav {
 }
 
 .section {
-  background-color: var(--mauve);
+  background-color: var(--dark-blue);
   border-radius: 100px;
   padding-top: 30px;
   padding-bottom: 100px;
@@ -88,12 +88,18 @@ nav {
   padding-left: 100px;
   margin-top: 200px;
   width: 100%;
-  filter: drop-shadow(0px 0px 20px var(--darkblue));
-  color: white;
+  letter-spacing: 1px;
+  /* filter: drop-shadow(0px 0px 20px var(--darkblue)); */
+  color: var(--tan);
 }
 
 .section h2 {
   text-align: center;
+  font-size: 60px;
+}
+
+.section div {
+  font-size: 20px;
 }
 
 .navLink {
@@ -122,12 +128,25 @@ a {
 .left {
   display: flex;
   justify-content: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.left_info {
+  text-align: left;
+  margin-left: 20px;
 }
 
 .right {
   display: flex;
   justify-content: right;
-  align-items: flex-end;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.right_info {
+  text-align: right;
+  margin-right: 20px;
 }
 
 .joseph {
@@ -157,6 +176,7 @@ img {
 .state h2 {
   margin-top: 70px;
   font-size: 50px;
+  color: var(--dark-blue);
 }
 /* .state hr {
   width: 100px;
@@ -179,4 +199,12 @@ img {
   font-size: 25px;
   font-weight: 400;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.citations p {
+  text-decoration: underline;
+}
+
+.citations ul {
+  list-style: none;
 }

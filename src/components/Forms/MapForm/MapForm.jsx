@@ -25,14 +25,16 @@ export default function MapForm() {
     setActiveStats,
   } = useActiveData();
 
-  useEffect(() => {
-    const fetchStates = async () => {
+    useEffect(() => {
+      const fetchStates = async () => {
       const res = await getStates();
       setStateNames(res);
     };    
     fetchStates();
     setLoading(false);
   }, []);
+
+
 
   const handleStateSubmit = async (e) => {
     e.preventDefault();  

@@ -4,18 +4,16 @@ import ThreeMap from "../../components/Three/Scenes/ThreeMap";
 import { StateProvider } from "../../context/State/StateCtx";
 import Data from "../Data/Data";
 
-
 export default function Map() {
-  const [loading, setLoading] = useState(true)
-
+  const [loading, setLoading] = useState(true);
 
   return (
     // loading ? <h1>Loading..</h1> :
-  <>
+   <>
     <StateProvider>
       <ThreeMap />
       <MapForm />
     </StateProvider>
-    </>
-  )
+   </>
+  );
 }
