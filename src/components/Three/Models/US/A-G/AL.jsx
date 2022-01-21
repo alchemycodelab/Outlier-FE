@@ -23,7 +23,7 @@ export default function AL({ ...props }) {
     active ? setPositionY(0) :
     setPositionY(2);
     setActiveStates((prevState) => {
-      return [ ...prevState, 'AK' ];
+      return [ ...prevState, 'AL' ];
     });
   }
 
