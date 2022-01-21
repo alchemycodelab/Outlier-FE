@@ -11,7 +11,7 @@ export async function getPopulations() {
   });
   const data = await res.json();
   return data;
-};
+}
 
 export async function getPopsByState(abrv) {
   const url = `${URL}/api/v1/populations/${abrv}`;
@@ -24,4 +24,4 @@ export async function getPopsByState(abrv) {
   });
   const data = await res.json();
   return data;
-};
+}
