@@ -6,13 +6,14 @@ html {
 }
 :root {
   --light-blue: rgb(225, 240, 241);
-  --dark-blue: rgb(114, 175, 168);
+  --blue: rgb(179, 215, 211);
+  --dark-blue: rgb(50, 68, 66);
+  --darker-blue: rgb(50, 68, 66);
   --tan: rgb(238, 231, 227);
   --bright-pink: rgb(244, 219, 233);
   --light-pink: rgb(253, 245, 249);
   --orange: rgb(247, 201, 172);
   --purple: rgb(217, 210, 232);
-  --darkblue: #1D3258;
   /* --pad: 1.2rem;
   --melon: #FFB5A7;
   --pale-pink: #FCD5CE;
@@ -27,7 +28,7 @@ html {
 h1 {
   text-transform: lowercase;
   font-size: 50px;
-  color: var(--darkblue);
+  color: var(--dark-blueblue);
   filter: drop-shadow(0px 0px 1px var(--light-pink));
 }
 h1 strong {
@@ -37,7 +38,7 @@ h1 strong {
 
 body {
   background-color: var(--light-blue);
-  color: var(--darkblue);
+  color: var(--dark-blue);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 button {

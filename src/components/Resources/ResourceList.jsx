@@ -59,6 +59,7 @@ function ResourceList() {
           return (
             <div classname={css.state} key={resource.id}>
               <h2 key={resource.stateHeader}> {resource.stateHeader} </h2>
+              <hr/>
               <li className={css.resource} key={resource.resourceName}>
                 <Resource resource={resource} />
               </li>
