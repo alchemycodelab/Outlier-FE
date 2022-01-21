@@ -12,7 +12,7 @@ html {
   --peach: #F9DCC4;
   --peach-crayola: #FEC89A;
   --mauve: #86626E;
-  --darkblue: #1d3258;
+  --darkblue: #2C497F;
   --lightblue: #C1EEFF;
   --lighterblue: #EAF9FF;
 }
@@ -21,20 +21,25 @@ html {
   align-items: center;
   border-bottom: 1px solid var(--peach-crayola);
 } */
-
-
 h1 {
   text-transform: lowercase;
-  font-size: 70px;
-  color: var(--mauve);
+  font-size: 50px;
+  color: var(--darkblue);
+  filter: drop-shadow(0px 0px 1px white);
 }
-
+h1 strong {
+  font-size: 200px !important;
+  filter: drop-shadow(0px 0px 10px var(--lighterblue));
+}
+h2 {
+  font-size: 60px;
+  color: rgb(58, 56, 56);
+}
 body {
   background-color: var(--lighterblue);
   color: var(--mauve);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: var(--melon);
@@ -49,25 +54,17 @@ button:hover {
   background: var(--isabelline);
   border: 1px solid var(--mauve);
 }
-
 main {
   min-height: 30rem;
 }
-
 footer {
   min-height: 5rem;
 }
-
-
-
 /* TEXT STYLES */
-
 .spotlight {
-  font-size: 20px;
+  font-size: 40px;
   color: var(--darkblue);
 };
-
-.instruction {
-  padding-top: 10px;
-  margin-top: 20px;
+p {
+  color: green;
 }
