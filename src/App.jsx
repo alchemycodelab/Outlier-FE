@@ -25,7 +25,7 @@ export default function App() {
               <Layout>
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/create" element={<ProfileSettings />} />
+                  {/* <Route path="/create" element={<ProfileSettings />} /> */}
                   <Route path="/about" element={<About />} />
                   <Route
                     path="/profile"
@@ -36,8 +36,8 @@ export default function App() {
                     }
                   />
                   <Route path="/instructions" element={<Instructions />} />
-                  <Route path="/data" element={<Data />} />
                   <Route path="/map" element={<Map />} />
+                  <Route path="/data" element={<Data />} />
                   <Route path="/resources" element={<Resources />} />
                 </Routes>
               </Layout>

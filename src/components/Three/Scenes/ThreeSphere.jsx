@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import Orb from '../Charts/Orb';
 import FillLight from '../Lights/FillLight';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useContextBridge } from '@react-three/drei';
 import { Canvas } from 'react-three-fiber';
 import { DataProvider, useActiveData } from '../../../context/Data/DataCtx';
 import { StateProvider } from '../../../context/State/StateCtx';
@@ -9,12 +9,15 @@ import { DataCtx } from '../../../context/Data/DataCtx';
 import { StateCtx } from '../../../context/State/StateCtx';
 
 export default function ThreeSphere() {
+  const ContextBridge = useContextBridge(DataCtx, StateCtx);
   const { activeData, activePopulation, } = useActiveData();
   const [positionX, setPositionX] = useState([]);
   const [positionY, setPositionY] = useState([]);
   const [positionZ, setPositionZ] = useState([]);
   const [scale, setScale] = useState([]);
   const [loading, setLoading] = useState(true)
+
+  // console.log(activeData)
 
   const data = [
     activeData[0][activePopulation],
@@ -64,22 +67,23 @@ export default function ThreeSphere() {
         style={{ display: 'flex', height: '40rem', width: '40rem' }}
         camera={{ fov: 35, position: [-5, 0, 40] }}
       >
-        <FillLight brightness={20} />
-        <Suspense>
-          <StateProvider>
-          <DataProvider>
-            <Orb
-              positionX={positionX} 
-              positionY={positionY} 
-              positionZ={positionZ} 
-              scale={scale}
-            />
-          </DataProvider>
-          </StateProvider>
-        </Suspense>
-        <OrbitControls />
-        <axesHelper args={[10]} />
-        {/* <gridHelper args={[10, 20, 'green', 'blue']} /> */}
+        <ContextBridge>
+          <FillLight brightness={20} />
+          <Suspense>
+            <StateProvider>
+            <DataProvider>
+              <Orb
+                positionX={positionX} 
+                positionY={positionY} 
+                positionZ={positionZ} 
+                scale={scale}
+                />
+            </DataProvider>
+            </StateProvider>
+          </Suspense>
+          <OrbitControls />
+          <axesHelper args={[10]} />
+        </ContextBridge>
       </Canvas>
     </section>
   );
