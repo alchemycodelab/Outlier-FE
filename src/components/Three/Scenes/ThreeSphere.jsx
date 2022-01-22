@@ -9,8 +9,6 @@ import { DataCtx } from '../../../context/Data/DataCtx';
 import { StateCtx } from '../../../context/State/StateCtx';
 import KeyLight from '../Lights/KeyLight';
 import RimLight from '../Lights/RimLight';
-import GroundPlane from '../Setting/GroundPlane';
-import PointLight from '../Lights/PointLight';
 import SpotLights from '../Lights/SpotLight';
 import css from './three.css';
 
@@ -21,7 +19,6 @@ export default function ThreeSphere() {
   const [positionY, setPositionY] = useState([]);
   const [positionZ, setPositionZ] = useState([]);
   const [scale, setScale] = useState([]);
-  const [loading, setLoading] = useState(true);
  
 
   useEffect(() => {
@@ -35,28 +32,10 @@ export default function ThreeSphere() {
       const zArr = [totalOne, activeOne, hateOne, hateTwo, activeTwo, totalTwo]
       const scaleMap = zArr.map((v) => v * 5 )
       setScale(scaleMap);
-      // const yPositionMap = scaleMap.map((v) => v / 2)
-      // setPositionY(yPositionMap);
-      console.log(zArr)
     }
     calcPercentages();
   }, [])
 
-  // useEffect(() => {
-  //   const sortedMap = data.map((v) => parseInt(v)).sort((a, b) => {
-  //     return a - b
-  //   });
-  //   const scaleMap =  sortedMap.map((v) => v/sortedMap[4] * 2);
-  //   const yPositionMap = scaleMap.map((v) => v);
-  //   const zPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 3);
-  //   const xPositionMap = sortedMap.map((v) => v/ sortedMap[4] * 6);
-  //   setScale(scaleMap);
-  //   setPositionY(yPositionMap);
-  //   setPositionZ(zPositionMap);
-  //   setPositionX(xPositionMap);
-  //   setLoading(false);
-  //   console.log(data, sortedMap, scaleMap);
-  // }, []);
 
   return (
     <section className={css.canvas}>

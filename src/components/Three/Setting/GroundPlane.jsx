@@ -1,5 +1,3 @@
-import { GradientTexture } from "@react-three/drei";
-
 function GroundPlane({ color, position }) {
   return (
     <mesh 

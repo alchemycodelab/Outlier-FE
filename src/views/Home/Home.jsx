@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import app_styles from '../../App.css'
 import layout from '../../styles/layout.css'
 import css from '../../styles/text.css'
 

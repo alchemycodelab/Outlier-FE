@@ -1,13 +1,13 @@
 import { Canvas } from 'react-three-fiber';
 import FillLight from '../Lights/FillLight';
-import { Cloud, OrbitControls, Sky, Stars, Stats, useContextBridge } from '@react-three/drei';
+import { Cloud, OrbitControls, Sky, useContextBridge } from '@react-three/drei';
 import { Suspense } from 'react';
 import KeyLight from '../Lights/KeyLight';
 import RimLight from '../Lights/RimLight';
 import GroundPlane from '../Setting/GroundPlane';
 import States from '../Models/States';
 import { DataCtx } from '../../../context/Data/DataCtx';
-import { StateCtx, StateProvider } from '../../../context/State/StateCtx';
+import { StateCtx } from '../../../context/State/StateCtx';
 import SpotLights from '../Lights/SpotLight';
 import css from './three.css'
 

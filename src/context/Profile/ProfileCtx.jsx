@@ -5,11 +5,8 @@ import { getProfiles } from "../../services/profile";
 const ProfileCtx = createContext();
 
 function ProfileProvider({ children }) {
-  const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false)
   const [profile, setProfile] = useState({});
-
-  // const value = useMemo(() => ({ profile, setProfile}), [profile]);
 
   useEffect(() => {
     getProfiles()

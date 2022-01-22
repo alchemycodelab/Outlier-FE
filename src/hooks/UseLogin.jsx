@@ -7,7 +7,6 @@ import {
   getProfileEmail,
   getProfiles,
 } from '../services/profile';
-
 const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const clientId = `${secret}.apps.googleusercontent.com`;
 const superSecret = process.env.REACT_APP_SECRET;
@@ -20,13 +19,11 @@ function LoginHooks() {
     //--email from google response--//
     const email = res.profileObj.email;
     await setProfile({ email });
-    console.log(res.profileObj);
     //Recieved access token from google--//
     //--Set app ctx authorized to true--//
     setAuthorized(true);
     //--Check matching email in auth table--//
     const beRes = await findAuthEmail(res.profileObj.email);
-    console.log(beRes);
     //--if email exists run log in route--//
     // if (beRes.email) {
     //   const authorizeEmail = signIn({
@@ -41,8 +38,7 @@ function LoginHooks() {
     //     email: res.profileObj.email,
     //     password: `${superSecret}`,
     //   });
-    console.log('GOOGLE SUCEEDED ADDING ACT', registerEmail);
-    navigate('/create');
+    // navigate('/create');
   };
 
   const onFailure = (res) => {

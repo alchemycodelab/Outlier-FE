@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import css from '../../styles/layout.css';
 import text_style from '../../styles/text.css'
 import greg from '../../../public/photos/greg.jpeg';

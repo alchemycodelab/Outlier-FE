@@ -5,10 +5,8 @@ import { StateProvider } from "../../context/State/StateCtx";
 import css from './Map.css';
 
 export default function Map() {
-  const [loading, setLoading] = useState(true);
 
   return (
-    // loading ? <h1>Loading..</h1> :
    <>
     <StateProvider>
    <section className={css.mapView}>

@@ -40,7 +40,6 @@ function ResourceList() {
   useEffect(() => {
     async function getList() {
       const resourceList = await getResources();
-      // console.log('R-LIST', resourceList);
       let sortedList = resourceList.sort(sortArr('resourceState'));
       sortedList = sortStateHeader(sortedList);
       setResources(sortedList);
