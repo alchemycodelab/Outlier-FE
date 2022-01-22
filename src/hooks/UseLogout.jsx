@@ -1,5 +1,6 @@
 import { useGoogleLogout } from "react-google-login";
 import { useProfile } from "../context/Profile/ProfileCtx";
+import css from '../App.css';
 
 const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID
 const clientId = `${secret}.apps.googleusercontent.com`;
@@ -25,7 +26,7 @@ function LogoutHooks() {
   });
 
   return (
-    <button onClick={signOut}>Log Out</button>
+    <button className={css.button} onClick={signOut}>Log Out</button>
   );
 }
 

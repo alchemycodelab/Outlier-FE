@@ -7,6 +7,7 @@ import {
   getProfileEmail,
   getProfiles,
 } from '../services/profile';
+import css from '../App.css';
 const secret = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const clientId = `${secret}.apps.googleusercontent.com`;
 const superSecret = process.env.REACT_APP_SECRET;
@@ -53,7 +54,7 @@ function LoginHooks() {
   });
 
   return (
-    <button className="authButton" onClick={signIn}>
+    <button className={css.button} onClick={signIn}>
       Auth w/ google
     </button>
   );
