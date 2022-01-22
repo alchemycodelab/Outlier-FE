@@ -1,10 +1,16 @@
+import { useEffect } from 'react';
 import ThreeBar from '../../components/Three/Scenes/ThreeBar';
 import ThreeSphere from '../../components/Three/Scenes/ThreeSphere';
 import { useActiveData } from '../../context/Data/DataCtx';
+import { clearTable } from '../../services/hateCrimes';
 import css from './Data.css'
 
 export default function Data() {
   const { activeData, activePopulation, activeChart, activeStats } = useActiveData();
+
+  useEffect(() => {
+    clearTable();
+  }, []);
 
   return (
     <>

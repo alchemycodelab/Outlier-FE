@@ -31,3 +31,14 @@ export async function getWithKey(activePopulation, state) {
   console.log('data', data);
   return data;
 }
+
+export async function clearTable() {
+  const url = `${URL}/api/v1/stats/clear`
+  await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+  });
+  return;
+}
