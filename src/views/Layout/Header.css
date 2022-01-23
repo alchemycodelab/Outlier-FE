@@ -30,18 +30,15 @@ nav {
 .navigation a {
   color: var(--dark-blue);
   text-decoration: none;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.25rem;
   font-size: 1rem;
   padding: 0.25rem;
 }
 
 @media(min-width: 480px) {
   .header {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 2rem;
-    margin:auto;
   }
 
   nav {

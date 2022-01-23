@@ -16,11 +16,12 @@ const ScreenProvider = ({children}) => {
       setScreenSize(size);
       if(size <= 500) {
         setMobile(true)
-      } else if (size > 700 && size <= 1035) {
+      } else if (size > 500 && size <= 1035) {
         setMidSize(true);
       } else {
         setLargeSize(true);
       }
+      console.log(size);
     };
     setSize();
   }, []);

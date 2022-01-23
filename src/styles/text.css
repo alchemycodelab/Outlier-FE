@@ -1,17 +1,13 @@
 h1 {
     text-transform: lowercase;
-    font-size: 3rem;
+    font-size:1.5rem;
     color: var(--darkblue);
     filter: drop-shadow(0rem 0rem 0.1rem white);
 }
 
 h1 strong {
-    font-size: 12.5rem !important;
+    font-size: 6.25rem !important;
     filter: drop-shadow(0rem 0rem 1rem var(--lighterblue));
-}
-
-.section h2 {
-    
 }
 
 
@@ -36,3 +32,18 @@ h2 {
   width: 90%;
   margin:auto;
 }
+
+/* @media(min-width: 480px) {
+  h1 {
+    text-transform: lowercase;
+    font-size: 3rem;
+    color: var(--darkblue);
+    filter: drop-shadow(0rem 0rem 0.1rem white);
+  }
+
+  h1 strong {
+    font-size: 12.5rem !important;
+    filter: drop-shadow(0rem 0rem 1rem var(--lighterblue));
+  }
+
+} */

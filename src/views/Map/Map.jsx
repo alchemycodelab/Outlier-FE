@@ -6,6 +6,13 @@ import css from './Map.css';
 
 export default function Map() {
 
+  useEffect(() => {
+    const landscape = async () => {
+      await screen.orientation.lock('landscape');
+    }
+    landscape()
+  }, [])
+
   return (
    <>
     <StateProvider>

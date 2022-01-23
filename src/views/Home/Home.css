@@ -21,7 +21,8 @@ main {
 } */
 
 .logo {
-  width: 100%;
+  width: 20rem;
+  height: 20rem;
 }
 
 .banner {
@@ -106,5 +107,12 @@ a {
 
   .left {
     padding-right: 4%;
+  }
+}
+
+@media(min-width: 800px) {
+  .logo {
+    height: 40rem;
+    width: 40rem;
   }
 }

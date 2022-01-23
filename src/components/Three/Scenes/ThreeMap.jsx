@@ -13,9 +13,10 @@ import css from './three.css'
 import { useScreen } from '../../../context/Device/Device';
 
 export default function ThreeMap() {
-  const { mobile, midSize } = useScreen();
+  const { mobile, midSize, largeSize } = useScreen();
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
-  
+  console.log(mobile, midSize, largeSize)
+
   return (
     // <section className={css.canvas}>
     <Canvas
@@ -23,24 +24,23 @@ export default function ThreeMap() {
       style={
         mobile ? {
           display: 'flex',
-          height:'20.5rem', 
+          height:'18.5rem', 
           width: '20.5rem',
-          border: '0.5rem solid rgb(50, 68, 66)',
-          marginLeft: '5%',
-          backgroundColor: 'rgb(50, 68, 66)'
+          border: '0.35rem solid rgb(50, 68, 66)',
+          marginLeft: '2.5%',
+          backgroundColor: 'rgb(50, 68, 66)',
+          // padding: '2%',
         }
         : midSize ? {
-          height: '35rem',
-          width: '38rem',
+          height: '30rem',
+          width: '34rem',
           border: '0.5rem solid rgb(50, 68, 66)',
-          marginLeft: '7%',
           backgroundColor: 'rgb(50, 68, 66)'
         }
         : {
-          height: '40rem', 
-          width: '60rem',
+          height: '60rem', 
+          width: '80rem',
           border: '0.5rem solid rgb(50, 68, 66)',
-          marginLeft: '7%',
           backgroundColor: 'rgb(50, 68, 66)'
         }
         }

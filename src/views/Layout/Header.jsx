@@ -14,16 +14,19 @@ export default function Header() {
         <NavLink className={css.homeLink} to="/">
           Outlier
         </NavLink>
+        {/* <span>|</span> */}
         {/* <NavLink className={css.navLink}to="/instructions"> Instructions</NavLink> */}
         <NavLink className={css.navLink} to="/map">
           {' '}
           Map
         </NavLink>
+        {/* <span>|</span> */}
         {/* <NavLink className={css.navLink}to="/data"> Data</NavLink> */}
         <NavLink className={css.navLink} to="/about">
           {' '}
           About
         </NavLink>
+        {/* <span>|</span> */}
         <NavLink className={css.navLink} to="/resources">
           {' '}
           Resources
