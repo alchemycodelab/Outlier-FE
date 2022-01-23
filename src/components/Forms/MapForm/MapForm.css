@@ -1,6 +1,22 @@
 .MapForm {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.75fr 0.75fr 0.25fr;
+  max-height: 10rem;
+}
+
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: var(--melon);
+  border: 0.25rem solid var(--mauve);
+  font-size: 1.1rem;
+  /* padding: 1rem 2rem; */
+  cursor: pointer;
+  /* margin: 1rem; */
+  border-radius: 0.5rem;
+}
+button:hover {
+  background: var(--isabelline);
+  border: 1rem solid var(--mauve);
 }
 
 .confirmControls {
@@ -42,13 +58,13 @@ input[type='radio'] {
 .hiddenLink {
   opacity: 0;
   transition-timing-function: ease-in;
-  transition: 5s;
+  transition: 7s;
 }
 
 .renderLink {
   opacity: 1;
   transition-timing-function: ease-out;
-  transition: 0.35s;
+  transition: 7s;
 }
 
 .displayForm {
@@ -59,8 +75,35 @@ input[type='radio'] {
 
 .popSelect {
   display: flex;
-  flex-direction: row;
-  animation: 300ms ease-in-out forwards;
-  transition-timing-function: ease-in;
-  transition: 0.35s;
+  flex-direction: column;
+}
+
+.dropDownOne {
+  animation: translateX 500ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+.dropDownTwo {
+  animation: translateX 3500ms ease-in-out forwards;
+  transform-origin: top center;
+}
+.dropDownThree {
+  animation: translateX 7000ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+@keyframes translateX {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  
+  80% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }

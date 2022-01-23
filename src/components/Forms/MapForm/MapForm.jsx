@@ -90,16 +90,28 @@ export default function MapForm() {
     <>
     <section className={css.MapForm}>
     <div className={css.confirmControls}>
-    <button onClick={handleStateSubmit}>Set States</button>
+    <button onClick={handleStateSubmit}>Confirm</button>
     <button onClick={handleSelections} className={popSelection ? css.statSelect : css.hiddenForm}>Set</button>         
     <button onClick={handleViewStats} className={activePopulation ? css.statSelect : css.hiddenForm}>Stats</button>
     </div>
     <section className={confirm ? css.popSelect : css.hiddenForm}>
       <button onClick={handleToggle}>Populations</button>
       <div className={isActive ? css.displayForm : css.hiddenForm}>
-        <button value='lgbt' onClick={(e) => handlePopSelection(e.target.value)}>LGBTQ</button>
-        <button value='black' onClick={(e) => handlePopSelection(e.target.value)}>Black</button>
-        <button value='latinx' onClick={(e) => handlePopSelection(e.target.value)}>Latinx</button>
+        <button 
+          className={css.dropDownOne} 
+          value='lgbt' 
+          onClick={(e) => handlePopSelection(e.target.value)}
+        >LGBTQ</button>
+        <button 
+          className={css.dropDownTwo} 
+          value='black' 
+          onClick={(e) => handlePopSelection(e.target.value)}
+        >Black</button>
+        <button 
+          className={css.dropDownThree} 
+          value='latinx' 
+          onClick={(e) => handlePopSelection(e.target.value)}
+        >Latinx</button>
       </div>
     </section>
       <div className={css.radioDiv}>

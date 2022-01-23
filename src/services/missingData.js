@@ -1,7 +1,7 @@
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getMissingData() {
-  const url = `${URL}/api/v1/data`;
+  const url = `${URL}/data`;
   const res = await fetch(url, {
     method: 'GET',
     headers: {
@@ -14,7 +14,7 @@ export async function getMissingData() {
 }
 
 export async function getDataByState(abrv) {
-  const url = `${URL}/api/v1/data/state/${abrv}`;
+  const url = `${URL}/data/state/${abrv}`;
   const res = await fetch(url);
   const data = await res.json();
   return data;

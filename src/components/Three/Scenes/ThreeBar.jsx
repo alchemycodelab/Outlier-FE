@@ -11,6 +11,7 @@ import GroundPlane from '../Setting/GroundPlane';
 import BackDrop  from '../Setting/BackDrop'
 import SpotLights from '../Lights/SpotLight';
 import css from './three.css'
+import AmbientLights from '../Lights/AmbientLight';
 
 export default function ThreeBar() {
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
@@ -62,10 +63,11 @@ export default function ThreeBar() {
               elevation={2}
               exposure={0.5}
             />
-            <FillLight brightness={10} color='#ffbdf4'/>
+            <AmbientLights />
+            {/* <FillLight brightness={10} color='#ffbdf4'/>
             <SpotLights position={[15, 100, 0]}/>
             <KeyLight brightness={3.6} color='#ffbdf4'/>
-            <RimLight brightness={25} color='#fad6a5'/>
+            <RimLight brightness={25} color='#fad6a5'/> */}
             <StateProvider>
             <DataProvider>
               <Bar scaleZ={scaleZ} positionY={positionY}/>

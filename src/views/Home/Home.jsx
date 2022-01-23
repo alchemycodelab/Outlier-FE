@@ -1,23 +1,24 @@
 import { Link } from 'react-router-dom';
-import layout from '../../styles/layout.css'
+// import layout from '../../styles/layout.css'
 import text_styles from '../../styles/text.css'
 import logo from '../../styles/utlier.png';
+import css from './Home.css';
 
 export default function Home() {
 
   return (
     <><section>
       <div>
-        <div className={layout.banner}>
-          <div className={layout.logo_container}>
-            <img src={logo} alt='outlier' className={layout.logo} />
+        <div className={css.banner}>
+          <div className={css.logo_container}>
+            <img src={logo} alt='outlier' className={css.logo} />
           </div>
           {/* <h1>
       {' '}
       Welcome to <br /> <strong>Outlier</strong>
     </h1> */}
         </div>
-        <div className={layout.left}>
+        <div className={css.left}>
           <div className={text_styles.spotlight}>
             Our goal is giving you new way to gain knowledge in order to enhance{' '}
             <strong> your safety</strong>, your ability to{' '}
@@ -27,13 +28,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={layout.section}>
+      <div className={css.section}>
         <h2>
           how it <br />
           works
         </h2>
         <div>
-          <p className={layout.text}>
+          <p className={css.text}>
             On the <span><Link to={'/map'}>map</Link></span> you can select two states by
             clicking directly on them. You can also swirl it around and zoom in
             and out! Then you can pick the population that you want to know more

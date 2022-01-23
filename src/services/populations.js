@@ -1,7 +1,7 @@
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getPopulations() {
-  const url = `${URL}/api/v1/populations`;
+  const url = `${URL}/populations`;
   const res = await fetch(url, {
     method: 'GET',
     mode: 'cors',
@@ -14,7 +14,7 @@ export async function getPopulations() {
 }
 
 export async function getPopsByState(abrv) {
-  const url = `${URL}/api/v1/populations/${abrv}`;
+  const url = `${URL}/populations/${abrv}`;
   const res = await fetch(url, {
     method: 'GET',
     mode: 'cors',

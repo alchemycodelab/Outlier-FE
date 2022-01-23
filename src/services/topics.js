@@ -1,7 +1,7 @@
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getTopics() {
-  const url = `http://localhost:3000/api/v1/topics`;
+  const url = `${URL}/topics`;
   const res = await fetch(url, {
     method: 'GET',
     headers: {

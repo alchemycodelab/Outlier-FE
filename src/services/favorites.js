@@ -9,7 +9,7 @@ export async function getFavorites() {
 };
 
 export async function addFavorite() {
-  const res = await fetch(`${URL}/api/v1/favorite/create`, 
+  const res = await fetch(`${URL}/favorite/create`, 
   {
     method: 'POST',
     mode: 'cors',
@@ -24,7 +24,7 @@ export async function addFavorite() {
 };
 
 export async function getFavoriteId(id) {
-  const url = `${URL}/api/v1/favorite/${id}`
+  const url = `${URL}/favorite/${id}`
   const res = await fetch(url)
   const data = await res.json();
   console.log('FAVORITES BY TOPIC', data);
@@ -32,7 +32,7 @@ export async function getFavoriteId(id) {
 }
 
 export async function deleteFavoriteById(id) {
-  const res = await fetch(`${URL}/api/v1/favorite/${id}`,
+  const res = await fetch(`${URL}/favorite/${id}`,
   {
     method: 'DELETE',
     mode: 'cors',

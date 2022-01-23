@@ -10,15 +10,40 @@ import { DataCtx } from '../../../context/Data/DataCtx';
 import { StateCtx } from '../../../context/State/StateCtx';
 import SpotLights from '../Lights/SpotLight';
 import css from './three.css'
+import { useScreen } from '../../../context/Device/Device';
 
 export default function ThreeMap() {
+  const { mobile, midSize } = useScreen();
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
   
   return (
-    <section className={css.canvas}>
+    // <section className={css.canvas}>
     <Canvas
       camera={{ fov: 25, position: [-10, 55, 40]}}
-      style={{display: 'flex', height: '32.5rem', width: '37.5rem'}}
+      style={
+        mobile ? {
+          display: 'flex',
+          height:'20.5rem', 
+          width: '20.5rem',
+          border: '0.5rem solid rgb(50, 68, 66)',
+          marginLeft: '5%',
+          backgroundColor: 'rgb(50, 68, 66)'
+        }
+        : midSize ? {
+          height: '35rem',
+          width: '38rem',
+          border: '0.5rem solid rgb(50, 68, 66)',
+          marginLeft: '7%',
+          backgroundColor: 'rgb(50, 68, 66)'
+        }
+        : {
+          height: '40rem', 
+          width: '60rem',
+          border: '0.5rem solid rgb(50, 68, 66)',
+          marginLeft: '7%',
+          backgroundColor: 'rgb(50, 68, 66)'
+        }
+        }
     >
       <ContextBridge>
         <Suspense fallback='Loading...'>
@@ -58,6 +83,6 @@ export default function ThreeMap() {
         </Suspense>
       </ContextBridge>
     </Canvas>
-    </section>
+    // </section>
   );
 };
