@@ -33,7 +33,7 @@ export async function getWithKey(activePopulation, state) {
 }
 
 export async function clearTable() {
-  const url = `${URL}/api/v1/stats/clear`
+  const url = `${URL}/stats/clear`
   await fetch(url, {
       method: 'DELETE',
       headers: {

@@ -88,55 +88,58 @@ export default function MapForm() {
     <h1>Loading..</h1>
   ) : (
     <>
-    <section className={css.MapForm}>
-    <div className={css.confirmControls}>
-    <button onClick={handleStateSubmit}>Confirm</button>
-    <button onClick={handleSelections} className={popSelection ? css.statSelect : css.hiddenForm}>Set</button>         
-    <button onClick={handleViewStats} className={activePopulation ? css.statSelect : css.hiddenForm}>Stats</button>
-    </div>
-    <section className={confirm ? css.popSelect : css.hiddenForm}>
-      <button onClick={handleToggle}>Populations</button>
-      <div className={isActive ? css.displayForm : css.hiddenForm}>
-        <button 
-          className={css.dropDownOne} 
-          value='lgbt' 
-          onClick={(e) => handlePopSelection(e.target.value)}
-        >LGBTQ</button>
-        <button 
-          className={css.dropDownTwo} 
-          value='black' 
-          onClick={(e) => handlePopSelection(e.target.value)}
-        >Black</button>
-        <button 
-          className={css.dropDownThree} 
-          value='latinx' 
-          onClick={(e) => handlePopSelection(e.target.value)}
-        >Latinx</button>
-      </div>
-    </section>
       <div className={css.radioDiv}>
-        <span className={css.radio}>
-        <label htmlFor='bar' className = {activeChart === 'bar' ? css.activeRad : null}>Bar</label>
-          <input
-            id='bar' 
-            type='radio' 
-            name='chart' 
-            value='bar'
-            className={css.hidden} 
-            onChange={(e) => setActiveChart(e.target.value)}/>
-        </span>
-        <span className={css.radio}>
-          <label htmlFor='sphere' className = {activeChart === 'sphere' ? css.activeRad : null}>Sphere</label>
-          <input
-            id='sphere' 
-            type='radio' 
-            name='chart' 
-            value='sphere'
-            className={css.hidden}  
-            onChange={(e) => setActiveChart(e.target.value)}/>
-        </span>
-        <Link to='/data' className={renderReady ? css.renderLink : css.hiddenLink}>Render</Link>
+          <div className={css.radio}>
+            <label htmlFor='bar' className = {activeChart === 'bar' ? css.activeRad : null}>Bar</label>
+            <input
+              id='bar' 
+              type='radio' 
+              name='chart' 
+              value='bar'
+              className={css.hidden} 
+              onChange={(e) => setActiveChart(e.target.value)}/>
+              {' '}
+              <span>|</span>
+              {' '}
+            <label htmlFor='sphere' className = {activeChart === 'sphere' ? css.activeRad : null}>Sphere</label>
+            <input
+              id='sphere' 
+              type='radio' 
+              name='chart' 
+              value='sphere'
+              className={css.hidden}  
+              onChange={(e) => setActiveChart(e.target.value)}/>
+          </div>
+          <div>
+            <Link to='/data' className={renderReady ? css.renderLink : css.hiddenLink}>Render</Link>
+          </div>
       </div>
+    <section className={css.MapForm}>
+      <div className={css.confirmControls}>
+        <button onClick={handleStateSubmit}>Confirm</button>
+        <button onClick={handleSelections} className={popSelection ? css.statSelect : css.hiddenForm}>Set</button>         
+        <button onClick={handleViewStats} className={activePopulation ? css.statSelect : css.hiddenForm}>Stats</button>
+      </div>
+      <section className={confirm ? css.popSelect : css.hiddenForm}>
+        <button onClick={handleToggle}>Populations</button>
+        <div className={isActive ? css.displayForm : css.hiddenForm}>
+          <button 
+            className={css.dropDownOne} 
+            value='lgbt' 
+            onClick={(e) => handlePopSelection(e.target.value)}
+          >LGBTQ</button>
+          <button 
+            className={css.dropDownTwo} 
+            value='black' 
+            onClick={(e) => handlePopSelection(e.target.value)}
+          >Black</button>
+          <button 
+            className={css.dropDownThree} 
+            value='latinx' 
+            onClick={(e) => handlePopSelection(e.target.value)}
+          >Latinx</button>
+        </div>
+      </section>      
     </section>
     </>
   );

@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import Orb from '../Charts/Orb';
 import FillLight from '../Lights/FillLight';
 import { OrbitControls, useContextBridge } from '@react-three/drei';
-import { Canvas } from 'react-three-fiber';
+import { Canvas } from '@react-three/fiber';
 import { DataProvider, useActiveData } from '../../../context/Data/DataCtx';
 import { StateProvider } from '../../../context/State/StateCtx';
 import { DataCtx } from '../../../context/Data/DataCtx';
@@ -13,6 +13,7 @@ import SpotLights from '../Lights/SpotLight';
 import css from './three.css';
 
 export default function ThreeSphere() {
+  const { mobile, midSize } = useScreen();
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
   const { activeData, activePopulation, activeStats} = useActiveData();
   const [positionX, setPositionX] = useState([]);
@@ -40,8 +41,29 @@ export default function ThreeSphere() {
   return (
     <section className={css.canvas}>
       <Canvas
-        style={{ display: 'flex', height: '40rem', width: '40rem' }}
         camera={{ fov: 100, position: [-10, 75, 60] }}
+        style={
+          mobile ? {
+            display: 'flex',
+            height:'18.5rem', 
+            width: '20.5rem',
+            border: '0.35rem solid rgb(50, 68, 66)',
+            marginLeft: '2.5%',
+            backgroundColor: 'rgb(50, 68, 66)',
+          }
+          : midSize ? {
+            height: '30rem',
+            width: '34rem',
+            border: '0.5rem solid rgb(50, 68, 66)',
+            backgroundColor: 'rgb(50, 68, 66)'
+          }
+          : {
+            height: '60rem', 
+            width: '80rem',
+            border: '0.5rem solid rgb(50, 68, 66)',
+            backgroundColor: 'rgb(50, 68, 66)'
+          }
+        }
       >
         <ContextBridge>
           <FillLight brightness={20} color='#ffbdf4'/>

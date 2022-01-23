@@ -66,9 +66,11 @@ function ResourceList() {
           );
         } else {
           return (
-            <li key={resource.id} className={css.resource}>
-              <Resource resource={resource} />
-            </li>
+            <div>
+              <li key={resource.id} className={css.resource}>
+                <Resource resource={resource} />
+              </li>
+            </div>
           );
         }
       })}

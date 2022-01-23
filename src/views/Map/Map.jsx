@@ -6,21 +6,21 @@ import css from './Map.css';
 
 export default function Map() {
 
-  useEffect(() => {
-    const landscape = async () => {
-      await screen.orientation.lock('landscape');
-    }
-    landscape()
-  }, [])
+  // useEffect(() => {
+  //   const landscape = async () => {
+  //     await screen.orientation.lock('landscape');
+  //   }
+  //   landscape()
+  // }, [])
 
   return (
    <>
     <StateProvider>
    <section className={css.mapView}>
       <MapForm />
-      <div className={css.canvas}>
+      {/* <div className={css.canvas}> */}
         <ThreeMap />
-      </div>
+      {/* </div> */}
    </section>
     </StateProvider>
    </>

@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div className={css.about}>
       <div className={css.left}>
-        <img src={joseph} />
+        <img src={joseph} className={css.joseph}/>
         <div className={css.left_info}>
           <h2 className={css.name}>Joseph he/him</h2>
           <p className={css.text}>
@@ -47,11 +47,11 @@ export default function About() {
             </a>
           </div>
         </div>
-        <img src={madden} />
+        <img src={madden} className={css.madden}/>
       </div>
 
       <div className={css.left}>
-        <img src={greg} />
+        <img src={greg} className={css.greg}/>
         <div className={css.left_info}>
           <h2 className={css.name}>Greg he/him</h2>
           <p className={css.text}>

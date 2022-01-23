@@ -1,6 +1,7 @@
-import { Canvas } from 'react-three-fiber';
+// import { Canvas } from 'react-three-fiber';
 import FillLight from '../Lights/FillLight';
 import { Cloud, OrbitControls, Sky, useContextBridge } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import KeyLight from '../Lights/KeyLight';
 import RimLight from '../Lights/RimLight';
@@ -18,7 +19,7 @@ export default function ThreeMap() {
   console.log(mobile, midSize, largeSize)
 
   return (
-    // <section className={css.canvas}>
+    <section>
     <Canvas
       camera={{ fov: 25, position: [-10, 55, 40]}}
       style={
@@ -44,7 +45,7 @@ export default function ThreeMap() {
           backgroundColor: 'rgb(50, 68, 66)'
         }
         }
-    >
+      >
       <ContextBridge>
         <Suspense fallback='Loading...'>
           <Sky 
@@ -83,6 +84,6 @@ export default function ThreeMap() {
         </Suspense>
       </ContextBridge>
     </Canvas>
-    // </section>
+    </section>
   );
 };
