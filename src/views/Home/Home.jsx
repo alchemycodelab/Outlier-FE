@@ -35,7 +35,7 @@ export default function Home() {
         </h2>
         <div>
           <p className={css.text}>
-            On the <span><Link to={'/map'}>map</Link></span> you can select two states by
+            On the <Link to={'/map'}>map</Link> you can select two states by
             clicking directly on them. You can also swirl it around and zoom in
             and out! Then you can pick the population that you want to know more
             about and two states that matter to you. Finally, pick whether you

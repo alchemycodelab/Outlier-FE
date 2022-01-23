@@ -1,3 +1,50 @@
+:root {
+  --light-blue: rgb(225, 240, 241);
+  --blue: rgb(179, 215, 211);
+  --dark-blue: rgb(50, 68, 66);
+  --darker-blue: rgb(50, 68, 66);
+  --tan: rgb(238, 231, 227);
+  --bright-pink: rgb(244, 219, 233);
+  --light-pink: rgb(253, 245, 249);
+  --orange: rgb(247, 201, 172);
+  --purple: rgb(217, 210, 232);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  --heading-height: 7em;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+body {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: var(--melon);
+  border: 0.1 solid var(--mauve);
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+button:hover {
+  background: var(--isabelline);
+  border: 0.1rem solid var(--mauve);
+}
+
 /* html {
   display: flex;
   flex-direction: column;
