@@ -1,14 +1,23 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { getProfiles } from "../../services/profile";
 
 
 const ProfileCtx = createContext();
 
 function ProfileProvider({ children }) {
-  const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false)
   const [profile, setProfile] = useState({});
 
-  // const value = useMemo(() => ({ profile, setProfile}), [profile]);
+  useEffect(() => {
+    getProfiles()
+      .then((fetchedUser) => {
+        setProfile(fetchedUser);
+      })
+      .catch((error) => {
+        throw new Error(`Error: ${error}`);
+      });
+  }, []);
+  
   return <ProfileCtx.Provider value={{ profile, setProfile, authorized, setAuthorized }}>{children}</ProfileCtx.Provider>
 };
 

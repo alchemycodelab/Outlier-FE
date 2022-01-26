@@ -1,24 +1,43 @@
 import { NavLink } from "react-router-dom";
-import ProfileForm from "../../components/ProfileForm/ProfileForm";
-import { useProfile } from "../../context/Profile/ProfileCtx";
 import LoginHooks from "../../hooks/UseLogin";
 import LogoutHooks from "../../hooks/UseLogout";
+// import css from '../../styles/layout.css';
+import logo from '../../styles/utlier.png';
+import css from './Header.css';
 
 export default function Header() {
-  const { profile } = useProfile();
   return (
-    <>
-      <h1>Outlier</h1>
-      <h3>{profile.email}</h3>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/instructions"> Instructions</NavLink>
-      <NavLink to="/map"> Map</NavLink>
-      <NavLink to="/data"> Data</NavLink>
-      <NavLink to="/about"> About</NavLink>
-      <NavLink to="/resources"> Resources</NavLink>
-      <NavLink to="/profile"> Profile</NavLink>
-      <LoginHooks />
-      <LogoutHooks />
-    </>
+    <header className={css.header}>
+      <nav className={css.navigation}>
+
+        {/* <NavLink className={css.homeLink}to="/"><img alt="Outlier logo, Homepage" src={logo}/></NavLink> */}
+        <NavLink className={css.homeLink} to="/">
+          Outlier
+        </NavLink>
+        {/* <span>|</span> */}
+        {/* <NavLink className={css.navLink}to="/instructions"> Instructions</NavLink> */}
+        <NavLink className={css.navLink} to="/map">
+          {' '}
+          Map
+        </NavLink>
+        {/* <span>|</span> */}
+        {/* <NavLink className={css.navLink}to="/data"> Data</NavLink> */}
+        <NavLink className={css.navLink} to="/about">
+          {' '}
+          About
+        </NavLink>
+        {/* <span>|</span> */}
+        <NavLink className={css.navLink} to="/resources">
+          {' '}
+          Resources
+        </NavLink>
+        {/* <NavLink className={css.navLink}to="/profile"> Profile</NavLink> */}
+
+      </nav>
+      {/* <div className={css.navigation}>
+        <LoginHooks />
+        <LogoutHooks />
+      </div> */}
+    </header>
   );
 }

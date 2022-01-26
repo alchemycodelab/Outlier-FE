@@ -1,15 +1,15 @@
 const URL = process.env.REACT_APP_DATABASE_URL;
 
 export async function getProfiles() {
-  const url = `${URL}/api/v1/users`;
+  const url = `${URL}/users`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log('RES', data);
+  // console.log('RES', data);
   return data;
 }
 
 export async function createProfile(user) {
-  const res = await fetch(`${URL}/api/v1/users/create`,
+  const res = await fetch(`${URL}/users/create`,
   {
     method: 'POST',
     mode: 'cors',
@@ -26,7 +26,7 @@ export async function createProfile(user) {
 }
 
 export async function getProfileEmail(email) {
-  const url = `${URL}/api/v1/users/${email}`
+  const url = `${URL}/users/${email}`
   const res = await fetch(url);
   // const data = await res.json();
   console.log('RES ID', res);
@@ -35,7 +35,7 @@ export async function getProfileEmail(email) {
 
 export async function updateProfile(obj) {
   try {
-    const url = `${URL}/api/v1/users/4`;
+    const url = `${URL}/users/4`;
     const res = await fetch (url,
       {
         method: 'PATCH',
@@ -56,7 +56,7 @@ export async function updateProfile(obj) {
 }
 
 export async function deleteProfile(id) {
-  const url = `${URL}/api/v1/users/${id}`;
+  const url = `${URL}/users/${id}`;
   const res = await fetch (url, 
     {
       method: 'DELETE',
