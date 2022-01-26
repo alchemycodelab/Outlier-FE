@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useActiveStates } from '../../../../../context/State/StateCtx';
-import { useFrame } from 'react-three-fiber';
+import { useFrame } from '@react-three/fiber';
 
 export default function HI({ ...props }) {  
   const mesh = useRef();

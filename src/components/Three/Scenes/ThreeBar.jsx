@@ -3,34 +3,25 @@ import Bar from '../Charts/Bar'
 import FillLight from '../Lights/FillLight'
 import KeyLight from '../Lights/KeyLight'
 import RimLight from '../Lights/RimLight';
-import PointLight from '../Lights/PointLight'
+import SpotLights from '../Lights/SpotLight';
 import { OrbitControls, Sky, useContextBridge } from '@react-three/drei'
-import { Canvas } from 'react-three-fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { DataCtx, DataProvider, useActiveData } from '../../../context/Data/DataCtx';
-import { StateCtx, StateProvider, useActiveStates } from '../../../context/State/StateCtx';
+import { StateCtx, StateProvider } from '../../../context/State/StateCtx';
 import GroundPlane from '../Setting/GroundPlane';
 import BackDrop  from '../Setting/BackDrop'
-import SpotLights from '../Lights/SpotLight';
 import css from './three.css'
+import AmbientLights from '../Lights/AmbientLight';
+import { useScreen } from '../../../context/Device/Device';
 
-export default function ThreeBar({position, brightness}) {
+export default function ThreeBar() {
+  const { mobile, midSize } = useScreen();
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
   const { activeData, activePopulation, activeStats } = useActiveData(); 
   const [positionY, setPositionY] = useState([]);
   const [scaleZ, setScaleZ] = useState([]);
-  const [loading, setLoading] = useState(true);
   
-  //outer bars express total population percentage outside of given community
-  //second from the center shows the active population percentage
-  //inner columns show the number of incidents proportional to the active populations %
-
-  //the active population is divided by the total population
-  //that value is subtracted from one to find the corresponding percenteage for the rest of the population
-  //the number of hate crimes is then multiplied by rest of the populations percentage 
-  //these numbers are not entirely precise and can be taken out of context however they're also 
-  //on the low side when compared to multiple studies and also only track reported cases
-  //recorded by the fbi
-  
+    
   
   useEffect(() => {
     if(activeData){
@@ -58,8 +49,30 @@ export default function ThreeBar({position, brightness}) {
   return (
     <section className={css.canvas}>
       <Canvas
-        style={{ display: 'flex', height: '40rem', width: '40rem'}}
         camera={{ fov: 35, position: [-10, 45, 40] }}
+        style={
+          mobile ? {
+            display: 'flex',
+            height:'18.5rem', 
+            width: '20.5rem',
+            border: '0.35rem solid rgb(50, 68, 66)',
+            marginLeft: '2.5%',
+            backgroundColor: 'rgb(50, 68, 66)',
+            // padding: '2%',
+          }
+          : midSize ? {
+            height: '30rem',
+            width: '34rem',
+            border: '0.5rem solid rgb(50, 68, 66)',
+            backgroundColor: 'rgb(50, 68, 66)'
+          }
+          : {
+            height: '60rem', 
+            width: '80rem',
+            border: '0.5rem solid rgb(50, 68, 66)',
+            backgroundColor: 'rgb(50, 68, 66)'
+          }
+        }
       >
         <ContextBridge>
           <Suspense fallback='Loading...'>
@@ -75,10 +88,11 @@ export default function ThreeBar({position, brightness}) {
               elevation={2}
               exposure={0.5}
             />
-            <FillLight brightness={10} color='#ffbdf4'/>
+            <AmbientLights />
+            {/* <FillLight brightness={10} color='#ffbdf4'/>
             <SpotLights position={[15, 100, 0]}/>
             <KeyLight brightness={3.6} color='#ffbdf4'/>
-            <RimLight brightness={25} color='#fad6a5'/>
+            <RimLight brightness={25} color='#fad6a5'/> */}
             <StateProvider>
             <DataProvider>
               <Bar scaleZ={scaleZ} positionY={positionY}/>

@@ -5,17 +5,22 @@ import { StateProvider } from "../../context/State/StateCtx";
 import css from './Map.css';
 
 export default function Map() {
-  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const landscape = async () => {
+  //     await screen.orientation.lock('landscape');
+  //   }
+  //   landscape()
+  // }, [])
 
   return (
-    // loading ? <h1>Loading..</h1> :
    <>
     <StateProvider>
    <section className={css.mapView}>
       <MapForm />
-      <div className={css.canvas}>
+      {/* <div className={css.canvas}> */}
         <ThreeMap />
-      </div>
+      {/* </div> */}
    </section>
     </StateProvider>
    </>

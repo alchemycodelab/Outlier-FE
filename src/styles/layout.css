@@ -1,4 +1,4 @@
-:root {
+ :root {
   --light-blue: #e1f0f1;
   --blue: rgb(179, 215, 211);
   --dark-blue: rgb(50, 68, 66);
@@ -8,20 +8,11 @@
   --light-pink: rgb(253, 245, 249);
   --orange: #f7c9ac;
   --purple: rgb(217, 210, 232);
-  /* --pad: 1.2rem;
-  --melon: #FFB5A7;
-  --pale-pink: #FCD5CE;
-  --isabelline: #F8EDEB;
-  --peach: #F9DCC4;
-  --peach-crayola: #FEC89A;
-  --mauve: #86626E;
-  --darkblue: #1d3258;
-  --lightblue: #C1EEFF;
-  --lighterblue: #EAF9FF; */
 }
 
 
-main {
+/*
+  main {
   width: 85%;
   margin: auto;
   margin-top: 50px;
@@ -125,14 +116,6 @@ nav {
   font-weight: lighter;
 }
 
-.navLink {
-  /* background-color: var(--peach); */
-}
-
-.homeLink{ 
-  /* background-color: var(--peach-crayola); */
-}
-
 a:hover {
   opacity: .5;
 }
@@ -144,7 +127,7 @@ a {
   letter-spacing: .5px;
   padding: 5px;
 
-}
+} */
 
 /* ABOUT PAGE */
 
@@ -174,26 +157,41 @@ a {
 
 .joseph {
   background-color: var(--light-blue);
-}
-
-.madden {
-  background-color: var(--light-blue);
-}
-
-.greg {
-  background-color: var(--light-blue);
-}
-
-img {
   max-width: 25%;
   max-height: default;
   margin: 4px;
   padding: 10px;
 }
 
+.madden {
+  background-color: var(--light-blue);
+  max-width: 25%;
+  max-height: default;
+  margin: 4px;
+  padding: 10px;
+}
+
+.greg {
+  background-color: var(--light-blue);
+  max-width: 25%;
+  max-height: default;
+  margin: 4px;
+  padding: 10px;
+}
+
+/* img {
+  max-width: 25%;
+  max-height: default;
+  margin: 4px;
+  padding: 10px;
+} */
+
 /* RESOURCES PAGE */
 
 .resources {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   margin-bottom: 200px;
 }
 .state h2 {

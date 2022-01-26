@@ -6,9 +6,7 @@ import GoogleLogin from "react-google-login";
 import LoginHooks from "../../hooks/UseLogin";
 
 function Profile() {
-  const navigate = useNavigate();
-  const { profile, setProfile, authorized, setAuthorized } = useProfile();
-  const [loading, setLoading] = useState(true);
+  const { profile, authorized } = useProfile();
 
 
   return (

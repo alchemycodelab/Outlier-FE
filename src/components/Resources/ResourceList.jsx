@@ -40,7 +40,6 @@ function ResourceList() {
   useEffect(() => {
     async function getList() {
       const resourceList = await getResources();
-      // console.log('R-LIST', resourceList);
       let sortedList = resourceList.sort(sortArr('resourceState'));
       sortedList = sortStateHeader(sortedList);
       setResources(sortedList);
@@ -67,9 +66,11 @@ function ResourceList() {
           );
         } else {
           return (
-            <li key={resource.id} className={css.resource}>
-              <Resource resource={resource} />
-            </li>
+            <div>
+              <li key={resource.id} className={css.resource}>
+                <Resource resource={resource} />
+              </li>
+            </div>
           );
         }
       })}

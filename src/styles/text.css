@@ -1,36 +1,41 @@
 h1 {
     text-transform: lowercase;
-    font-size: 50px;
+    font-size:1.5rem;
     color: var(--darkblue);
-    filter: drop-shadow(0px 0px 1px white);
+    filter: drop-shadow(0rem 0rem 0.1rem white);
 }
 
 h1 strong {
-    font-size: 200px !important;
-    filter: drop-shadow(0px 0px 10px var(--lighterblue));
+    font-size: 6.25rem !important;
+    filter: drop-shadow(0rem 0rem 1rem var(--lighterblue));
 }
 
-/* .section h2 {
-    
-} */
 
-.text {
-    font-size: 20px;
+
+.text {  
+  font-size: 3rem;
 }
 
 .spotlight {
-    font-size: 40px;
+    font-size: 1.5rem;
     color: var(--darkblue);
+    margin-right: 1%;
 };
 
 h2 {
-  font-size: 60px;
+  font-size: 1rem;
   color: var(--darkblue);
 }
 
 .team {
-  padding-top: 50px;
-  letter-spacing: .5px;
+  padding-top: 5rem;
+  letter-spacing: 0.05rem;
   width: 90%;
   margin:auto;
+}
+
+@media(min-width: 800px) {
+  .spotlight {
+    font-size: 3rem;
+  }
 }

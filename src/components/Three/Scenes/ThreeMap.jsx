@@ -1,25 +1,51 @@
-import { Canvas } from 'react-three-fiber';
+// import { Canvas } from 'react-three-fiber';
 import FillLight from '../Lights/FillLight';
-import { Cloud, OrbitControls, Sky, Stars, Stats, useContextBridge } from '@react-three/drei';
+import { Cloud, OrbitControls, Sky, useContextBridge } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import KeyLight from '../Lights/KeyLight';
 import RimLight from '../Lights/RimLight';
 import GroundPlane from '../Setting/GroundPlane';
 import States from '../Models/States';
 import { DataCtx } from '../../../context/Data/DataCtx';
-import { StateCtx, StateProvider } from '../../../context/State/StateCtx';
+import { StateCtx } from '../../../context/State/StateCtx';
 import SpotLights from '../Lights/SpotLight';
 import css from './three.css'
+import { useScreen } from '../../../context/Device/Device';
 
 export default function ThreeMap() {
+  const { mobile, midSize, largeSize } = useScreen();
   const ContextBridge = useContextBridge(DataCtx, StateCtx);
-  
+  console.log(mobile, midSize, largeSize)
+
   return (
-    <section className={css.canvas}>
+    <section>
     <Canvas
       camera={{ fov: 25, position: [-10, 55, 40]}}
-      style={{display: 'flex', height: '32.5rem', width: '37.5rem'}}
-    >
+      style={
+        mobile ? {
+          display: 'flex',
+          height:'18.5rem', 
+          width: '20.5rem',
+          border: '0.35rem solid rgb(50, 68, 66)',
+          marginLeft: '2.5%',
+          backgroundColor: 'rgb(50, 68, 66)',
+          // padding: '2%',
+        }
+        : midSize ? {
+          height: '30rem',
+          width: '34rem',
+          border: '0.5rem solid rgb(50, 68, 66)',
+          backgroundColor: 'rgb(50, 68, 66)'
+        }
+        : {
+          height: '60rem', 
+          width: '80rem',
+          border: '0.5rem solid rgb(50, 68, 66)',
+          backgroundColor: 'rgb(50, 68, 66)'
+        }
+        }
+      >
       <ContextBridge>
         <Suspense fallback='Loading...'>
           <Sky 

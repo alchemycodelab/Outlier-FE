@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import LoginHooks from "../../hooks/UseLogin";
 import LogoutHooks from "../../hooks/UseLogout";
-import css from '../../styles/layout.css';
+// import css from '../../styles/layout.css';
 import logo from '../../styles/utlier.png';
+import css from './Header.css';
 
 export default function Header() {
   return (
@@ -13,16 +14,19 @@ export default function Header() {
         <NavLink className={css.homeLink} to="/">
           Outlier
         </NavLink>
+        {/* <span>|</span> */}
         {/* <NavLink className={css.navLink}to="/instructions"> Instructions</NavLink> */}
         <NavLink className={css.navLink} to="/map">
           {' '}
           Map
         </NavLink>
+        {/* <span>|</span> */}
         {/* <NavLink className={css.navLink}to="/data"> Data</NavLink> */}
         <NavLink className={css.navLink} to="/about">
           {' '}
           About
         </NavLink>
+        {/* <span>|</span> */}
         <NavLink className={css.navLink} to="/resources">
           {' '}
           Resources
@@ -30,10 +34,10 @@ export default function Header() {
         {/* <NavLink className={css.navLink}to="/profile"> Profile</NavLink> */}
 
       </nav>
-      <div className={css.navigation}>
+      {/* <div className={css.navigation}>
         <LoginHooks />
         <LogoutHooks />
-      </div>
+      </div> */}
     </header>
   );
 }
