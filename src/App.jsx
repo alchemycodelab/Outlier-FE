@@ -15,38 +15,41 @@ import { StateProvider } from './context/State/StateCtx';
 import { DataProvider } from './context/Data/DataCtx';
 import { ThemeProvider } from './context/Theme/Theme';
 import { ScreenProvider } from './context/Device/Device';
+import Favicon from 'react-favicon';
+
 
 export default function App() {
   return (
     <>
-    <ThemeProvider>
-    <ScreenProvider>
-    <ProfileProvider>
-        <StateProvider>
-          <DataProvider>
-            <Router>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route
-                    path="/profile"
-                    element={
-                      <PrivateRoute>
-                        <Profile />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route path="/map" element={<Map />} />
-                  <Route path="/data" element={<Data />} />
-                  <Route path="/resources" element={<Resources />} />
-                </Routes>
-              </Layout>
-            </Router>
-          </DataProvider>
-        </StateProvider>
-      </ProfileProvider>
-      </ScreenProvider>
+      <Favicon url="photos/favicon.ico" />
+      <ThemeProvider>
+        <ScreenProvider>
+          <ProfileProvider>
+            <StateProvider>
+              <DataProvider>
+                <Router>
+                  <Layout>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route
+                        path="/profile"
+                        element={
+                          <PrivateRoute>
+                            <Profile />
+                          </PrivateRoute>
+                        }
+                      />
+                      <Route path="/map" element={<Map />} />
+                      <Route path="/data" element={<Data />} />
+                      <Route path="/resources" element={<Resources />} />
+                    </Routes>
+                  </Layout>
+                </Router>
+              </DataProvider>
+            </StateProvider>
+          </ProfileProvider>
+        </ScreenProvider>
       </ThemeProvider>
     </>
   );
