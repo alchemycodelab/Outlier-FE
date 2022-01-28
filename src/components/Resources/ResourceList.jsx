@@ -7,11 +7,11 @@ import css from '../../styles/layout.css';
 
 function ResourceList() {
   const [resources, setResources] = useState([]);
-  const [loading, setLoading] = useState(true);   
-  
+  const [loading, setLoading] = useState(true);
+
   function sortArr(prop) {
     var sortOrder = 1;
-    if(prop[0] === '-') {
+    if (prop[0] === '-') {
       sortOrder = -1;
       prop = prop.substr(1);
     }
@@ -56,9 +56,11 @@ function ResourceList() {
       {resources.map((resource) => {
         if (resource.stateHeader) {
           return (
+            // The li should be the parent component here
+
             <div className={css.state} key={resource.id}>
               <h2 key={resource.stateHeader}> {resource.stateHeader} </h2>
-              <hr/>
+              <hr />
               <li className={css.resource} key={resource.resourceName}>
                 <Resource resource={resource} />
               </li>
